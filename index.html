@@ -867,13 +867,13 @@ footer{background:var(--black);padding:3rem;display:grid;grid-template-columns:1
         <div class="fst" id="fs4">
           <div class="sum" id="sum"></div>
           <div class="fr">
-            <div class="fg"><label>Prénom & nom</label><input type="text" id="f-name" placeholder="Marie Martin" required></div>
-            <div class="fg"><label>Email</label><input type="email" id="f-email" placeholder="marie@mail.fr" required></div>
+            <div class="fg"><label>Prénom & nom</label><input type="text" id="f-name" name="nom" placeholder="Marie Martin" required></div>
+            <div class="fg"><label>Email</label><input type="email" id="f-email" name="email" placeholder="marie@mail.fr" required></div>
           </div>
-          <div class="fg"><label>Message (optionnel)</label><textarea id="f-msg" rows="2" style="resize:none" placeholder="Ambiance, lieu, demandes particulières…"></textarea></div>
+          <div class="fg"><label>Message (optionnel)</label><<textarea id="f-msg" name="message" rows="2" style="resize:none" placeholder="Ambiance, lieu, demandes particulières…"></textarea></div>
           <div class="fnv"><button type="button" class="fbk" onclick="go(3)">Retour</button><button type="submit" class="fsu">Envoyer ma demande</button></div>
         </div>
-      </form>
+     <form action="https://formspree.io/f/TON_ID" method="POST">
       <div class="fok" id="fok">
         <div class="for">✓</div>
         <h3>Demande reçue !</h3>
