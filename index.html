@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coffee Cart Événementiel · Café de Spécialité · Mariages & Events · Sud-Ouest France</title>
+<meta name="description" content="Coffee cart événementiel basé dans le Sud-Ouest. Café de spécialité, matcha latte et latte art pour vos mariages, événements corporate, pop-ups et activations de marque. Intervention partout en France.">
+<meta name="keywords" content="coffee cart événementiel, café de spécialité mariage, coffee catering France, barista événementielle Biarritz, coffee cart Pays Basque, matcha latte événement, coffee cart mariage Sud-Ouest">
+<meta property="og:title" content="Coffee Cart Événementiel · Café de Spécialité · Sud-Ouest France">
+<meta property="og:description" content="Coffee cart nomade basé dans le Sud-Ouest. Café de spécialité, matcha et latte art pour tous vos événements.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A08;
+  --white:#FAFAF8;
+  --gray:#888580;
+  --light:#F4F2EE;
+  --mid:#E2DFD8;
+  --serif:'Syne',system-ui,sans-serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:.65s cubic-bezier(.22,1,.36,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.6rem 3rem;transition:all .4s;
+}
+nav.s{background:rgba(250,250,248,.96);backdrop-filter:blur(14px);padding:1rem 3rem;border-bottom:.5px solid rgba(10,10,8,.07)}
+.nl{font-family:var(--serif);font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:var(--white);text-decoration:none;transition:color .3s;text-transform:uppercase}
+nav.s .nl{color:var(--black)}
+.nm{display:flex;gap:2.2rem;list-style:none}
+.nm a{font-size:.68rem;letter-spacing:.16em;color:rgba(250,250,248,.6);text-decoration:none;text-transform:uppercase;transition:color .2s}
+nav.s .nm a{color:var(--gray)}
+.nm a:hover{color:var(--white)}
+nav.s .nm a:hover{color:var(--black)}
+.nb{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1.4rem;border:.5px solid rgba(250,250,248,.4);color:var(--white);text-decoration:none;transition:all .2s}
+nav.s .nb{border-color:var(--black);color:var(--black)}
+.nb:hover{background:var(--white);color:var(--black)}
+nav.s .nb:hover{background:var(--black);color:var(--white)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 4rem}
+.hbg{position:absolute;inset:0;background:#1a1714}
+.hbg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,8,.1) 0%,rgba(10,10,8,.4) 50%,rgba(10,10,8,.82) 100%)}
+.hph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.16em;color:rgba(250,250,248,.12);text-transform:uppercase}
+.hc{position:relative;z-index:2;max-width:900px}
+.hey{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,250,248,.38);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.hey::before{content:'';width:32px;height:.5px;background:rgba(250,250,248,.25)}
+h1{font-family:var(--serif);font-size:clamp(3rem,7.5vw,7.5rem);font-weight:800;line-height:.92;color:var(--white);margin-bottom:2rem;letter-spacing:-.03em;text-transform:uppercase}
+h1 em{font-style:italic;color:rgba(250,250,248,.6)}
+.hsub{font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.22em;color:rgba(250,250,248,.45);line-height:1.7;max-width:600px;margin-bottom:3rem;text-transform:uppercase}
+.hact{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.bp{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2.5rem;background:var(--white);color:var(--black);text-decoration:none;transition:opacity .2s;font-weight:400}
+.bp:hover{opacity:.82}
+.bg2{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,248,.45);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .2s}
+.bg2::after{content:'↓';transition:transform .3s}
+.bg2:hover{color:rgba(250,250,248,.8)}
+.hscr{position:absolute;bottom:2rem;right:3rem;z-index:2;font-size:.6rem;letter-spacing:.16em;color:rgba(250,250,248,.2);text-transform:uppercase;writing-mode:vertical-rl;display:flex;align-items:center;gap:.8rem}
+.hscr::after{content:'';width:.5px;height:52px;background:rgba(250,250,248,.12)}
+
+/* ── TICKER ── */
+.ticker{background:var(--black);padding:.7rem 0;overflow:hidden;border-top:.5px solid rgba(250,250,248,.06);border-bottom:.5px solid rgba(250,250,248,.06)}
+.ticker-inner{display:flex;gap:0;animation:tick 28s linear infinite;white-space:nowrap}
+.ticker-inner span{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,248,.3);padding:0 2.5rem}
+.ticker-inner span em{color:rgba(250,250,248,.08);font-style:normal;margin:0 .5rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── INTRO ── */
+#intro{padding:8rem 3rem;background:var(--black)}
+.intro-wrap{max-width:860px;margin:0 auto;text-align:center}
+.intro-t{font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;color:var(--white);margin-bottom:2rem;letter-spacing:-.01em}
+.intro-t em{font-style:normal;color:rgba(250,250,248,.45);font-weight:400}
+.intro-s{font-size:.9rem;color:rgba(250,250,248,.35);line-height:1.95;max-width:580px;margin:0 auto}
+
+/* ── CAROUSEL ── */
+#carousel{overflow:hidden;background:var(--black);padding:3rem 0}
+.car-track{display:flex;gap:1rem;animation:carouselAnim 60s linear infinite;width:max-content}
+.car-track:hover{animation-play-state:paused}
+.car-item{width:340px;height:440px;background:var(--mid);flex-shrink:0;overflow:hidden;position:relative}
+.car-item .cph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.62rem;letter-spacing:.12em;color:rgba(250,250,248,.15);text-transform:uppercase;background:linear-gradient(135deg,#1a1714,#252220)}
+.car-label{position:absolute;bottom:1rem;left:1rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.25)}
+@keyframes carouselAnim{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS BASE ── */
+section,div.sec{padding:8rem 3rem}
+.ey{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gray);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
+.ey::before{content:'';width:22px;height:.5px;background:var(--gray)}
+h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,4rem);font-weight:700;line-height:1.0;letter-spacing:-.02em;text-transform:uppercase}
+h2 em{font-style:italic}
+.div{height:.5px;background:rgba(10,10,8,.07)}
+
+/* ── RAUM-STYLE PILLARS ── */
+#pillars{background:var(--light);padding:7rem 3rem}
+.pil-header{max-width:600px;margin-bottom:5rem}
+.pil-header p{font-size:.92rem;color:var(--gray);line-height:1.9;margin-top:1.2rem}
+.pil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:.5px solid var(--mid)}
+.pil{padding:3rem 2.5rem 3rem 0;border-right:.5px solid var(--mid)}
+.pil:last-child{border-right:none}
+.pil-num{font-family:var(--serif);font-size:3rem;font-weight:200;color:var(--mid);margin-bottom:2rem;line-height:1}
+.pil-name{font-family:var(--serif);font-size:1.4rem;font-weight:300;margin-bottom:.8rem;line-height:1.2}
+.pil-name em{font-style:normal}
+.pil-desc{font-size:.82rem;color:var(--gray);line-height:1.95}
+
+/* ── ÉQUIPEMENT ── */
+#equipement{background:var(--white)}
+.eq-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.eq-intro p{font-size:.92rem;color:var(--gray);line-height:1.9;margin-top:1.2rem;margin-bottom:3rem}
+.eq-cta{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2rem;background:var(--black);color:var(--white);text-decoration:none;display:inline-block;transition:opacity .2s}
+.eq-cta:hover{opacity:.8}
+.eq-items{display:flex;flex-direction:column;gap:.5px}
+.eq-item{background:var(--light);padding:1.6rem;display:flex;gap:1.5rem;align-items:flex-start;transition:background .2s}
+.eq-item:hover{background:var(--mid)}
+.eq-icon{font-size:1.4rem;flex-shrink:0;margin-top:.1rem}
+.eq-item-body{}
+.eq-cat{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:.35rem}
+.eq-name{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:.35rem}
+.eq-desc{font-size:.78rem;color:var(--gray);line-height:1.75}
+.eq-auto{background:var(--black);padding:1.6rem;display:flex;gap:1.5rem;align-items:flex-start}
+.eq-auto .eq-cat{color:rgba(250,250,248,.35)}
+.eq-auto .eq-name{color:var(--white)}
+.eq-auto .eq-desc{color:rgba(250,250,248,.35)}
+
+/* ── PHOTO BREAK ── */
+.photo-break{height:70vh;background:var(--mid);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:3rem}
+.photo-break .pbph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.16em;color:rgba(10,10,8,.15);text-transform:uppercase;background:linear-gradient(135deg,#e8e4de,#d8d4ce)}
+.photo-break .pb-caption{position:relative;z-index:2;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(10,10,8,.35)}
+
+/* ── ÉVÉNEMENTS ── */
+#evenements{background:var(--light)}
+.ev-header{max-width:600px;margin-bottom:4rem}
+.ev-header p{font-size:.92rem;color:var(--gray);line-height:1.9;margin-top:1rem}
+.ev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5px;background:var(--mid)}
+.ev-card{background:var(--white);padding:2.5rem 2rem;transition:background .25s,color .25s;cursor:default}
+.ev-card:hover{background:var(--black);color:var(--white)}
+.ev-card:hover .ev-desc{color:rgba(250,250,248,.38)}
+.ev-card:hover .ev-num{color:rgba(250,250,248,.1)}
+.ev-num{font-family:var(--serif);font-size:2rem;font-weight:200;color:var(--mid);margin-bottom:1.2rem;line-height:1;transition:color .25s}
+.ev-icon{font-size:1.4rem;margin-bottom:1.2rem}
+.ev-name{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:.6rem}
+.ev-desc{font-size:.78rem;color:var(--gray);line-height:1.85;transition:color .25s}
+
+/* ── POURQUOI ── */
+#pourquoi{background:var(--black);color:var(--white)}
+#pourquoi .ey{color:rgba(250,250,248,.25)}
+#pourquoi .ey::before{background:rgba(250,250,248,.15)}
+#pourquoi h2{color:var(--white)}
+.pq-sub{font-family:var(--serif);font-size:1rem;font-style:italic;color:rgba(250,250,248,.3);margin-top:.5rem;margin-bottom:4rem}
+.pq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5px;background:rgba(250,250,248,.05)}
+.pq-item{background:var(--black);padding:2.5rem 2rem;transition:background .2s}
+.pq-item:hover{background:rgba(250,250,248,.04)}
+.pq-n{font-family:var(--serif);font-size:2.5rem;font-weight:200;color:rgba(250,250,248,.08);margin-bottom:1.5rem}
+.pq-title{font-family:var(--serif);font-size:1.15rem;font-weight:300;color:var(--white);margin-bottom:.6rem}
+.pq-desc{font-size:.78rem;color:rgba(250,250,248,.32);line-height:1.95}
+
+/* ── KATY ── */
+#katy{background:var(--white)}
+.katy-layout{display:grid;grid-template-columns:5fr 7fr;gap:6rem;align-items:center}
+.katy-img{aspect-ratio:3/4;background:var(--light);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.katy-ph{font-size:.68rem;letter-spacing:.12em;color:rgba(10,10,8,.18);text-transform:uppercase;text-align:center;line-height:2.2}
+.katy-body{}
+.katy-quote{font-family:var(--serif);font-size:1.15rem;font-style:italic;font-weight:300;color:var(--gray);line-height:1.7;margin:1.8rem 0;padding-left:1.5rem;border-left:.5px solid var(--mid)}
+.katy-body p{font-size:.88rem;color:var(--gray);line-height:1.95;margin-bottom:1.1rem}
+.katy-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.katy-tag{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border:.5px solid var(--mid);color:var(--gray)}
+
+/* ── MENU ── */
+#menu{background:var(--light)}
+.menu-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.menu-intro p{font-size:.88rem;color:var(--gray);line-height:1.95;margin-top:1.2rem;margin-bottom:2rem}
+.menu-note{background:var(--black);padding:1.3rem 1.5rem;font-size:.78rem;color:rgba(250,250,248,.4);line-height:1.8;margin-top:1.5rem}
+.menu-note strong{color:rgba(250,250,248,.7);font-weight:400;display:block;margin-bottom:.3rem}
+.menu-cats{display:flex;flex-direction:column;gap:.5px}
+.mcat{background:var(--white);overflow:hidden}
+.mcat-h{padding:1.2rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .2s;user-select:none}
+.mcat-h:hover{background:var(--mid)}
+.mcat-h.o{background:var(--black);color:var(--white)}
+.mhl{display:flex;align-items:center;gap:.8rem;font-size:.85rem;font-weight:400}
+.mha{font-size:.75rem;transition:transform .25s}
+.mcat-h.o .mha{transform:rotate(45deg)}
+.mcat-b{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.mcat-b.o{max-height:500px}
+.mitems{padding:1rem 1.5rem 1.2rem}
+.mitem{padding:.55rem 0;font-size:.85rem;border-bottom:.5px solid var(--light)}
+.mitem:last-child{border:none}
+.mi-n{color:var(--black);font-weight:400}
+.mi-note{font-size:.72rem;color:var(--gray);margin-top:.15rem;font-style:italic}
+
+/* ── GALERIE ── */
+#galerie{background:var(--black);padding:6rem 3rem}
+.gal-header{max-width:560px;margin-bottom:3rem}
+.gal-header .ey{color:rgba(250,250,248,.25)}
+.gal-header .ey::before{background:rgba(250,250,248,.15)}
+.gal-header h2{color:var(--white)}
+.gal-header p{font-size:.88rem;color:rgba(250,250,248,.3);line-height:1.9;margin-top:1rem}
+.gal-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:200px;gap:.6rem}
+.gi{background:#1a1714;position:relative;overflow:hidden;cursor:pointer;transition:opacity .25s}
+.gi:hover{opacity:.85}
+.gi:nth-child(1){grid-column:1/8;grid-row:1/3}
+.gi:nth-child(2){grid-column:8/13;grid-row:1/2}
+.gi:nth-child(3){grid-column:8/11;grid-row:2/3}
+.gi:nth-child(4){grid-column:11/13;grid-row:2/3}
+.gi:nth-child(5){grid-column:1/5;grid-row:3/4}
+.gi:nth-child(6){grid-column:5/9;grid-row:3/4}
+.gi:nth-child(7){grid-column:9/13;grid-row:3/4}
+.giph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.giph-r{width:28px;height:28px;border-radius:50%;border:.5px solid rgba(250,250,248,.08);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(250,250,248,.12)}
+.giph-l{font-size:.58rem;letter-spacing:.1em;color:rgba(250,250,248,.15);text-transform:uppercase}
+
+/* ── AVIS ── */
+#avis{background:var(--white)}
+.avis-header{max-width:500px;margin-bottom:4rem}
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--mid)}
+.av{background:var(--white);padding:2.5rem 2rem}
+.av-stars{font-size:.65rem;letter-spacing:.08em;margin-bottom:1.5rem;color:var(--black)}
+.av-text{font-family:var(--serif);font-size:1.05rem;font-style:italic;font-weight:300;line-height:1.7;color:var(--black);margin-bottom:1.8rem}
+.av-who{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+.av-ev{font-size:.65rem;color:var(--mid);margin-top:.2rem;letter-spacing:.06em}
+
+/* ── FORMULAIRE ── */
+#devis{background:var(--light)}
+.dv-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.dv-left{}
+.dv-left p{font-size:.88rem;color:var(--gray);line-height:1.95;margin-top:1.5rem}
+.dv-infos{margin-top:2.5rem;display:flex;flex-direction:column;gap:.7rem}
+.di{display:flex;gap:1.2rem;font-size:.82rem}
+.dil{color:var(--mid);width:80px;flex-shrink:0;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.div2{color:var(--gray)}
+
+/* Steps */
+.sind{display:flex;align-items:center;gap:0;margin-bottom:2.5rem}
+.sd{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;border:.5px solid var(--mid);color:var(--gray);background:var(--white);transition:all .3s;flex-shrink:0}
+.sd.a{background:var(--black);color:var(--white);border-color:var(--black)}
+.sd.d{background:var(--black);color:var(--white);border-color:var(--black)}
+.sl{flex:1;height:.5px;background:var(--mid);margin:0 4px}
+.sl.d{background:var(--black)}
+.fst{display:none;animation:fsa .3s ease}
+.fst.a{display:block}
+@keyframes fsa{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Form elements */
+.og{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.5rem}
+.oc{padding:.9rem 1rem;border:.5px solid var(--mid);background:var(--white);cursor:pointer;transition:all .2s}
+.oc:hover{border-color:rgba(10,10,8,.3)}
+.oc.sel{border-color:var(--black);background:var(--black)}
+.oc.sel .ocl{color:var(--white)}
+.oc.sel .ocs{color:rgba(250,250,248,.3)}
+.ocl{font-size:.82rem;color:var(--black);transition:color .2s;font-weight:400}
+.ocs{font-size:.65rem;color:var(--gray);margin-top:.15rem;transition:color .2s}
+.fg{margin-bottom:.9rem}
+.fg label{display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.45rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.8rem 1rem;border:.5px solid var(--mid);background:var(--white);font-family:var(--sans);font-size:.85rem;font-weight:300;color:var(--black);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--black)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--mid)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.tgl{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.tg{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border:.5px solid var(--mid);background:var(--white);cursor:pointer;transition:all .2s}
+.tg:hover{border-color:rgba(10,10,8,.3)}
+.tg.on{background:var(--black);border-color:var(--black)}
+.tgl-l{display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:var(--black);transition:color .2s}
+.tg.on .tgl-l{color:var(--white)}
+.tg-c{font-size:.7rem;color:var(--gray);transition:color .2s}
+.tg.on .tg-c{color:rgba(250,250,248,.5)}
+.sum{border:.5px solid var(--mid);padding:1.2rem;margin-bottom:1.2rem;background:var(--white)}
+.srow{display:flex;justify-content:space-between;padding:.45rem 0;font-size:.82rem;border-bottom:.5px solid var(--light)}
+.srow:last-child{border:none}
+.sk{color:var(--gray)}.sv{color:var(--black);font-weight:400}
+.fnv{display:flex;justify-content:space-between;align-items:center;margin-top:1.2rem}
+.fbk{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--sans);transition:color .2s;display:flex;align-items:center;gap:.4rem}
+.fbk::before{content:'←'}
+.fbk:hover{color:var(--black)}
+.fnx,.fsu{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.85rem 2rem;background:var(--black);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-weight:400;transition:opacity .2s;display:flex;align-items:center;gap:.5rem}
+.fnx::after{content:'→'}
+.fnx:hover,.fsu:hover{opacity:.78}
+.fok{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 0;min-height:380px}
+.fok.a{display:flex}
+.for{width:48px;height:48px;border-radius:50%;border:.5px solid var(--black);display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:1.5rem}
+.fok h3{font-family:var(--serif);font-size:2rem;font-weight:200;margin-bottom:.75rem}
+.fok p{font-size:.85rem;color:var(--gray);line-height:1.9;max-width:300px}
+
+/* ── FAQ ── */
+#faq{background:var(--black);color:var(--white)}
+#faq .ey{color:rgba(250,250,248,.25)}
+#faq .ey::before{background:rgba(250,250,248,.15)}
+#faq h2{color:var(--white)}
+.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start;margin-top:4rem}
+.faq-intro p{font-size:.88rem;color:rgba(250,250,248,.3);line-height:1.9;margin-top:1rem}
+.faqs{display:flex;flex-direction:column;gap:.5px}
+.fq{background:rgba(250,250,248,.03);overflow:hidden}
+.fqh{padding:1.3rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:.88rem;font-weight:400;color:rgba(250,250,248,.7);transition:all .2s;user-select:none}
+.fqh:hover{background:rgba(250,250,248,.04);color:var(--white)}
+.fqh.o{background:var(--white);color:var(--black)}
+.fqa-arr{font-size:.75rem;transition:transform .25s;flex-shrink:0;margin-left:1rem}
+.fqh.o .fqa-arr{transform:rotate(45deg)}
+.fqa{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.fqa.o{max-height:300px}
+.fqa-i{padding:1.2rem 1.5rem;font-size:.83rem;color:var(--gray);line-height:1.95;border-top:.5px solid rgba(250,250,248,.06)}
+
+/* ── SEO TEXT ── */
+.seo-text{background:var(--light);padding:4rem 3rem}
+.seo-inner{max-width:800px;margin:0 auto}
+.seo-inner p{font-size:.78rem;color:var(--gray);line-height:1.95;margin-bottom:.75rem}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:3rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;border-top:.5px solid rgba(250,250,248,.05)}
+.fl{font-family:var(--serif);font-size:1rem;letter-spacing:.25em;color:rgba(250,250,248,.35);text-transform:uppercase}
+.fc{text-align:center;font-size:.62rem;letter-spacing:.1em;color:rgba(250,250,248,.18);text-transform:uppercase}
+.fr2{display:flex;gap:1.5rem;justify-content:flex-end}
+.fr2 a{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,248,.22);text-decoration:none;transition:color .2s}
+.fr2 a:hover{color:rgba(250,250,248,.6)}
+
+
+/* ── SOUS-TITRES MAJUSCULES ── */
+.s-sub{
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gray);margin-top:.75rem;font-family:var(--sans);font-weight:400;
+}
+#intro .s-sub,.intro-wrap .s-sub{color:rgba(250,250,248,.3)}
+#pourquoi .s-sub{color:rgba(250,250,248,.25)}
+#faq .s-sub{color:rgba(250,250,248,.25)}
+
+/* ── REVEAL ── */
+@media(prefers-reduced-motion:no-preference){
+  .r{opacity:0;transform:translateY(18px);transition:opacity var(--ease),transform var(--ease)}
+  .r.v{opacity:1;transform:none}
+  .r1{transition-delay:.1s}.r2{transition-delay:.2s}.r3{transition-delay:.3s}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1.1rem 1.5rem}
+  .nm{display:none}
+  #hero,section,div.sec,#galerie,#avis,#faq,#intro,#pourquoi,.seo-text{padding:5rem 1.5rem}
+  #carousel{padding:2rem 0}
+  h1{font-size:3.2rem}
+  .eq-layout,.katy-layout,.menu-layout,.dv-layout,.faq-layout{grid-template-columns:1fr;gap:3rem}
+  .pil-grid,.ev-grid,.pq-grid,.avis-grid{grid-template-columns:1fr}
+  .og,.fr{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
+  .gi{grid-column:auto!important;grid-row:auto!important}
+  .photo-break{height:40vh}
+  footer{grid-template-columns:1fr;gap:1rem;text-align:center}
+  .fr2{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nl">NOMI</a>
+  <ul class="nm">
+    <li><a href="#evenements">Services</a></li>
+    <li><a href="#katy">À propos</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#devis" class="nb">Réserver</a>
+</nav>
+
+<!-- ── HERO ── -->
+<div id="hero">
+  <div class="hbg"><div class="hph">📸 Votre photo ici — cart en action · ambiance événement</div></div>
+  <div class="hc">
+    <p class="hey">Coffee cart événementiel · Sud-Ouest · France</p>
+    <h1>SUBLIMEZ<br>VOS<br>ÉVÉNEMENTS</h1>
+    <p class="hsub">UNE EXPÉRIENCE. PAS JUSTE UN CAFÉ.</p>
+    <div class="hact">
+      <a href="#devis" class="bp">Obtenir un devis</a>
+      <a href="#pillars" class="bg2">Découvrir</a>
+    </div>
+  </div>
+  <p class="hscr" aria-hidden="true">Défiler</p>
+</div>
+
+<!-- ── TICKER ── -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Café de spécialité</span><span em>·</span>
+    <span>Matcha grade cérémonie</span><span em>·</span>
+    <span>Latte art</span><span em>·</span>
+    <span>Coffee cart événementiel</span><span em>·</span>
+    <span>La Marzocco Linea Mini</span><span em>·</span>
+    <span>Sud-Ouest · France entière</span><span em>·</span>
+    <span>Mariages · Corporate · Pop-ups</span><span em>·</span>
+    <span>Setup 100% autonome</span><span em>·</span>
+    <span>Café de spécialité</span><span em>·</span>
+    <span>Matcha grade cérémonie</span><span em>·</span>
+    <span>Latte art</span><span em>·</span>
+    <span>Coffee cart événementiel</span><span em>·</span>
+    <span>La Marzocco Linea Mini</span><span em>·</span>
+    <span>Sud-Ouest · France entière</span><span em>·</span>
+    <span>Mariages · Corporate · Pop-ups</span><span em>·</span>
+    <span>Setup 100% autonome</span><span em>·</span>
+  </div>
+</div>
+
+<!-- ── INTRO ── -->
+<div id="intro" class="sec">
+  <div class="intro-wrap r">
+    <p class="intro-t">
+      COFFEE CART ÉVÉNEMENTIEL<br>
+      BASÉ DANS LE SUD-OUEST.<br><br>
+      <em>On ne vend pas du café. On crée une expérience.<br>
+      Celle dont vos invités parlent encore le lendemain.<br>
+      Grain tracé, latte art, matcha grade cérémonie —<br>
+      chaque tasse est un moment à part entière.</em>
+    </p>
+  </div>
+</div>
+
+<!-- ── CAROUSEL ── -->
+<div id="carousel">
+  <div class="car-track" id="carTrack">
+    <div class="car-item"><div class="cph">Cart complet</div><span class="car-label">Setup</span></div>
+    <div class="car-item"><div class="cph">Latte art</div><span class="car-label">Barista</span></div>
+    <div class="car-item"><div class="cph">Mariage</div><span class="car-label">Événement</span></div>
+    <div class="car-item"><div class="cph">Matcha latte</div><span class="car-label">Menu</span></div>
+    <div class="car-item"><div class="cph">Ambiance</div><span class="car-label">Atmosphère</span></div>
+    <div class="car-item"><div class="cph">Corporate</div><span class="car-label">Entreprise</span></div>
+    <div class="car-item"><div class="cph">Cold brew</div><span class="car-label">Boisson</span></div>
+    <div class="car-item"><div class="cph">Pop-up</div><span class="car-label">Marché</span></div>
+    <!-- Duplicate for infinite loop -->
+    <div class="car-item"><div class="cph">Cart complet</div><span class="car-label">Setup</span></div>
+    <div class="car-item"><div class="cph">Latte art</div><span class="car-label">Barista</span></div>
+    <div class="car-item"><div class="cph">Mariage</div><span class="car-label">Événement</span></div>
+    <div class="car-item"><div class="cph">Matcha latte</div><span class="car-label">Menu</span></div>
+    <div class="car-item"><div class="cph">Ambiance</div><span class="car-label">Atmosphère</span></div>
+    <div class="car-item"><div class="cph">Corporate</div><span class="car-label">Entreprise</span></div>
+    <div class="car-item"><div class="cph">Cold brew</div><span class="car-label">Boisson</span></div>
+    <div class="car-item"><div class="cph">Pop-up</div><span class="car-label">Marché</span></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ── PILLARS ── -->
+<section id="pillars">
+  <div class="pil-header r">
+    <p class="ey">Pourquoi Nomi</p>
+    <h2>Ce que vos invités<br>RETIENNENT.</h2>
+    <p class="s-sub">Spoiler : pas le buffet.</p>
+  </div>
+  <div class="pil-grid">
+    <div class="pil r">
+      <p class="pil-num">01</p>
+      <h3 class="pil-name">Une alternative sans alcool <em>haut de gamme</em></h3>
+      <p class="pil-desc">De plus en plus d'invités réduisent leur consommation d'alcool. Leur proposer un flat white ou un matcha latte de qualité, c'est leur offrir une vraie expérience — pas un jus d'orange en bouteille. Tout le monde trinque. Personne n'est laissé de côté.</p>
+    </div>
+    <div class="pil r r1">
+      <p class="pil-num">02</p>
+      <h3 class="pil-name">Un moment de convivialité <em>naturel</em></h3>
+      <p class="pil-desc">Autour du cart, les gens s'arrêtent, échangent, sourient. Le café crée du lien — c'est prouvé depuis des siècles. C'est l'animation qui ne ressemble pas à une animation. Un point de rassemblement naturel au cœur de votre événement.</p>
+    </div>
+    <div class="pil r r2">
+      <p class="pil-num">03</p>
+      <h3 class="pil-name">De la vraie qualité <em>barista</em></h3>
+      <p class="pil-desc">Pas une machine automatique qui sort un café standardisé. Un grain tracé, une extraction chronométrée, du latte art sur chaque commande. La différence se sent dès la première gorgée. Vos invités le remarquent — et ils vous en remercient.</p>
+    </div>
+    <div class="pil r">
+      <p class="pil-num">04</p>
+      <h3 class="pil-name">Zéro contrainte <em>pour vous</em></h3>
+      <p class="pil-desc">Setup 100% autonome en eau et électricité. J'arrive, j'installe, je sers, je pars. Matériel, café, lait, gobelets, installation, service, nettoyage — tout est inclus. Vous profitez de votre événement. Vraiment rien à gérer.</p>
+    </div>
+    <div class="pil r r1">
+      <p class="pil-num">05</p>
+      <h3 class="pil-name">Matcha, avoine <em>& alternatives</em></h3>
+      <p class="pil-desc">Lait d'avoine Oatly Barista sur toutes les boissons. Matcha grade cérémonie. Chocolat chaud. Tout le monde trouve sa boisson — même ceux qui "ne boivent pas de café". Une carte pensée pour inclure, pas pour exclure.</p>
+    </div>
+    <div class="pil r r2">
+      <p class="pil-num">06</p>
+      <h3 class="pil-name">Une prestation <em>clé en main</em></h3>
+      <p class="pil-desc">Pas de coordination à gérer de votre côté. Un devis clair, un acompte de 30%, et c'est réglé. J'arrive 1h30 avant le début, je m'installe, je sers jusqu'à la dernière boisson — et je repars sans laisser de trace.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ── ÉQUIPEMENT ── -->
+<section id="equipement">
+  <div class="eq-layout">
+    <div class="r">
+      <p class="ey">L'équipement</p>
+      <h2>Du bon matos.<br>SANS COMPROMIS.</h2>
+      <p class="s-sub">La Marzocco · Mahlkönig · Grain tracé · Setup autonome</p>
+      <div class="eq-intro">
+        <p>Notre setup est pensé pour s'intégrer partout — en intérieur, en extérieur, dans un château comme dans un entrepôt. Compact, autonome en eau et électricité, installé en 1h30 sans contrainte pour vous.</p>
+      </div>
+      <a href="#devis" class="eq-cta">Réserver une date</a>
+    </div>
+    <div class="r r1">
+      <div class="eq-items">
+        <div class="eq-item">
+          <span class="eq-icon">☕</span>
+          <div class="eq-item-body">
+            <p class="eq-cat">Machine espresso</p>
+            <p class="eq-name">La Marzocco Linea Mini</p>
+            <p class="eq-desc">Référence pro mondiale. Stabilité thermique parfaite, latte art de précision. On n'a pas fait de compromis sur la machine.</p>
+          </div>
+        </div>
+        <div class="eq-item">
+          <span class="eq-icon">⚙️</span>
+          <div class="eq-item-body">
+            <p class="eq-cat">Moulin</p>
+            <p class="eq-name">Mahlkönig X54</p>
+            <p class="eq-desc">Le moulin des pros. Mouture stepless, régularité d'extraction parfaite à chaque dose. Parce qu'un bon café commence par un bon moulin.</p>
+          </div>
+        </div>
+        <div class="eq-item">
+          <span class="eq-icon">🫘</span>
+          <div class="eq-item-body">
+            <p class="eq-cat">Café</p>
+            <p class="eq-name">Grain de spécialité tracé</p>
+            <p class="eq-desc">Single estate, score SCA 85+, torréfaction artisanale. On sait d'où vient chaque grain qu'on met dans votre tasse.</p>
+          </div>
+        </div>
+        <div class="eq-item">
+          <span class="eq-icon">🍵</span>
+          <div class="eq-item-body">
+            <p class="eq-cat">Matcha</p>
+            <p class="eq-name">Grade cérémonie · Oatly Barista</p>
+            <p class="eq-desc">Poudre japonaise premium, fouet bambou, lait d'avoine barista pour la texture parfaite. Pour les amateurs de matcha — et ils sont de plus en plus nombreux.</p>
+          </div>
+        </div>
+        <div class="eq-auto">
+          <span class="eq-icon">🔋</span>
+          <div class="eq-item-body">
+            <p class="eq-cat">Setup autonome</p>
+            <p class="eq-name" style="color:var(--white)">100% indépendant</p>
+            <p class="eq-desc">Réservoir eau 19L · Bac déchets 26L · Batterie portable · Aucune infrastructure requise · Installation en 1h30</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHOTO BREAK ── -->
+<div class="photo-break">
+  <div class="pbph">📸 Photo plein écran — ambiance mariage / événement</div>
+  <p class="pb-caption">Café de spécialité · Latte art · Sud-Ouest</p>
+</div>
+
+<!-- ── ÉVÉNEMENTS ── -->
+<section id="evenements">
+  <div class="ev-header r">
+    <p class="ey">Où j'interviens</p>
+    <h2>Tous vos formats.<br>TOUS VOS LIEUX.</h2>
+    <p class="s-sub">Mariages · Corporate · Privé · Pop-ups · Tournages · Marque</p>
+    <p>Du mariage en domaine basque au lancement de marque parisien — le cart s'adapte à votre univers, pas l'inverse.</p>
+  </div>
+  <div class="ev-grid">
+    <div class="ev-card r">
+      <p class="ev-num">01</p>
+      <div class="ev-icon">💍</div>
+      <h3 class="ev-name">Mariage</h3>
+      <p class="ev-desc">Le café qui crée le moment. Bar ouvert pour vos invités, latte art en continu, ambiance qui s'intègre parfaitement à votre décor. Vos invités en parlent encore le lendemain.</p>
+    </div>
+    <div class="ev-card r r1">
+      <p class="ev-num">02</p>
+      <div class="ev-icon">🏢</div>
+      <h3 class="ev-name">Corporate events</h3>
+      <p class="ev-desc">Séminaire, inauguration, lancement produit, porte ouverte. Un café qui donne de l'énergie, crée le lien, et prouve que vous avez le souci du détail.</p>
+    </div>
+    <div class="ev-card r r2">
+      <p class="ev-num">03</p>
+      <div class="ev-icon">🎉</div>
+      <h3 class="ev-name">Événements privés</h3>
+      <p class="ev-desc">Anniversaire, baby shower, EVJF, baptême. Un moment de douceur au cœur de votre célébration — parce que vos proches méritent mieux qu'une Nespresso.</p>
+    </div>
+    <div class="ev-card r">
+      <p class="ev-num">04</p>
+      <div class="ev-icon">🎪</div>
+      <h3 class="ev-name">Pop-ups & marchés</h3>
+      <p class="ev-desc">Je m'installe, je sers, les visiteurs adorent. Vente directe, visibilité maximale, et un cart qui photographie parfaitement pour vos réseaux.</p>
+    </div>
+    <div class="ev-card r r1">
+      <p class="ev-num">05</p>
+      <div class="ev-icon">📸</div>
+      <h3 class="ev-name">Tournages photo & vidéo</h3>
+      <p class="ev-desc">Entre les prises, l'équipe a besoin de carburant. Du vrai carburant — pas du café filtre tiède. Je m'occupe du plateau, vous vous occupez du reste.</p>
+    </div>
+    <div class="ev-card r r2">
+      <p class="ev-num">06</p>
+      <div class="ev-icon">✨</div>
+      <h3 class="ev-name">Activation de marque</h3>
+      <p class="ev-desc">Le cart devient une extension de votre identité. Gobelets brandés, menu signature, setup sur-mesure. Une expérience que vos clients associent à votre marque.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ── POURQUOI ── -->
+<div id="pourquoi" class="sec">
+  <p class="ey">Ce qu'on apporte</p>
+  <h2>POURQUOI CHOISIR<br>UN COFFEE CART.</h2>
+  <p class="s-sub">Et pas juste un café servi dans un thermos.</p>
+  
+  <div class="pq-grid">
+    <div class="pq-item r">
+      <p class="pq-n">01</p>
+      <h4 class="pq-title">Du bon matos</h4>
+      <p class="pq-desc">Un équipement 100% La Marzocco, fiable et performant, choisi sans compromis. Parce qu'une grande expérience commence toujours par les bons outils.</p>
+    </div>
+    <div class="pq-item r r1">
+      <p class="pq-n">02</p>
+      <h4 class="pq-title">Une barista passionnée</h4>
+      <p class="pq-desc">Une expertise solide, une technique précise et une vraie passion du café. Chaque service devient une expérience maîtrisée, fluide et marquante.</p>
+    </div>
+    <div class="pq-item r r2">
+      <p class="pq-n">03</p>
+      <h4 class="pq-title">Des produits de qualité</h4>
+      <p class="pq-desc">Cafés de spécialité et ingrédients premium, sélectionnés avec exigence. Pour une expérience comme dans votre coffee shop préféré — mais à votre événement.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ── KATY ── -->
+<section id="katy">
+  <div class="katy-layout">
+    <div class="katy-img r">
+      <div class="katy-ph">📸<br>Portrait de Katy<br>barista · en action · au cart</div>
+    </div>
+    <div class="r r1">
+      <p class="ey">The face behind the cart</p>
+      <h2>Katy —<br>PASSIONNÉE<br>de café.</h2>
+      <p class="s-sub">Barista certifiée · Événementiel luxe · Japon · Sud-Ouest</p>
+      <blockquote class="katy-quote">"J'ai mis des années à trouver la combinaison parfaite — l'événementiel de luxe, le café de spécialité, et l'art japonais du matcha. Nomi Coffee, c'est cette combinaison."</blockquote>
+      <p>Après des années dans l'<strong>événementiel de luxe</strong>, j'ai pris un aller simple pour le Japon. C'est là que j'ai découvert les kissaten de Tokyo — ces cafés traditionnels japonais où chaque tasse est un rituel — et l'art du matcha dans ses formes les plus pures.</p>
+      <p>De retour en France, reconversion en <strong>barista professionnelle</strong>. Aujourd'hui je combine ces deux univers dans Nomi Coffee : la précision du café de spécialité, la douceur du matcha japonais, et l'exigence d'un service événementiel haut de gamme.</p>
+      <p>Le Sud-Ouest comme base. La France entière comme terrain de jeu.</p>
+      <div class="katy-tags">
+        <span class="katy-tag">Barista certifiée</span>
+        <span class="katy-tag">Événementiel luxe</span>
+        <span class="katy-tag">Culture japonaise</span>
+        <span class="katy-tag">Café de spécialité</span>
+        <span class="katy-tag">Matcha cérémonie</span>
+        <span class="katy-tag">Sud-Ouest</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ── MENU ── -->
+<section id="menu">
+  <div class="menu-layout">
+    <div class="r">
+      <p class="ey">Le menu</p>
+      <h2>Ce qu'on<br>PRÉPARE.</h2>
+      <p class="s-sub">À la commande · Grain tracé · Latte art · Matcha grade cérémonie</p>
+      <p>Devant vous. À la commande. Grain tracé, extraction chronométrée, latte art sur chaque boisson lactée. Pas de café qui attend depuis 20 minutes dans un thermos.</p>
+      <div class="menu-note">
+        <strong>Formule Forfait (Modèle A)</strong>
+        Toutes les boissons sont servies gratuitement à vos invités. Vous payez uniquement la présence barista.
+      </div>
+      <div class="menu-note" style="background:var(--light);color:var(--black);margin-top:.5rem">
+        <strong>Vente directe (Modèle B)</strong>
+        Pour les événements publics (marchés, pop-ups, festivals) — tarifs à la carte disponibles sur demande.
+      </div>
+    </div>
+    <div class="menu-cats r r1">
+      <div class="mcat">
+        <div class="mcat-h o" onclick="tMenu(this)">
+          <div class="mhl"><span>☕</span>Cafés chauds</div>
+          <span class="mha">+</span>
+        </div>
+        <div class="mcat-b o">
+          <div class="mitems">
+            <div class="mitem"><div class="mi-n">Espresso · Double espresso</div></div>
+            <div class="mitem"><div class="mi-n">Flat white</div><div class="mi-note">Double ristretto · lait texturé soyeux</div></div>
+            <div class="mitem"><div class="mi-n">Cappuccino</div><div class="mi-note">Latte art · mousse dense</div></div>
+            <div class="mitem"><div class="mi-n">Latte</div><div class="mi-note">200ml · latte art</div></div>
+            <div class="mitem"><div class="mi-n">Café allongé</div></div>
+            <div class="mitem"><div class="mi-n">Chocolat chaud</div><div class="mi-note">Cacao premium</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="mcat">
+        <div class="mcat-h" onclick="tMenu(this)">
+          <div class="mhl"><span>🍵</span>Matcha</div>
+          <span class="mha">+</span>
+        </div>
+        <div class="mcat-b">
+          <div class="mitems">
+            <div class="mitem"><div class="mi-n">Matcha latte chaud</div><div class="mi-note">Grade cérémonie · Oatly Barista · latte art</div></div>
+            <div class="mitem"><div class="mi-n">Matcha latte glacé</div><div class="mi-note">Sur glace · lait d'avoine</div></div>
+            <div class="mitem"><div class="mi-n">Matcha pur (bowl)</div><div class="mi-note">Traditionnel · fouet bambou</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="mcat">
+        <div class="mcat-h" onclick="tMenu(this)">
+          <div class="mhl"><span>🧊</span>Boissons froides</div>
+          <span class="mha">+</span>
+        </div>
+        <div class="mcat-b">
+          <div class="mitems">
+            <div class="mitem"><div class="mi-n">Cold brew</div><div class="mi-note">Infusion à froid 12h</div></div>
+            <div class="mitem"><div class="mi-n">Latte glacé</div><div class="mi-note">Espresso · lait · glace</div></div>
+            <div class="mitem"><div class="mi-n">Café tonic</div><div class="mi-note">Espresso · eau tonique · glace</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="mcat">
+        <div class="mcat-h" onclick="tMenu(this)">
+          <div class="mhl"><span>🌾</span>Options végétales</div>
+          <span class="mha">+</span>
+        </div>
+        <div class="mcat-b">
+          <div class="mitems">
+            <div class="mitem"><div class="mi-n">Lait d'avoine Oatly Barista</div><div class="mi-note">Sur toutes les boissons lactées</div></div>
+            <div class="mitem"><div class="mi-n">Lait d'amande</div><div class="mi-note">Sur demande</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALERIE ── -->
+<div id="galerie">
+  <div class="gal-header r">
+    <p class="ey">Galerie</p>
+    <h2>Le cart<br>EN ACTION.</h2>
+    <p class="s-sub">Mariages · Pop-ups · Corporate · Tournages</p>
+    <p>De la mise en place au dernier café — un setup pensé pour être savouré autant que photographié.</p>
+  </div>
+  <div class="gal-grid">
+    <div class="gi r"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Cart complet</span></div></div>
+    <div class="gi r r1"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Latte art</span></div></div>
+    <div class="gi r r2"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Mariage</span></div></div>
+    <div class="gi r r3"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Détail</span></div></div>
+    <div class="gi r"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Matcha</span></div></div>
+    <div class="gi r r1"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Ambiance</span></div></div>
+    <div class="gi r r2"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Cold brew</span></div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ── AVIS ── -->
+<div id="avis" class="sec" style="background:var(--white)">
+  <div class="avis-header r">
+    <p class="ey">Témoignages</p>
+    <h2>Ce qu'ils<br>EN DISENT.</h2>
+  <p class="s-sub">Mariages · Lancements · Événements privés</p>
+  </div>
+  <div class="avis-grid">
+    <div class="av r">
+      <p class="av-stars">★ ★ ★ ★ ★</p>
+      <p class="av-text">"Le coffee cart était LA surprise de notre mariage. Tous nos invités en parlent encore. Le latte art sur chaque tasse, le matcha pour ceux qui ne boivent pas de café… parfait."</p>
+      <p class="av-who">Marie & Thomas</p>
+      <p class="av-ev">Mariage · Domaine de Bassilour · Juin 2024</p>
+    </div>
+    <div class="av r r1">
+      <p class="av-stars">★ ★ ★ ★ ★</p>
+      <p class="av-text">"On a booké Nomi pour notre lancement de produit. L'installation était impeccable, le café franchement le meilleur que j'aie bu à un événement pro. Un vrai plus pour notre image."</p>
+      <p class="av-who">Chloé D. — Responsable marketing</p>
+      <p class="av-ev">Lancement de marque · Biarritz · Septembre 2024</p>
+    </div>
+    <div class="av r r2">
+      <p class="av-stars">★ ★ ★ ★ ★</p>
+      <p class="av-text">"Katy est arrivée avec tout son matériel, installée en un rien de temps, et le service était fluide et professionnel du début à la fin. Je recommande les yeux fermés."</p>
+      <p class="av-who">Lucie R.</p>
+      <p class="av-ev">Anniversaire privé · Bayonne · Mai 2024</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ── FORMULAIRE ── -->
+<div id="devis" class="sec" style="background:var(--light)">
+  <div class="dv-layout">
+    <div class="dv-left r">
+      <p class="ey">Réserver</p>
+      <h2>Parlons de votre ÉVÉNEMENT.</h2>
+      <p class="s-sub">Devis gratuit · Réponse sous 24h · Sur-mesure</p>
+      <p>Décrivez-moi votre projet en 2 minutes — je vous envoie une proposition sur-mesure sous 24h.</p>
+      <div class="dv-infos">
+        <div class="di"><span class="dil">Email</span><span class="div2">contact@nomicoffee.fr</span></div>
+        <div class="di"><span class="dil">Instagram</span><span class="div2">@nomicoffee</span></div>
+        <div class="di"><span class="dil">Zone</span><span class="div2">Sud-Ouest · toute la France</span></div>
+        <div class="di"><span class="dil">Saison</span><span class="div2">Toute l'année · sur demande</span></div>
+        <div class="di"><span class="dil">Réponse</span><span class="div2">Sous 24h · devis gratuit</span></div>
+        <div class="di"><span class="dil">Acompte</span><span class="div2">30% à la signature</span></div>
+      </div>
+    </div>
+    <div class="r r1">
+      <div class="sind" id="si">
+        <div class="sd a" id="d1">1</div><div class="sl" id="l1"></div>
+        <div class="sd" id="d2">2</div><div class="sl" id="l2"></div>
+        <div class="sd" id="d3">3</div><div class="sl" id="l3"></div>
+        <div class="sd" id="d4">4</div>
+      </div>
+      <form id="qf" onsubmit="doSub(event)">
+        <div class="fst a" id="fs1">
+          <div class="og">
+            <div class="oc" onclick="pick(this,'type','mariage')"><div class="ocl">💍 Mariage</div><div class="ocs">Forfait ouvert · invités</div></div>
+            <div class="oc" onclick="pick(this,'type','corporate')"><div class="ocl">🏢 Corporate</div><div class="ocs">Séminaire · lancement</div></div>
+            <div class="oc" onclick="pick(this,'type','prive')"><div class="ocl">🎉 Événement privé</div><div class="ocs">Anniv. · baby shower · EVJF</div></div>
+            <div class="oc" onclick="pick(this,'type','popup')"><div class="ocl">🎪 Pop-up · marché</div><div class="ocs">Vente directe</div></div>
+            <div class="oc" onclick="pick(this,'type','tournage')"><div class="ocl">📸 Tournage</div><div class="ocs">Photo · vidéo · set</div></div>
+            <div class="oc" onclick="pick(this,'type','marque')"><div class="ocl">✨ Activation marque</div><div class="ocs">Brand event · store</div></div>
+          </div>
+          <div class="fnv"><span></span><button type="button" class="fnx" onclick="go(2)">Continuer</button></div>
+        </div>
+        <div class="fst" id="fs2">
+          <div class="fr">
+            <div class="fg"><label>Date</label><input type="date" id="f-date"></div>
+            <div class="fg"><label>Invités</label><input type="number" id="f-guests" placeholder="ex. 120"></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Heure de début</label><input type="time" id="f-start"></div>
+            <div class="fg"><label>Durée</label>
+              <select id="f-dur">
+                <option value="" disabled selected>Choisir…</option>
+                <option>2 heures</option><option>3 heures</option><option>4 heures</option>
+                <option>5 heures</option><option>6 heures</option><option>Journée</option><option>À définir</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label>Lieu / ville</label><input type="text" id="f-lieu" placeholder="ex. Domaine de Bassilour, Bidart"></div>
+          <div class="fnv"><button type="button" class="fbk" onclick="go(1)">Retour</button><button type="button" class="fnx" onclick="go(3)">Continuer</button></div>
+        </div>
+        <div class="fst" id="fs3">
+          <div class="tgl">
+            <div class="tg" onclick="tog(this,'matcha')"><div class="tgl-l"><span>🍵</span><div><div>Matcha latte</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">Grade cérémonie · Oatly · latte art</div></div></div><span class="tg-c">Ajouter</span></div>
+            <div class="tg" onclick="tog(this,'avoine')"><div class="tgl-l"><span>🌾</span><div><div>Lait d'avoine</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">Oatly Barista · sur toutes les boissons</div></div></div><span class="tg-c">Ajouter</span></div>
+            <div class="tg" onclick="tog(this,'cold')"><div class="tgl-l"><span>🧊</span><div><div>Cold brew & cafés glacés</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">Idéal pour l'été · extérieur</div></div></div><span class="tg-c">Ajouter</span></div>
+            <div class="tg" onclick="tog(this,'brand')"><div class="tgl-l"><span>🖋</span><div><div>Gobelets personnalisés</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">Votre nom ou logo · sur devis</div></div></div><span class="tg-c">Ajouter</span></div>
+          </div>
+          <div class="fnv"><button type="button" class="fbk" onclick="go(2)">Retour</button><button type="button" class="fnx" onclick="go(4)">Continuer</button></div>
+        </div>
+        <div class="fst" id="fs4">
+          <div class="sum" id="sum"></div>
+          <div class="fr">
+            <div class="fg"><label>Prénom & nom</label><input type="text" id="f-name" placeholder="Marie Martin" required></div>
+            <div class="fg"><label>Email</label><input type="email" id="f-email" placeholder="marie@mail.fr" required></div>
+          </div>
+          <div class="fg"><label>Message (optionnel)</label><textarea id="f-msg" rows="2" style="resize:none" placeholder="Ambiance, lieu, demandes particulières…"></textarea></div>
+          <div class="fnv"><button type="button" class="fbk" onclick="go(3)">Retour</button><button type="submit" class="fsu">Envoyer ma demande</button></div>
+        </div>
+      </form>
+      <div class="fok" id="fok">
+        <div class="for">✓</div>
+        <h3>Demande reçue !</h3>
+        <p>Je vous envoie une proposition personnalisée sous 24h. Hâte de créer quelque chose de beau ensemble.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ── FAQ ── -->
+<div id="faq" class="sec">
+  <p class="ey">Questions fréquentes</p>
+  <h2>Tout ce que vous<br>voulez SAVOIR.</h2>
+  <p class="s-sub">Coffee cart · Logistique · Paiement · Menu · Options</p>
+  <div class="faq-layout">
+    <div class="r">
+      <p style="font-size:.88rem;color:rgba(250,250,248,.3);line-height:1.9;margin-top:1rem">Une question qui n'est pas là ? Envoyez-moi un message — je répondrai sous 24h.</p>
+      <div style="margin-top:2rem"><a href="mailto:contact@nomicoffee.fr" style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.4);text-decoration:none;display:flex;align-items:center;gap:.6rem;transition:color .2s" onmouseover="this.style.color='rgba(250,250,248,.8)'" onmouseout="this.style.color='rgba(250,250,248,.4)'">Nous écrire →</a></div>
+    </div>
+    <div class="faqs r r1">
+      <div class="fq"><div class="fqh o" onclick="tFaq(this)"><span>Vous intervenez partout en France ?</span><span class="fqa-arr">+</span></div><div class="fqa o"><div class="fqa-i">Je suis basée dans le Sud-Ouest (Biarritz, Pays Basque), mais j'interviens partout en France. Les frais de déplacement au-delà de 30 km sont intégrés dans le devis — aucune surprise à la facturation.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Le cart a besoin d'électricité et d'eau sur place ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Non. Setup 100% autonome : réservoir d'eau embarqué (19L), bac déchets (26L), batterie portable. Aucune infrastructure requise de votre côté. Si une prise 220V est disponible — parfait. Sinon, on gère.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Combien de temps avant faut-il réserver ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Pour les mariages : 6 à 12 mois à l'avance, les dates partent vite entre mai et septembre. Pour les autres événements : 4 à 6 semaines suffisent. Envoyez-moi un message pour vérifier mes disponibilités.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Comment fonctionne le paiement ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Acompte de 30% à la signature pour bloquer la date. Solde à J-15. Virement ou chèque. Auto-entrepreneur — TVA non applicable (art. 293 B du CGI).</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Combien de boissons par heure ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">En solo, 25 à 35 boissons par heure confortablement. Pour les grands événements (200+ invités), je peux me faire accompagner d'un barista supplémentaire — à préciser dans votre demande.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Des options sans caféine ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Évidemment — matcha latte, chocolat chaud, décaféiné sur demande. Le matcha est d'ailleurs devenu la star de la plupart de mes événements !</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>On peut personnaliser les gobelets ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Oui — votre nom, logo ou message imprimé sur les gobelets. Délai de fabrication 2 à 3 semaines. Tarif sur devis selon la quantité.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Une demande spéciale ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">On adore les défis. Menu signature, boisson exclusive à votre marque, format atypique — envoyez-nous un message et on trouve une solution. Notre seule limite, c'est votre imagination.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SEO TEXT ── -->
+<div class="seo-text">
+  <div class="seo-inner">
+    <p>Nomi Coffee est un <strong>coffee cart événementiel</strong> basé à Biarritz, dans le Pays Basque. Spécialisé dans le <strong>café de spécialité pour événements</strong>, nous proposons des prestations de <strong>coffee catering</strong> pour tous types d'événements : <strong>mariages au Pays Basque</strong>, événements corporate dans le Sud-Ouest, pop-ups, marchés de créateurs, tournages photo et vidéo, activations de marque et lancements de produits.</p>
+    <p>Notre <strong>coffee cart mobile</strong> intervient partout en France — de Biarritz à Paris, de Bordeaux à Lyon. Équipé d'une machine <strong>La Marzocco Linea Mini</strong> et d'un moulin <strong>Mahlkönig X54</strong>, nous servons espressos, flat whites, cappuccinos, lattes et <strong>matcha lattes</strong> avec du lait d'avoine Oatly Barista. Service <strong>barista événementielle</strong> professionnel, setup autonome, installation en 1h30.</p>
+    <p>Pour réserver un <strong>coffee cart pour votre mariage</strong> ou votre événement dans le Sud-Ouest et partout en France, contactez-nous via le formulaire ci-dessus. Réponse sous 24h, devis gratuit et personnalisé.</p>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="fl">NOMI</span>
+  <span class="fc">© 2024 · Biarritz · contact@nomicoffee.fr</span>
+  <div class="fr2">
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+    <a href="#devis">Réserver</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',scrollY>60));
+
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('v')),{threshold:.1});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+
+// Form state
+const fd={type:'',date:'',guests:'',start:'',dur:'',lieu:'',matcha:false,avoine:false,cold:false,brand:false};
+let cur=1;
+
+function pick(el,f,v){
+  el.closest('.og').querySelectorAll('.oc').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');fd[f]=v;
+}
+function tog(el,f){
+  el.classList.toggle('on');fd[f]=el.classList.contains('on');
+  el.querySelector('.tg-c').textContent=fd[f]?'✓':'Ajouter';
+}
+function go(n){
+  if(n===2&&!fd.type){alert('Choisissez un type d\'événement.');return;}
+  if(n===4)buildSum();
+  document.getElementById('fs'+cur).classList.remove('a');
+  cur=n;
+  document.getElementById('fs'+cur).classList.add('a');
+  updateDots();
+}
+function updateDots(){
+  for(let i=1;i<=4;i++){
+    const d=document.getElementById('d'+i);
+    d.className='sd';
+    if(i<cur){d.classList.add('d');d.textContent='✓';}
+    else if(i===cur){d.classList.add('a');d.textContent=i;}
+    else d.textContent=i;
+    if(i<4)document.getElementById('l'+i).classList.toggle('d',i<cur);
+  }
+}
+const tl={mariage:'Mariage',corporate:'Corporate',prive:'Événement privé',popup:'Pop-up / marché',tournage:'Tournage',marque:'Activation de marque'};
+function buildSum(){
+  fd.date=document.getElementById('f-date').value;
+  fd.guests=document.getElementById('f-guests').value;
+  fd.start=document.getElementById('f-start').value;
+  fd.dur=document.getElementById('f-dur').value;
+  fd.lieu=document.getElementById('f-lieu').value;
+  const opts=[fd.matcha&&'Matcha',fd.avoine&&'Lait d\'avoine',fd.cold&&'Cold brew',fd.brand&&'Gobelets perso'].filter(Boolean);
+  const rows=[
+    ['Événement',tl[fd.type]||'—'],['Date',fd.date||'—'],
+    ['Invités',fd.guests?fd.guests+' pers.':'—'],
+    ['Horaire',fd.start?fd.start+(fd.dur?' · '+fd.dur:''):fd.dur||'—'],
+    ['Lieu',fd.lieu||'—'],['Options',opts.join(' · ')||'Aucune'],
+  ];
+  document.getElementById('sum').innerHTML=rows.map(([k,v])=>
+    `<div class="srow"><span class="sk">${k}</span><span class="sv">${v}</span></div>`).join('');
+}
+function doSub(e){
+  e.preventDefault();
+  document.getElementById('qf').style.display='none';
+  document.getElementById('si').style.display='none';
+  document.getElementById('fok').classList.add('a');
+}
+function tMenu(h){
+  const b=h.nextElementSibling,isO=h.classList.contains('o');
+  document.querySelectorAll('.mcat-h.o').forEach(x=>{x.classList.remove('o');x.nextElementSibling.classList.remove('o')});
+  if(!isO){h.classList.add('o');b.classList.add('o');}
+}
+function tFaq(q){
+  const a=q.nextElementSibling,isO=q.classList.contains('o');
+  document.querySelectorAll('.fqh.o').forEach(x=>{x.classList.remove('o');x.nextElementSibling.classList.remove('o')});
+  if(!isO){q.classList.add('o');a.classList.add('o');}
+}
+</script>
+</body>
+</html>
