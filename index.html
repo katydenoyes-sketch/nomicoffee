@@ -327,6 +327,19 @@ footer{background:var(--black);padding:3rem;display:grid;grid-template-columns:1
 #pourquoi .s-sub{color:rgba(250,250,248,.25)}
 #faq .s-sub{color:rgba(250,250,248,.25)}
 
+/* ── HAMBURGER & MOBILE NAV ── */
+.hamb{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:0;z-index:400}
+.hamb span{display:block;width:100%;height:1.5px;background:var(--white);transition:all .3s}
+nav.s .hamb span{background:var(--black)}
+.hamb.o span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamb.o span:nth-child(2){opacity:0}
+.hamb.o span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.hamb.o span{background:var(--black)}
+.mnav{position:fixed;inset:0;z-index:250;background:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateY(-100%);transition:transform .4s cubic-bezier(.22,1,.36,1);visibility:hidden}
+.mnav.o{transform:translateY(0);visibility:visible}
+.mnav a{font-family:var(--serif);font-size:1.6rem;color:var(--black);text-decoration:none;text-transform:uppercase;letter-spacing:.04em}
+.mnav-cta{margin-top:1rem;font-family:var(--sans)!important;font-size:.75rem!important;letter-spacing:.14em;padding:1rem 2.5rem;background:var(--black);color:var(--white)!important}
+
 /* ── REVEAL ── */
 @media(prefers-reduced-motion:no-preference){
   .r{opacity:0;transform:translateY(18px);transition:opacity var(--ease),transform var(--ease)}
@@ -338,17 +351,43 @@ footer{background:var(--black);padding:3rem;display:grid;grid-template-columns:1
 @media(max-width:900px){
   nav{padding:1.1rem 1.5rem}
   .nm{display:none}
+  .nb-desktop{display:none}
+  .hamb{display:flex}
   #hero,section,div.sec,#galerie,#avis,#faq,#intro,#pourquoi,.seo-text{padding:5rem 1.5rem}
   #carousel{padding:2rem 0}
   h1{font-size:3.2rem}
+  .hact{gap:1rem}
+  .bp,.bg2{width:100%;justify-content:center;text-align:center}
+  .bg2{padding:.5rem 0}
   .eq-layout,.katy-layout,.menu-layout,.dv-layout,.faq-layout{grid-template-columns:1fr;gap:3rem}
   .pil-grid,.ev-grid,.pq-grid,.avis-grid{grid-template-columns:1fr}
+  .pil{border-right:none;border-bottom:.5px solid var(--mid);padding:2rem 0}
+  .pil:last-child{border-bottom:none}
   .og,.fr{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
   .gi{grid-column:auto!important;grid-row:auto!important}
   .photo-break{height:40vh}
   footer{grid-template-columns:1fr;gap:1rem;text-align:center}
   .fr2{justify-content:center}
+  .sind{flex-wrap:nowrap}
+  table{display:block;overflow-x:auto}
+}
+
+@media(max-width:480px){
+  h1{font-size:2.5rem}
+  .hey{font-size:.6rem;gap:.6rem}
+  .hey::before{width:20px}
+  .hsub{font-size:.68rem;letter-spacing:.16em}
+  h2{font-size:1.9rem}
+  .intro-t{font-size:1.3rem}
+  .car-item{width:260px;height:340px}
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+  .pil-num,.ev-num,.pq-n{font-size:2.2rem}
+  .katy-quote{font-size:1rem;padding-left:1rem}
+  .sd{width:22px;height:22px;font-size:.6rem}
+  .mnav a{font-size:1.3rem}
+  nav{padding:.9rem 1.2rem}
+  .nl{font-size:.95rem}
 }
 </style>
 </head>
@@ -364,8 +403,20 @@ footer{background:var(--black);padding:3rem;display:grid;grid-template-columns:1
     <li><a href="#avis">Avis</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="#devis" class="nb">Réserver</a>
+  <a href="#devis" class="nb nb-desktop">Réserver</a>
+  <button class="hamb" id="hamb" aria-label="Ouvrir le menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mnav" id="mnav">
+  <a href="#evenements" onclick="closeMobileNav()">Services</a>
+  <a href="#katy" onclick="closeMobileNav()">À propos</a>
+  <a href="#menu" onclick="closeMobileNav()">Menu</a>
+  <a href="#avis" onclick="closeMobileNav()">Avis</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="#devis" class="mnav-cta" onclick="closeMobileNav()">Réserver</a>
+</div>
 
 <!-- ── HERO ── -->
 <div id="hero">
@@ -913,6 +964,18 @@ footer{background:var(--black);padding:3rem;display:grid;grid-template-columns:1
 <script>
 // Nav scroll
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',scrollY>60));
+
+// Mobile nav toggle
+function toggleMobileNav(){
+  document.getElementById('hamb').classList.toggle('o');
+  document.getElementById('mnav').classList.toggle('o');
+  document.body.style.overflow = document.getElementById('mnav').classList.contains('o') ? 'hidden' : '';
+}
+function closeMobileNav(){
+  document.getElementById('hamb').classList.remove('o');
+  document.getElementById('mnav').classList.remove('o');
+  document.body.style.overflow = '';
+}
 
 // Reveal on scroll
 const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('v')),{threshold:.1});
