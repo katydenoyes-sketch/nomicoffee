@@ -281,11 +281,14 @@ h2 em{font-style:italic}
 .fnx,.fsu{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.85rem 2rem;background:var(--black);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-weight:400;transition:opacity .2s;display:flex;align-items:center;gap:.5rem}
 .fnx::after{content:'→'}
 .fnx:hover,.fsu:hover{opacity:.78}
+.fsu:disabled{opacity:.5;cursor:not-allowed}
 .fok{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 0;min-height:380px}
 .fok.a{display:flex}
 .for{width:48px;height:48px;border-radius:50%;border:.5px solid var(--black);display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:1.5rem}
 .fok h3{font-family:var(--serif);font-size:2rem;font-weight:200;margin-bottom:.75rem}
 .fok p{font-size:.85rem;color:var(--gray);line-height:1.9;max-width:300px}
+.ferr{display:none;background:#fff3f2;border:.5px solid #e2a49c;color:#8a2e22;font-size:.78rem;line-height:1.7;padding:.9rem 1rem;margin-top:1rem}
+.ferr.a{display:block}
 
 /* ── FAQ ── */
 #faq{background:var(--black);color:var(--white)}
@@ -326,6 +329,14 @@ footer{background:var(--black);padding:3rem;display:grid;grid-template-columns:1
 #intro .s-sub,.intro-wrap .s-sub{color:rgba(250,250,248,.3)}
 #pourquoi .s-sub{color:rgba(250,250,248,.25)}
 #faq .s-sub{color:rgba(250,250,248,.25)}
+
+/* ── LANG SWITCH ── */
+.lang-switch{display:flex;align-items:center;gap:.35rem}
+.lb{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:none;border:.5px solid rgba(250,250,248,.3);color:rgba(250,250,248,.5);padding:.35rem .65rem;cursor:pointer;transition:all .2s;font-weight:400;line-height:1}
+nav.s .lb{border-color:rgba(10,10,8,.25);color:var(--gray)}
+.lb:hover{border-color:currentColor}
+.lb.active{background:var(--white);color:var(--black);border-color:var(--white)}
+nav.s .lb.active{background:var(--black);color:var(--white);border-color:var(--black)}
 
 /* ── HAMBURGER & MOBILE NAV ── */
 .hamb{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:0;z-index:400}
@@ -371,6 +382,7 @@ nav.s .hamb span{background:var(--black)}
   .fr2{justify-content:center}
   .sind{flex-wrap:nowrap}
   table{display:block;overflow-x:auto}
+  .lb{font-size:.58rem;padding:.3rem .55rem}
 }
 
 @media(max-width:480px){
@@ -389,6 +401,8 @@ nav.s .hamb span{background:var(--black)}
   .mnav a{font-size:1.3rem}
   nav{padding:.9rem 1.2rem}
   .nl{font-size:.95rem}
+  .lb{font-size:.55rem;padding:.28rem .5rem}
+  .lang-switch{gap:.25rem}
 }
 </style>
 </head>
@@ -398,68 +412,72 @@ nav.s .hamb span{background:var(--black)}
 <nav id="nav">
   <a href="#" class="nl">NOMI</a>
   <ul class="nm">
-    <li><a href="#evenements">Services</a></li>
-    <li><a href="#katy">À propos</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#avis">Avis</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#evenements" data-i18n="nav.services">Services</a></li>
+    <li><a href="#katy" data-i18n="nav.about">À propos</a></li>
+    <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+    <li><a href="#avis" data-i18n="nav.reviews">Avis</a></li>
+    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
   </ul>
-  <a href="#devis" class="nb nb-desktop">Réserver</a>
+  <div class="lang-switch" aria-label="Langue / Language">
+    <button type="button" class="lb active" data-lang-btn="fr">FR</button>
+    <button type="button" class="lb" data-lang-btn="en">EN</button>
+  </div>
+  <a href="#devis" class="nb nb-desktop" data-i18n="nav.book">Réserver</a>
   <button class="hamb" id="hamb" aria-label="Ouvrir le menu" onclick="toggleMobileNav()">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mnav" id="mnav">
-  <a href="#evenements" onclick="closeMobileNav()">Services</a>
-  <a href="#katy" onclick="closeMobileNav()">À propos</a>
-  <a href="#menu" onclick="closeMobileNav()">Menu</a>
-  <a href="#avis" onclick="closeMobileNav()">Avis</a>
-  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
-  <a href="#devis" class="mnav-cta" onclick="closeMobileNav()">Réserver</a>
+  <a href="#evenements" onclick="closeMobileNav()" data-i18n="nav.services">Services</a>
+  <a href="#katy" onclick="closeMobileNav()" data-i18n="nav.about">À propos</a>
+  <a href="#menu" onclick="closeMobileNav()" data-i18n="nav.menu">Menu</a>
+  <a href="#avis" onclick="closeMobileNav()" data-i18n="nav.reviews">Avis</a>
+  <a href="#faq" onclick="closeMobileNav()" data-i18n="nav.faq">FAQ</a>
+  <a href="#devis" class="mnav-cta" onclick="closeMobileNav()" data-i18n="nav.book">Réserver</a>
 </div>
 
 <!-- ── HERO ── -->
 <div id="hero">
-  <div class="hbg"><div class="hph">📸 Votre photo ici — cart en action · ambiance événement</div></div>
+  <div class="hbg"><div class="hph" data-i18n="hero.photo">📸 Votre photo ici — cart en action · ambiance événement</div></div>
   <div class="hc">
-    <p class="hey">Coffee cart événementiel · Sud-Ouest · France</p>
-    <h1>SUBLIMEZ<br>VOS<br>ÉVÉNEMENTS</h1>
-    <p class="hsub">PAS JUSTE UN CAFÉ. UNE EXPÉRIENCE.</p>
+    <p class="hey" data-i18n="hero.eyebrow">Coffee cart événementiel · Sud-Ouest · France</p>
+    <h1 data-i18n="hero.title">SUBLIMEZ<br>VOS<br>ÉVÉNEMENTS</h1>
+    <p class="hsub" data-i18n="hero.sub">PAS JUSTE UN CAFÉ. UNE EXPÉRIENCE.</p>
     <div class="hact">
-      <a href="#devis" class="bp">Obtenir un devis</a>
-      <a href="#pillars" class="bg2">Découvrir</a>
+      <a href="#devis" class="bp" data-i18n="hero.cta1">Obtenir un devis</a>
+      <a href="#pillars" class="bg2" data-i18n="hero.cta2">Découvrir</a>
     </div>
   </div>
-  <p class="hscr" aria-hidden="true">Défiler</p>
+  <p class="hscr" aria-hidden="true" data-i18n="hero.scroll">Défiler</p>
 </div>
 
 <!-- ── TICKER ── -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span>Café de spécialité</span><span em>·</span>
-    <span>Matcha grade cérémonie</span><span em>·</span>
-    <span>Latte art</span><span em>·</span>
-    <span>Coffee cart événementiel</span><span em>·</span>
-    <span>La Marzocco Linea Mini</span><span em>·</span>
-    <span>Sud-Ouest · France entière</span><span em>·</span>
-    <span>Mariages · Corporate · Pop-ups</span><span em>·</span>
-    <span>Setup 100% autonome</span><span em>·</span>
-    <span>Café de spécialité</span><span em>·</span>
-    <span>Matcha grade cérémonie</span><span em>·</span>
-    <span>Latte art</span><span em>·</span>
-    <span>Coffee cart événementiel</span><span em>·</span>
-    <span>La Marzocco Linea Mini</span><span em>·</span>
-    <span>Sud-Ouest · France entière</span><span em>·</span>
-    <span>Mariages · Corporate · Pop-ups</span><span em>·</span>
-    <span>Setup 100% autonome</span><span em>·</span>
+    <span data-i18n="ticker.1">Café de spécialité</span><span em>·</span>
+    <span data-i18n="ticker.2">Matcha grade cérémonie</span><span em>·</span>
+    <span data-i18n="ticker.3">Latte art</span><span em>·</span>
+    <span data-i18n="ticker.4">Coffee cart événementiel</span><span em>·</span>
+    <span data-i18n="ticker.5">La Marzocco Linea Mini</span><span em>·</span>
+    <span data-i18n="ticker.6">Sud-Ouest · France entière</span><span em>·</span>
+    <span data-i18n="ticker.7">Mariages · Corporate · Pop-ups</span><span em>·</span>
+    <span data-i18n="ticker.8">Setup 100% autonome</span><span em>·</span>
+    <span data-i18n="ticker.1">Café de spécialité</span><span em>·</span>
+    <span data-i18n="ticker.2">Matcha grade cérémonie</span><span em>·</span>
+    <span data-i18n="ticker.3">Latte art</span><span em>·</span>
+    <span data-i18n="ticker.4">Coffee cart événementiel</span><span em>·</span>
+    <span data-i18n="ticker.5">La Marzocco Linea Mini</span><span em>·</span>
+    <span data-i18n="ticker.6">Sud-Ouest · France entière</span><span em>·</span>
+    <span data-i18n="ticker.7">Mariages · Corporate · Pop-ups</span><span em>·</span>
+    <span data-i18n="ticker.8">Setup 100% autonome</span><span em>·</span>
   </div>
 </div>
 
 <!-- ── INTRO ── -->
 <div id="intro" class="sec">
   <div class="intro-wrap r">
-    <p class="intro-t">
+    <p class="intro-t" data-i18n="intro.text">
       COFFEE CART ÉVÉNEMENTIEL<br>
       BASÉ DANS LE SUD-OUEST.<br><br>
       <em>On ne fait pas juste du café. On crée une expérience.<br>
@@ -476,17 +494,17 @@ nav.s .hamb span{background:var(--black)}
 <div id="devis" class="sec" style="background:var(--light)">
   <div class="dv-layout">
     <div class="dv-left r">
-      <p class="ey">Réserver</p>
-      <h2>Parlons de votre ÉVÉNEMENT.</h2>
-      <p class="s-sub">Devis gratuit · Réponse sous 24h · Sur-mesure</p>
-      <p>Décrivez-moi votre projet en 2 minutes — je vous envoie une proposition sur-mesure sous 24h.</p>
+      <p class="ey" data-i18n="devis.eyebrow">Réserver</p>
+      <h2 data-i18n="devis.title">Parlons de votre ÉVÉNEMENT.</h2>
+      <p class="s-sub" data-i18n="devis.subtitle">Devis gratuit · Réponse sous 24h · Sur-mesure</p>
+      <p data-i18n="devis.intro">Décrivez-moi votre projet en 2 minutes — je vous envoie une proposition sur-mesure sous 24h.</p>
       <div class="dv-infos">
-        <div class="di"><span class="dil">Email</span><span class="div2">contact@nomicoffee.fr</span></div>
-        <div class="di"><span class="dil">Instagram</span><span class="div2">@nomicoffee</span></div>
-        <div class="di"><span class="dil">Zone</span><span class="div2">Sud-Ouest · toute la France</span></div>
-        <div class="di"><span class="dil">Saison</span><span class="div2">Toute l'année · sur demande</span></div>
-        <div class="di"><span class="dil">Réponse</span><span class="div2">Sous 24h · devis gratuit</span></div>
-        <div class="di"><span class="dil">Acompte</span><span class="div2">30% à la signature</span></div>
+        <div class="di"><span class="dil" data-i18n="devis.email">Email</span><span class="div2">contact.nomicoffee@gmail.com</span></div>
+        <div class="di"><span class="dil" data-i18n="devis.instagram">Instagram</span><span class="div2">@nomicoffee</span></div>
+        <div class="di"><span class="dil" data-i18n="devis.zone">Zone</span><span class="div2" data-i18n="devis.zoneval">Sud-Ouest · toute la France</span></div>
+        <div class="di"><span class="dil" data-i18n="devis.season">Saison</span><span class="div2" data-i18n="devis.seasonval">Toute l'année · sur demande</span></div>
+        <div class="di"><span class="dil" data-i18n="devis.response">Réponse</span><span class="div2" data-i18n="devis.responseval">Sous 24h · devis gratuit</span></div>
+        <div class="di"><span class="dil" data-i18n="devis.deposit">Acompte</span><span class="div2" data-i18n="devis.depositval">30% à la signature</span></div>
       </div>
     </div>
     <div class="r r1">
@@ -499,56 +517,57 @@ nav.s .hamb span{background:var(--black)}
       <form id="qf" onsubmit="doSub(event)">
         <div class="fst a" id="fs1">
           <div class="og">
-            <div class="oc" onclick="pick(this,'type','mariage')"><div class="ocl">💍 Mariage</div><div class="ocs">Forfait ouvert · invités</div></div>
-            <div class="oc" onclick="pick(this,'type','corporate')"><div class="ocl">🏢 Corporate</div><div class="ocs">Séminaire · lancement</div></div>
-            <div class="oc" onclick="pick(this,'type','prive')"><div class="ocl">🎉 Événement privé</div><div class="ocs">Anniv. · baby shower · EVJF</div></div>
-            <div class="oc" onclick="pick(this,'type','popup')"><div class="ocl">🎪 Pop-up · marché</div><div class="ocs">Vente directe</div></div>
-            <div class="oc" onclick="pick(this,'type','tournage')"><div class="ocl">📸 Tournage</div><div class="ocs">Photo · vidéo · set</div></div>
-            <div class="oc" onclick="pick(this,'type','marque')"><div class="ocl">✨ Activation marque</div><div class="ocs">Brand event · store</div></div>
+            <div class="oc" onclick="pick(this,'type','mariage')"><div class="ocl" data-i18n="opt.mariage">💍 Mariage</div><div class="ocs" data-i18n="opt.mariage.s">Forfait ouvert · invités</div></div>
+            <div class="oc" onclick="pick(this,'type','corporate')"><div class="ocl" data-i18n="opt.corporate">🏢 Corporate</div><div class="ocs" data-i18n="opt.corporate.s">Séminaire · lancement</div></div>
+            <div class="oc" onclick="pick(this,'type','prive')"><div class="ocl" data-i18n="opt.prive">🎉 Événement privé</div><div class="ocs" data-i18n="opt.prive.s">Anniv. · baby shower · EVJF</div></div>
+            <div class="oc" onclick="pick(this,'type','popup')"><div class="ocl" data-i18n="opt.popup">🎪 Pop-up · marché</div><div class="ocs" data-i18n="opt.popup.s">Vente directe</div></div>
+            <div class="oc" onclick="pick(this,'type','tournage')"><div class="ocl" data-i18n="opt.tournage">📸 Tournage</div><div class="ocs" data-i18n="opt.tournage.s">Photo · vidéo · set</div></div>
+            <div class="oc" onclick="pick(this,'type','marque')"><div class="ocl" data-i18n="opt.marque">✨ Activation marque</div><div class="ocs" data-i18n="opt.marque.s">Brand event · store</div></div>
           </div>
-          <div class="fnv"><span></span><button type="button" class="fnx" onclick="go(2)">Continuer</button></div>
+          <div class="fnv"><span></span><button type="button" class="fnx" onclick="go(2)" data-i18n="btn.continue">Continuer</button></div>
         </div>
         <div class="fst" id="fs2">
           <div class="fr">
-            <div class="fg"><label>Date</label><input type="date" id="f-date"></div>
-            <div class="fg"><label>Invités</label><input type="number" id="f-guests" placeholder="ex. 120"></div>
+            <div class="fg"><label data-i18n="form.date">Date</label><input type="date" id="f-date"></div>
+            <div class="fg"><label data-i18n="form.guests">Invités</label><input type="number" id="f-guests" placeholder="ex. 120" data-i18n-ph="form.guests.ph"></div>
           </div>
           <div class="fr">
-            <div class="fg"><label>Heure de début</label><input type="time" id="f-start"></div>
-            <div class="fg"><label>Durée</label>
+            <div class="fg"><label data-i18n="form.start">Heure de début</label><input type="time" id="f-start"></div>
+            <div class="fg"><label data-i18n="form.duration">Durée</label>
               <select id="f-dur">
-                <option value="" disabled selected>Choisir…</option>
-                <option>2 heures</option><option>3 heures</option><option>4 heures</option>
-                <option>5 heures</option><option>6 heures</option><option>Journée</option><option>À définir</option>
+                <option value="" disabled selected data-i18n="form.choose">Choisir…</option>
+                <option data-i18n="form.dur.2">2 heures</option><option data-i18n="form.dur.3">3 heures</option><option data-i18n="form.dur.4">4 heures</option>
+                <option data-i18n="form.dur.5">5 heures</option><option data-i18n="form.dur.6">6 heures</option><option data-i18n="form.dur.day">Journée</option><option data-i18n="form.dur.tbd">À définir</option>
               </select>
             </div>
           </div>
-          <div class="fg"><label>Lieu / ville</label><input type="text" id="f-lieu" placeholder="ex. Domaine de Bassilour, Bidart"></div>
-          <div class="fnv"><button type="button" class="fbk" onclick="go(1)">Retour</button><button type="button" class="fnx" onclick="go(3)">Continuer</button></div>
+          <div class="fg"><label data-i18n="form.location">Lieu / ville</label><input type="text" id="f-lieu" placeholder="ex. Domaine de Bassilour, Bidart" data-i18n-ph="form.location.ph"></div>
+          <div class="fnv"><button type="button" class="fbk" onclick="go(1)" data-i18n="btn.back">Retour</button><button type="button" class="fnx" onclick="go(3)" data-i18n="btn.continue">Continuer</button></div>
         </div>
         <div class="fst" id="fs3">
           <div class="tgl">
-            <div class="tg" onclick="tog(this,'matcha')"><div class="tgl-l"><span>🍵</span><div><div>Matcha latte</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">Grade cérémonie · latte art</div></div></div><span class="tg-c">Ajouter</span></div>
-            <div class="tg" onclick="tog(this,'avoine')"><div class="tgl-l"><span>🌾</span><div><div>Lait d'avoine</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">· sur toutes les boissons</div></div></div><span class="tg-c">Ajouter</span></div>
-            <div class="tg" onclick="tog(this,'cold')"><div class="tgl-l"><span>🧊</span><div><div>Cold brew & cafés glacés</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">Idéal pour l'été · extérieur</div></div></div><span class="tg-c">Ajouter</span></div>
-            <div class="tg" onclick="tog(this,'brand')"><div class="tgl-l"><span>🖋</span><div><div>Gobelets personnalisés</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem">Votre nom ou logo · sur devis</div></div></div><span class="tg-c">Ajouter</span></div>
+            <div class="tg" onclick="tog(this,'matcha')"><div class="tgl-l"><span>🍵</span><div><div data-i18n="tog.matcha">Matcha latte</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem" data-i18n="tog.matcha.s">Grade cérémonie · latte art</div></div></div><span class="tg-c" data-i18n="btn.add">Ajouter</span></div>
+            <div class="tg" onclick="tog(this,'avoine')"><div class="tgl-l"><span>🌾</span><div><div data-i18n="tog.oat">Lait d'avoine</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem" data-i18n="tog.oat.s">· sur toutes les boissons</div></div></div><span class="tg-c" data-i18n="btn.add">Ajouter</span></div>
+            <div class="tg" onclick="tog(this,'cold')"><div class="tgl-l"><span>🧊</span><div><div data-i18n="tog.cold">Cold brew & cafés glacés</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem" data-i18n="tog.cold.s">Idéal pour l'été · extérieur</div></div></div><span class="tg-c" data-i18n="btn.add">Ajouter</span></div>
+            <div class="tg" onclick="tog(this,'brand')"><div class="tgl-l"><span>🖋</span><div><div data-i18n="tog.brand">Gobelets personnalisés</div><div style="font-size:.68rem;opacity:.5;margin-top:.1rem" data-i18n="tog.brand.s">Votre nom ou logo · sur devis</div></div></div><span class="tg-c" data-i18n="btn.add">Ajouter</span></div>
           </div>
-          <div class="fnv"><button type="button" class="fbk" onclick="go(2)">Retour</button><button type="button" class="fnx" onclick="go(4)">Continuer</button></div>
+          <div class="fnv"><button type="button" class="fbk" onclick="go(2)" data-i18n="btn.back">Retour</button><button type="button" class="fnx" onclick="go(4)" data-i18n="btn.continue">Continuer</button></div>
         </div>
         <div class="fst" id="fs4">
           <div class="sum" id="sum"></div>
           <div class="fr">
-            <div class="fg"><label>Prénom & nom</label><input type="text" id="f-name" name="nom" placeholder="Marie Martin" required></div>
-            <div class="fg"><label>Email</label><input type="email" id="f-email" name="email" placeholder="marie@mail.fr" required></div>
+            <div class="fg"><label data-i18n="form.name">Prénom & nom</label><input type="text" id="f-name" name="nom" placeholder="Marie Martin" required></div>
+            <div class="fg"><label data-i18n="form.email">Email</label><input type="email" id="f-email" name="email" placeholder="marie@mail.fr" required></div>
           </div>
-          <div class="fg"><label>Message (optionnel)</label><textarea id="f-msg" name="message" rows="2" style="resize:none" placeholder="Ambiance, lieu, demandes particulières…"></textarea></div>
-          <div class="fnv"><button type="button" class="fbk" onclick="go(3)">Retour</button><button type="submit" class="fsu">Envoyer ma demande</button></div>
+          <div class="fg"><label data-i18n="form.message">Message (optionnel)</label><textarea id="f-msg" name="message" rows="2" style="resize:none" placeholder="Ambiance, lieu, demandes particulières…" data-i18n-ph="form.message.ph"></textarea></div>
+          <div class="ferr" id="ferr" data-i18n="form.error">Une erreur est survenue. Réessayez ou écrivez-nous directement à contact.nomicoffee@gmail.com.</div>
+          <div class="fnv"><button type="button" class="fbk" onclick="go(3)" data-i18n="btn.back">Retour</button><button type="submit" class="fsu" id="fsubbtn" data-i18n="btn.send">Envoyer ma demande</button></div>
         </div>
       </form>
       <div class="fok" id="fok">
         <div class="for">✓</div>
-        <h3>Demande reçue !</h3>
-        <p>Je vous envoie une proposition personnalisée sous 24h. Hâte de créer quelque chose de beau ensemble.</p>
+        <h3 data-i18n="ok.title">Demande reçue !</h3>
+        <p data-i18n="ok.text">Je vous envoie une proposition personnalisée sous 24h. Hâte de créer quelque chose de beau ensemble.</p>
       </div>
     </div>
   </div>
@@ -559,23 +578,23 @@ nav.s .hamb span{background:var(--black)}
 <!-- ── CAROUSEL ── -->
 <div id="carousel">
   <div class="car-track" id="carTrack">
-    <div class="car-item"><div class="cph">Cart complet</div><span class="car-label">Setup</span></div>
-    <div class="car-item"><div class="cph">Latte art</div><span class="car-label">Barista</span></div>
-    <div class="car-item"><div class="cph">Mariage</div><span class="car-label">Événement</span></div>
-    <div class="car-item"><div class="cph">Matcha latte</div><span class="car-label">Menu</span></div>
-    <div class="car-item"><div class="cph">Ambiance</div><span class="car-label">Atmosphère</span></div>
-    <div class="car-item"><div class="cph">Corporate</div><span class="car-label">Entreprise</span></div>
-    <div class="car-item"><div class="cph">Cold brew</div><span class="car-label">Boisson</span></div>
-    <div class="car-item"><div class="cph">Pop-up</div><span class="car-label">Marché</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.1">Cart complet</div><span class="car-label" data-i18n="car.1.l">Setup</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.2">Latte art</div><span class="car-label" data-i18n="car.2.l">Barista</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.3">Mariage</div><span class="car-label" data-i18n="car.3.l">Événement</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.4">Matcha latte</div><span class="car-label" data-i18n="car.4.l">Menu</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.5">Ambiance</div><span class="car-label" data-i18n="car.5.l">Atmosphère</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.6">Corporate</div><span class="car-label" data-i18n="car.6.l">Entreprise</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.7">Cold brew</div><span class="car-label" data-i18n="car.7.l">Boisson</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.8">Pop-up</div><span class="car-label" data-i18n="car.8.l">Marché</span></div>
     <!-- Duplicate for infinite loop -->
-    <div class="car-item"><div class="cph">Cart complet</div><span class="car-label">Setup</span></div>
-    <div class="car-item"><div class="cph">Latte art</div><span class="car-label">Barista</span></div>
-    <div class="car-item"><div class="cph">Mariage</div><span class="car-label">Événement</span></div>
-    <div class="car-item"><div class="cph">Matcha latte</div><span class="car-label">Menu</span></div>
-    <div class="car-item"><div class="cph">Ambiance</div><span class="car-label">Atmosphère</span></div>
-    <div class="car-item"><div class="cph">Corporate</div><span class="car-label">Entreprise</span></div>
-    <div class="car-item"><div class="cph">Cold brew</div><span class="car-label">Boisson</span></div>
-    <div class="car-item"><div class="cph">Pop-up</div><span class="car-label">Marché</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.1">Cart complet</div><span class="car-label" data-i18n="car.1.l">Setup</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.2">Latte art</div><span class="car-label" data-i18n="car.2.l">Barista</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.3">Mariage</div><span class="car-label" data-i18n="car.3.l">Événement</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.4">Matcha latte</div><span class="car-label" data-i18n="car.4.l">Menu</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.5">Ambiance</div><span class="car-label" data-i18n="car.5.l">Atmosphère</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.6">Corporate</div><span class="car-label" data-i18n="car.6.l">Entreprise</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.7">Cold brew</div><span class="car-label" data-i18n="car.7.l">Boisson</span></div>
+    <div class="car-item"><div class="cph" data-i18n="car.8">Pop-up</div><span class="car-label" data-i18n="car.8.l">Marché</span></div>
   </div>
 </div>
 
@@ -584,39 +603,39 @@ nav.s .hamb span{background:var(--black)}
 <!-- ── PILLARS ── -->
 <section id="pillars">
   <div class="pil-header r">
-    <p class="ey">Pourquoi Nomi</p>
-    <h2>Ce que vos invités<br>RETIENNENT.</h2>
+    <p class="ey" data-i18n="pillars.eyebrow">Pourquoi Nomi</p>
+    <h2 data-i18n="pillars.title">Ce que vos invités<br>RETIENNENT.</h2>
   </div>
   <div class="pil-grid">
     <div class="pil r">
       <p class="pil-num">01</p>
-      <h3 class="pil-name">Une alternative sans alcool <em>haut de gamme</em></h3>
-      <p class="pil-desc">De plus en plus d'invités réduisent leur consommation d'alcool. Leur proposer un flat white ou un matcha latte de qualité, c'est leur offrir une vraie expérience — pas un jus d'orange en bouteille. Tout le monde trinque. Personne n'est laissé de côté.</p>
+      <h3 class="pil-name" data-i18n="pil.1.name">Une alternative sans alcool <em>haut de gamme</em></h3>
+      <p class="pil-desc" data-i18n="pil.1.desc">De plus en plus d'invités réduisent leur consommation d'alcool. Leur proposer un flat white ou un matcha latte de qualité, c'est leur offrir une vraie expérience — pas un jus d'orange en bouteille. Tout le monde trinque. Personne n'est laissé de côté.</p>
     </div>
     <div class="pil r r1">
       <p class="pil-num">02</p>
-      <h3 class="pil-name">Un moment de convivialité <em>naturel</em></h3>
-      <p class="pil-desc">Autour du cart, les gens s'arrêtent, échangent, sourient. Le café crée du lien — c'est prouvé depuis des siècles. C'est l'animation qui ne ressemble pas à une animation. Un point de rassemblement naturel au cœur de votre événement.</p>
+      <h3 class="pil-name" data-i18n="pil.2.name">Un moment de convivialité <em>naturel</em></h3>
+      <p class="pil-desc" data-i18n="pil.2.desc">Autour du cart, les gens s'arrêtent, échangent, sourient. Le café crée du lien — c'est prouvé depuis des siècles. C'est l'animation qui ne ressemble pas à une animation. Un point de rassemblement naturel au cœur de votre événement.</p>
     </div>
     <div class="pil r r2">
       <p class="pil-num">03</p>
-      <h3 class="pil-name">De la vraie qualité <em>barista</em></h3>
-      <p class="pil-desc">Pas une machine automatique qui sort un café standardisé. Un grain tracé, une extraction chronométrée, du latte art sur chaque commande. La différence se sent dès la première gorgée. Vos invités le remarquent — et ils vous en remercient.</p>
+      <h3 class="pil-name" data-i18n="pil.3.name">De la vraie qualité <em>barista</em></h3>
+      <p class="pil-desc" data-i18n="pil.3.desc">Pas une machine automatique qui sort un café standardisé. Un grain tracé, une extraction chronométrée, du latte art sur chaque commande. La différence se sent dès la première gorgée. Vos invités le remarquent — et ils vous en remercient.</p>
     </div>
     <div class="pil r">
       <p class="pil-num">04</p>
-      <h3 class="pil-name">Zéro contrainte <em>pour vous</em></h3>
-      <p class="pil-desc">Setup 100% autonome en eau et électricité. J'arrive, j'installe, je sers, je pars. Matériel, café, lait, gobelets, installation, service, nettoyage — tout est inclus. Vous profitez de votre événement. Vraiment rien à gérer.</p>
+      <h3 class="pil-name" data-i18n="pil.4.name">Zéro contrainte <em>pour vous</em></h3>
+      <p class="pil-desc" data-i18n="pil.4.desc">Setup 100% autonome en eau et électricité. J'arrive, j'installe, je sers, je pars. Matériel, café, lait, gobelets, installation, service, nettoyage — tout est inclus. Vous profitez de votre événement. Vraiment rien à gérer.</p>
     </div>
     <div class="pil r r1">
       <p class="pil-num">05</p>
-      <h3 class="pil-name">Matcha, avoine <em>& alternatives</em></h3>
-      <p class="pil-desc">Lait d'avoine disponible sur toutes les boissons. Matcha grade cérémonie. Chocolat chaud. Tout le monde trouve sa boisson — même ceux qui "ne boivent pas de café". Une carte pensée pour inclure, pas pour exclure.</p>
+      <h3 class="pil-name" data-i18n="pil.5.name">Matcha, avoine <em>& alternatives</em></h3>
+      <p class="pil-desc" data-i18n="pil.5.desc">Lait d'avoine disponible sur toutes les boissons. Matcha grade cérémonie. Chocolat chaud. Tout le monde trouve sa boisson — même ceux qui "ne boivent pas de café". Une carte pensée pour inclure, pas pour exclure.</p>
     </div>
     <div class="pil r r2">
       <p class="pil-num">06</p>
-      <h3 class="pil-name">Une prestation <em>clé en main</em></h3>
-      <p class="pil-desc">Pas de coordination à gérer de votre côté. Un devis clair, un acompte de 30%, et c'est réglé. J'arrive 1h30 avant le début, je m'installe, je sers jusqu'à la dernière boisson — et je repars sans laisser de trace.</p>
+      <h3 class="pil-name" data-i18n="pil.6.name">Une prestation <em>clé en main</em></h3>
+      <p class="pil-desc" data-i18n="pil.6.desc">Pas de coordination à gérer de votre côté. Un devis clair, un acompte de 30%, et c'est réglé. J'arrive 1h30 avant le début, je m'installe, je sers jusqu'à la dernière boisson — et je repars sans laisser de trace.</p>
     </div>
   </div>
 </section>
@@ -627,54 +646,54 @@ nav.s .hamb span{background:var(--black)}
 <section id="equipement">
   <div class="eq-layout">
     <div class="r">
-      <p class="ey">L'équipement</p>
-      <h2>Du bon matos.<br>SANS COMPROMIS.</h2>
-      <p class="s-sub">La Marzocco · Eureka Mignon Specialita · Grain tracé · Setup autonome</p>
+      <p class="ey" data-i18n="eq.eyebrow">L'équipement</p>
+      <h2 data-i18n="eq.title">Du bon matos.<br>SANS COMPROMIS.</h2>
+      <p class="s-sub" data-i18n="eq.subtitle">La Marzocco · Eureka Mignon Specialita · Grain tracé · Setup autonome</p>
       <div class="eq-intro">
-        <p>Notre setup est pensé pour s'intégrer partout — en intérieur, en extérieur, dans un château comme dans un entrepôt. Compact, autonome en eau et électricité, installé en 1h30 sans contrainte pour vous.</p>
+        <p data-i18n="eq.intro">Notre setup est pensé pour s'intégrer partout — en intérieur, en extérieur, dans un château comme dans un entrepôt. Compact, autonome en eau et électricité, installé en 1h30 sans contrainte pour vous.</p>
       </div>
-      <a href="#devis" class="eq-cta">Réserver une date</a>
+      <a href="#devis" class="eq-cta" data-i18n="eq.cta">Réserver une date</a>
     </div>
     <div class="r r1">
       <div class="eq-items">
         <div class="eq-item">
           <span class="eq-icon">☕</span>
           <div class="eq-item-body">
-            <p class="eq-cat">Machine espresso</p>
-            <p class="eq-name">La Marzocco Linea Mini</p>
-            <p class="eq-desc">Référence pro mondiale. Stabilité thermique parfaite, latte art de précision. On n'a pas fait de compromis sur la machine.</p>
+            <p class="eq-cat" data-i18n="eq.1.cat">Machine espresso</p>
+            <p class="eq-name" data-i18n="eq.1.name">La Marzocco Linea Mini</p>
+            <p class="eq-desc" data-i18n="eq.1.desc">Référence pro mondiale. Stabilité thermique parfaite, latte art de précision. On n'a pas fait de compromis sur la machine.</p>
           </div>
         </div>
         <div class="eq-item">
           <span class="eq-icon">⚙️</span>
           <div class="eq-item-body">
-            <p class="eq-cat">Moulin</p>
-            <p class="eq-name">Eureka Mignon Specialita4</p>
-            <p class="eq-desc">Le moulin des pros. Mouture stepless, régularité d'extraction parfaite à chaque dose. Parce qu'un bon café commence par un bon moulin.</p>
+            <p class="eq-cat" data-i18n="eq.2.cat">Moulin</p>
+            <p class="eq-name" data-i18n="eq.2.name">Eureka Mignon Specialita4</p>
+            <p class="eq-desc" data-i18n="eq.2.desc">Le moulin des pros. Mouture stepless, régularité d'extraction parfaite à chaque dose. Parce qu'un bon café commence par un bon moulin.</p>
           </div>
         </div>
         <div class="eq-item">
           <span class="eq-icon">🫘</span>
           <div class="eq-item-body">
-            <p class="eq-cat">Café</p>
-            <p class="eq-name">Grain de spécialité tracé</p>
-            <p class="eq-desc">Single estate, score SCA 85+, torréfaction artisanale. On sait d'où vient chaque grain qu'on met dans votre tasse.</p>
+            <p class="eq-cat" data-i18n="eq.3.cat">Café</p>
+            <p class="eq-name" data-i18n="eq.3.name">Grain de spécialité tracé</p>
+            <p class="eq-desc" data-i18n="eq.3.desc">Single estate, score SCA 85+, torréfaction artisanale. On sait d'où vient chaque grain qu'on met dans votre tasse.</p>
           </div>
         </div>
         <div class="eq-item">
           <span class="eq-icon">🍵</span>
           <div class="eq-item-body">
-            <p class="eq-cat">Matcha</p>
-            <p class="eq-name">Grade cérémonie </p>
-            <p class="eq-desc">Poudre japonaise premium, fouet bambou, lait d'avoine barista pour la texture parfaite. Pour les amateurs de matcha — et ils sont de plus en plus nombreux.</p>
+            <p class="eq-cat" data-i18n="eq.4.cat">Matcha</p>
+            <p class="eq-name" data-i18n="eq.4.name">Grade cérémonie </p>
+            <p class="eq-desc" data-i18n="eq.4.desc">Poudre japonaise premium, fouet bambou, lait d'avoine barista pour la texture parfaite. Pour les amateurs de matcha — et ils sont de plus en plus nombreux.</p>
           </div>
         </div>
         <div class="eq-auto">
           <span class="eq-icon">🔋</span>
           <div class="eq-item-body">
-            <p class="eq-cat">Setup autonome</p>
-            <p class="eq-name" style="color:var(--white)">100% indépendant</p>
-            <p class="eq-desc">Réservoir eau 19L · Bac déchets 26L · Batterie portable · Aucune infrastructure requise · Installation en 1h30</p>
+            <p class="eq-cat" data-i18n="eq.5.cat">Setup autonome</p>
+            <p class="eq-name" style="color:var(--white)" data-i18n="eq.5.name">100% indépendant</p>
+            <p class="eq-desc" data-i18n="eq.5.desc">Réservoir eau 19L · Bac déchets 26L · Batterie portable · Aucune infrastructure requise · Installation en 1h30</p>
           </div>
         </div>
       </div>
@@ -684,54 +703,54 @@ nav.s .hamb span{background:var(--black)}
 
 <!-- ── PHOTO BREAK ── -->
 <div class="photo-break">
-  <div class="pbph">📸 Photo plein écran — ambiance mariage / événement</div>
-  <p class="pb-caption">Café de spécialité · Latte art · Sud-Ouest</p>
+  <div class="pbph" data-i18n="pb.photo">📸 Photo plein écran — ambiance mariage / événement</div>
+  <p class="pb-caption" data-i18n="pb.caption">Café de spécialité · Latte art · Sud-Ouest</p>
 </div>
 
 <!-- ── ÉVÉNEMENTS ── -->
 <section id="evenements">
   <div class="ev-header r">
-    <p class="ey">Où j'interviens</p>
-    <h2>Tous vos formats.<br>TOUS VOS LIEUX.</h2>
-    <p class="s-sub">Mariages · Corporate · Privé · Pop-ups · Tournages · Marque</p>
-    <p>Du mariage en domaine basque au lancement de marque parisien — le cart s'adapte à votre univers, pas l'inverse.</p>
+    <p class="ey" data-i18n="ev.eyebrow">Où j'interviens</p>
+    <h2 data-i18n="ev.title">Tous vos formats.<br>TOUS VOS LIEUX.</h2>
+    <p class="s-sub" data-i18n="ev.subtitle">Mariages · Corporate · Privé · Pop-ups · Tournages · Marque</p>
+    <p data-i18n="ev.intro">Du mariage en domaine basque au lancement de marque parisien — le cart s'adapte à votre univers, pas l'inverse.</p>
   </div>
   <div class="ev-grid">
     <div class="ev-card r">
       <p class="ev-num">01</p>
       <div class="ev-icon">💍</div>
-      <h3 class="ev-name">Mariage</h3>
-      <p class="ev-desc">Le café qui crée le moment. Bar ouvert pour vos invités, latte art en continu, ambiance qui s'intègre parfaitement à votre décor. Vos invités en parlent encore le lendemain.</p>
+      <h3 class="ev-name" data-i18n="ev.1.name">Mariage</h3>
+      <p class="ev-desc" data-i18n="ev.1.desc">Le café qui crée le moment. Bar ouvert pour vos invités, latte art en continu, ambiance qui s'intègre parfaitement à votre décor. Vos invités en parlent encore le lendemain.</p>
     </div>
     <div class="ev-card r r1">
       <p class="ev-num">02</p>
       <div class="ev-icon">🏢</div>
-      <h3 class="ev-name">Corporate events</h3>
-      <p class="ev-desc">Séminaire, inauguration, lancement produit, porte ouverte. Un café qui donne de l'énergie, crée le lien, et prouve que vous avez le souci du détail.</p>
+      <h3 class="ev-name" data-i18n="ev.2.name">Corporate events</h3>
+      <p class="ev-desc" data-i18n="ev.2.desc">Séminaire, inauguration, lancement produit, porte ouverte. Un café qui donne de l'énergie, crée le lien, et prouve que vous avez le souci du détail.</p>
     </div>
     <div class="ev-card r r2">
       <p class="ev-num">03</p>
       <div class="ev-icon">🎉</div>
-      <h3 class="ev-name">Événements privés</h3>
-      <p class="ev-desc">Anniversaire, baby shower, EVJF, baptême. Un moment de douceur au cœur de votre célébration — parce que vos proches méritent mieux qu'une Nespresso.</p>
+      <h3 class="ev-name" data-i18n="ev.3.name">Événements privés</h3>
+      <p class="ev-desc" data-i18n="ev.3.desc">Anniversaire, baby shower, EVJF, baptême. Un moment de douceur au cœur de votre célébration — parce que vos proches méritent mieux qu'une Nespresso.</p>
     </div>
     <div class="ev-card r">
       <p class="ev-num">04</p>
       <div class="ev-icon">🎪</div>
-      <h3 class="ev-name">Pop-ups & marchés</h3>
-      <p class="ev-desc">Je m'installe, je sers, les visiteurs adorent. Vente directe, visibilité maximale, et un cart qui photographie parfaitement pour vos réseaux.</p>
+      <h3 class="ev-name" data-i18n="ev.4.name">Pop-ups & marchés</h3>
+      <p class="ev-desc" data-i18n="ev.4.desc">Je m'installe, je sers, les visiteurs adorent. Vente directe, visibilité maximale, et un cart qui photographie parfaitement pour vos réseaux.</p>
     </div>
     <div class="ev-card r r1">
       <p class="ev-num">05</p>
       <div class="ev-icon">📸</div>
-      <h3 class="ev-name">Tournages photo & vidéo</h3>
-      <p class="ev-desc">Entre les prises, l'équipe a besoin de carburant. Du vrai carburant — pas du café filtre tiède. Je m'occupe du plateau, vous vous occupez du reste.</p>
+      <h3 class="ev-name" data-i18n="ev.5.name">Tournages photo & vidéo</h3>
+      <p class="ev-desc" data-i18n="ev.5.desc">Entre les prises, l'équipe a besoin de carburant. Du vrai carburant — pas du café filtre tiède. Je m'occupe du plateau, vous vous occupez du reste.</p>
     </div>
     <div class="ev-card r r2">
       <p class="ev-num">06</p>
       <div class="ev-icon">✨</div>
-      <h3 class="ev-name">Activation de marque</h3>
-      <p class="ev-desc">Le cart devient une extension de votre identité. Gobelets brandés, menu signature, setup sur-mesure. Une expérience que vos clients associent à votre marque.</p>
+      <h3 class="ev-name" data-i18n="ev.6.name">Activation de marque</h3>
+      <p class="ev-desc" data-i18n="ev.6.desc">Le cart devient une extension de votre identité. Gobelets brandés, menu signature, setup sur-mesure. Une expérience que vos clients associent à votre marque.</p>
     </div>
   </div>
 </section>
@@ -740,25 +759,25 @@ nav.s .hamb span{background:var(--black)}
 
 <!-- ── POURQUOI ── -->
 <div id="pourquoi" class="sec">
-  <p class="ey">Ce qu'on apporte</p>
-  <h2>POURQUOI CHOISIR<br>UN COFFEE CART.</h2>
-  <p class="s-sub">Et pas juste un café servi dans un thermos.</p>
+  <p class="ey" data-i18n="pq.eyebrow">Ce qu'on apporte</p>
+  <h2 data-i18n="pq.title">POURQUOI CHOISIR<br>UN COFFEE CART.</h2>
+  <p class="s-sub" data-i18n="pq.subtitle">Et pas juste un café servi dans un thermos.</p>
   
   <div class="pq-grid">
     <div class="pq-item r">
       <p class="pq-n">01</p>
-      <h4 class="pq-title">Du bon matos</h4>
-      <p class="pq-desc">Un équipement 100% La Marzocco, fiable et performant, choisi sans compromis. Parce qu'une grande expérience commence toujours par les bons outils.</p>
+      <h4 class="pq-title" data-i18n="pq.1.title">Du bon matos</h4>
+      <p class="pq-desc" data-i18n="pq.1.desc">Un équipement 100% La Marzocco, fiable et performant, choisi sans compromis. Parce qu'une grande expérience commence toujours par les bons outils.</p>
     </div>
     <div class="pq-item r r1">
       <p class="pq-n">02</p>
-      <h4 class="pq-title">Une barista passionnée</h4>
-      <p class="pq-desc">Une expertise solide, une technique précise et une vraie passion du café. Chaque service devient une expérience maîtrisée, fluide et marquante.</p>
+      <h4 class="pq-title" data-i18n="pq.2.title">Une barista passionnée</h4>
+      <p class="pq-desc" data-i18n="pq.2.desc">Une expertise solide, une technique précise et une vraie passion du café. Chaque service devient une expérience maîtrisée, fluide et marquante.</p>
     </div>
     <div class="pq-item r r2">
       <p class="pq-n">03</p>
-      <h4 class="pq-title">Des produits de qualité</h4>
-      <p class="pq-desc">Cafés de spécialité et ingrédients premium, sélectionnés avec exigence. Pour une expérience comme dans votre coffee shop préféré — mais à votre événement.</p>
+      <h4 class="pq-title" data-i18n="pq.3.title">Des produits de qualité</h4>
+      <p class="pq-desc" data-i18n="pq.3.desc">Cafés de spécialité et ingrédients premium, sélectionnés avec exigence. Pour une expérience comme dans votre coffee shop préféré — mais à votre événement.</p>
     </div>
   </div>
 </div>
@@ -769,23 +788,23 @@ nav.s .hamb span{background:var(--black)}
 <section id="katy">
   <div class="katy-layout">
     <div class="katy-img r">
-      <div class="katy-ph">📸<br>Portrait de Katy<br>barista · en action · au cart</div>
+      <div class="katy-ph" data-i18n="katy.photo">📸<br>Portrait de Katy<br>barista · en action · au cart</div>
     </div>
     <div class="r r1">
-      <p class="ey">The face behind the cart</p>
-      <h2>Katy —<br>PASSIONNÉE<br>de café.</h2>
-      <p class="s-sub">Barista certifiée · Événementiel luxe · Japon · Sud-Ouest</p>
-      <blockquote class="katy-quote">"J'ai mis des années à trouver la combinaison parfaite — l'événementiel de luxe, le café de spécialité, et l'art japonais du matcha. Nomi Coffee, c'est cette combinaison."</blockquote>
-      <p>Après des années dans l'<strong>événementiel de luxe</strong>, j'ai pris un aller simple pour le Japon. C'est là que j'ai découvert les kissaten de Tokyo — ces cafés traditionnels japonais où chaque tasse est un rituel — et l'art du matcha dans ses formes les plus pures.</p>
-      <p>De retour en France, reconversion en <strong>barista professionnelle</strong>. Aujourd'hui je combine ces deux univers dans Nomi Coffee : la précision du café de spécialité, la douceur du matcha japonais, et l'exigence d'un service événementiel haut de gamme.</p>
-      <p>Le Sud-Ouest comme base. La France entière comme terrain de jeu.</p>
+      <p class="ey" data-i18n="katy.eyebrow">The face behind the cart</p>
+      <h2 data-i18n="katy.title">Katy —<br>PASSIONNÉE<br>de café.</h2>
+      <p class="s-sub" data-i18n="katy.subtitle">Barista certifiée · Événementiel luxe · Japon · Sud-Ouest</p>
+      <blockquote class="katy-quote" data-i18n="katy.quote">"J'ai mis des années à trouver la combinaison parfaite — l'événementiel de luxe, le café de spécialité, et l'art japonais du matcha. Nomi Coffee, c'est cette combinaison."</blockquote>
+      <p data-i18n="katy.p1">Après des années dans l'<strong>événementiel de luxe</strong>, j'ai pris un aller simple pour le Japon. C'est là que j'ai découvert les kissaten de Tokyo — ces cafés traditionnels japonais où chaque tasse est un rituel — et l'art du matcha dans ses formes les plus pures.</p>
+      <p data-i18n="katy.p2">De retour en France, reconversion en <strong>barista professionnelle</strong>. Aujourd'hui je combine ces deux univers dans Nomi Coffee : la précision du café de spécialité, la douceur du matcha japonais, et l'exigence d'un service événementiel haut de gamme.</p>
+      <p data-i18n="katy.p3">Le Sud-Ouest comme base. La France entière comme terrain de jeu.</p>
       <div class="katy-tags">
-        <span class="katy-tag">Barista certifiée</span>
-        <span class="katy-tag">Événementiel luxe</span>
-        <span class="katy-tag">Culture japonaise</span>
-        <span class="katy-tag">Café de spécialité</span>
-        <span class="katy-tag">Matcha cérémonie</span>
-        <span class="katy-tag">Sud-Ouest</span>
+        <span class="katy-tag" data-i18n="katy.tag1">Barista certifiée</span>
+        <span class="katy-tag" data-i18n="katy.tag2">Événementiel luxe</span>
+        <span class="katy-tag" data-i18n="katy.tag3">Culture japonaise</span>
+        <span class="katy-tag" data-i18n="katy.tag4">Café de spécialité</span>
+        <span class="katy-tag" data-i18n="katy.tag5">Matcha cérémonie</span>
+        <span class="katy-tag" data-i18n="katy.tag6">Sud-Ouest</span>
       </div>
     </div>
   </div>
@@ -797,70 +816,70 @@ nav.s .hamb span{background:var(--black)}
 <section id="menu">
   <div class="menu-layout">
     <div class="r">
-      <p class="ey">Le menu</p>
-      <h2>Ce qu'on<br>PRÉPARE.</h2>
-      <p class="s-sub">À la commande · Grain tracé · Latte art · Matcha grade cérémonie</p>
-      <p>Devant vous. À la commande. Grain tracé, extraction chronométrée, latte art sur chaque boisson lactée. Pas de café qui attend depuis 20 minutes dans un thermos.</p>
+      <p class="ey" data-i18n="menu.eyebrow">Le menu</p>
+      <h2 data-i18n="menu.title">Ce qu'on<br>PRÉPARE.</h2>
+      <p class="s-sub" data-i18n="menu.subtitle">À la commande · Grain tracé · Latte art · Matcha grade cérémonie</p>
+      <p data-i18n="menu.intro">Devant vous. À la commande. Grain tracé, extraction chronométrée, latte art sur chaque boisson lactée. Pas de café qui attend depuis 20 minutes dans un thermos.</p>
       <div class="menu-note">
-        <strong>Formule Forfait (Modèle A)</strong>
-        Toutes les boissons sont servies gratuitement à vos invités. Vous payez uniquement la présence barista.
+        <strong data-i18n="menu.noteA.title">Formule Forfait (Modèle A)</strong>
+        <span data-i18n="menu.noteA.text">Toutes les boissons sont servies gratuitement à vos invités. Vous payez uniquement la présence barista.</span>
       </div>
       <div class="menu-note" style="background:var(--light);color:#000!important;margin-top:.5rem">
-        <strong style="color:#000!important">Vente directe (Modèle B)</strong>
-        <span style="color:#000!important">Pour les événements publics (marchés, pop-ups, festivals) — tarifs à la carte disponibles sur demande.</span>
+        <strong style="color:#000!important" data-i18n="menu.noteB.title">Vente directe (Modèle B)</strong>
+        <span style="color:#000!important" data-i18n="menu.noteB.text">Pour les événements publics (marchés, pop-ups, festivals) — tarifs à la carte disponibles sur demande.</span>
       </div>
     </div>
     <div class="menu-cats r r1">
       <div class="mcat">
         <div class="mcat-h o" onclick="tMenu(this)">
-          <div class="mhl"><span>☕</span>Cafés chauds</div>
+          <div class="mhl"><span>☕</span><span data-i18n="mcat.1">Cafés chauds</span></div>
           <span class="mha">+</span>
         </div>
         <div class="mcat-b o">
           <div class="mitems">
-            <div class="mitem"><div class="mi-n">Espresso · Double espresso</div></div>
-            <div class="mitem"><div class="mi-n">Flat white</div><div class="mi-note">Double ristretto · lait texturé soyeux</div></div>
-            <div class="mitem"><div class="mi-n">Cappuccino</div><div class="mi-note">Latte art · mousse dense</div></div>
-            <div class="mitem"><div class="mi-n">Latte</div><div class="mi-note">200ml · latte art</div></div>
-            <div class="mitem"><div class="mi-n">Café allongé</div></div>
-            <div class="mitem"><div class="mi-n">Chocolat chaud</div><div class="mi-note">Cacao premium</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.1.1">Espresso · Double espresso</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.1.2">Flat white</div><div class="mi-note" data-i18n="mi.1.2.note">Double ristretto · lait texturé soyeux</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.1.3">Cappuccino</div><div class="mi-note" data-i18n="mi.1.3.note">Latte art · mousse dense</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.1.4">Latte</div><div class="mi-note" data-i18n="mi.1.4.note">200ml · latte art</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.1.5">Café allongé</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.1.6">Chocolat chaud</div><div class="mi-note" data-i18n="mi.1.6.note">Cacao premium</div></div>
           </div>
         </div>
       </div>
       <div class="mcat">
         <div class="mcat-h" onclick="tMenu(this)">
-          <div class="mhl"><span>🍵</span>Matcha</div>
+          <div class="mhl"><span>🍵</span><span data-i18n="mcat.2">Matcha</span></div>
           <span class="mha">+</span>
         </div>
         <div class="mcat-b">
           <div class="mitems">
-            <div class="mitem"><div class="mi-n">Matcha latte chaud</div><div class="mi-note">Grade cérémonie</div></div>
-            <div class="mitem"><div class="mi-n">Matcha latte glacé</div><div class="mi-note">Sur glace · lait d'avoine</div></div>
-            <div class="mitem"><div class="mi-n">Matcha pur (bowl)</div><div class="mi-note">Traditionnel · fouet bambou</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.2.1">Matcha latte chaud</div><div class="mi-note" data-i18n="mi.2.1.note">Grade cérémonie</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.2.2">Matcha latte glacé</div><div class="mi-note" data-i18n="mi.2.2.note">Sur glace · lait d'avoine</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.2.3">Matcha pur (bowl)</div><div class="mi-note" data-i18n="mi.2.3.note">Traditionnel · fouet bambou</div></div>
           </div>
         </div>
       </div>
       <div class="mcat">
         <div class="mcat-h" onclick="tMenu(this)">
-          <div class="mhl"><span>🧊</span>Boissons froides</div>
+          <div class="mhl"><span>🧊</span><span data-i18n="mcat.3">Boissons froides</span></div>
           <span class="mha">+</span>
         </div>
         <div class="mcat-b">
           <div class="mitems">
-            <div class="mitem"><div class="mi-n">Cold brew</div><div class="mi-note">Infusion à froid 12h</div></div>
-            <div class="mitem"><div class="mi-n">Latte glacé</div><div class="mi-note">Espresso · lait · glace</div></div>
-            <div class="mitem"><div class="mi-n">Café tonic</div><div class="mi-note">Espresso · eau tonique · glace</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.3.1">Cold brew</div><div class="mi-note" data-i18n="mi.3.1.note">Infusion à froid 12h</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.3.2">Latte glacé</div><div class="mi-note" data-i18n="mi.3.2.note">Espresso · lait · glace</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.3.3">Café tonic</div><div class="mi-note" data-i18n="mi.3.3.note">Espresso · eau tonique · glace</div></div>
           </div>
         </div>
       </div>
       <div class="mcat">
         <div class="mcat-h" onclick="tMenu(this)">
-          <div class="mhl"><span>🌾</span>Options végétales</div>
+          <div class="mhl"><span>🌾</span><span data-i18n="mcat.4">Options végétales</span></div>
           <span class="mha">+</span>
         </div>
         <div class="mcat-b">
           <div class="mitems">
-            <div class="mitem"><div class="mi-n">Lait d'avoine disponible</div><div class="mi-note">Sur toutes les boissons lactées</div></div>
+            <div class="mitem"><div class="mi-n" data-i18n="mi.4.1">Lait d'avoine disponible</div><div class="mi-note" data-i18n="mi.4.1.note">Sur toutes les boissons lactées</div></div>
           </div>
         </div>
       </div>
@@ -871,19 +890,19 @@ nav.s .hamb span{background:var(--black)}
 <!-- ── GALERIE ── -->
 <div id="galerie">
   <div class="gal-header r">
-    <p class="ey">Galerie</p>
-    <h2>Le cart<br>EN ACTION.</h2>
-    <p class="s-sub">Mariages · Pop-ups · Corporate · Tournages</p>
-    <p>De la mise en place au dernier café — un setup pensé pour être savouré autant que photographié.</p>
+    <p class="ey" data-i18n="gal.eyebrow">Galerie</p>
+    <h2 data-i18n="gal.title">Le cart<br>EN ACTION.</h2>
+    <p class="s-sub" data-i18n="gal.subtitle">Mariages · Pop-ups · Corporate · Tournages</p>
+    <p data-i18n="gal.intro">De la mise en place au dernier café — un setup pensé pour être savouré autant que photographié.</p>
   </div>
   <div class="gal-grid">
-    <div class="gi r"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Cart complet</span></div></div>
-    <div class="gi r r1"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Latte art</span></div></div>
-    <div class="gi r r2"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Mariage</span></div></div>
-    <div class="gi r r3"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Détail</span></div></div>
-    <div class="gi r"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Matcha</span></div></div>
-    <div class="gi r r1"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Ambiance</span></div></div>
-    <div class="gi r r2"><div class="giph"><div class="giph-r">+</div><span class="giph-l">Cold brew</span></div></div>
+    <div class="gi r"><div class="giph"><div class="giph-r">+</div><span class="giph-l" data-i18n="gi.1">Cart complet</span></div></div>
+    <div class="gi r r1"><div class="giph"><div class="giph-r">+</div><span class="giph-l" data-i18n="gi.2">Latte art</span></div></div>
+    <div class="gi r r2"><div class="giph"><div class="giph-r">+</div><span class="giph-l" data-i18n="gi.3">Mariage</span></div></div>
+    <div class="gi r r3"><div class="giph"><div class="giph-r">+</div><span class="giph-l" data-i18n="gi.4">Détail</span></div></div>
+    <div class="gi r"><div class="giph"><div class="giph-r">+</div><span class="giph-l" data-i18n="gi.5">Matcha</span></div></div>
+    <div class="gi r r1"><div class="giph"><div class="giph-r">+</div><span class="giph-l" data-i18n="gi.6">Ambiance</span></div></div>
+    <div class="gi r r2"><div class="giph"><div class="giph-r">+</div><span class="giph-l" data-i18n="gi.7">Cold brew</span></div></div>
   </div>
 </div>
 
@@ -892,28 +911,28 @@ nav.s .hamb span{background:var(--black)}
 <!-- ── AVIS ── -->
 <div id="avis" class="sec" style="background:var(--white)">
   <div class="avis-header r">
-    <p class="ey">Témoignages</p>
-    <h2>Ce qu'ils<br>EN DISENT.</h2>
-  <p class="s-sub">Mariages · Lancements · Événements privés</p>
+    <p class="ey" data-i18n="avis.eyebrow">Témoignages</p>
+    <h2 data-i18n="avis.title">Ce qu'ils<br>EN DISENT.</h2>
+  <p class="s-sub" data-i18n="avis.subtitle">Mariages · Lancements · Événements privés</p>
   </div>
   <div class="avis-grid">
     <div class="av r">
       <p class="av-stars">★ ★ ★ ★ ★</p>
-      <p class="av-text">"Le coffee cart était LA surprise de notre mariage. Tous nos invités en parlent encore. Le latte art sur chaque tasse, le matcha pour ceux qui ne boivent pas de café… parfait."</p>
+      <p class="av-text" data-i18n="av.1.text">"Le coffee cart était LA surprise de notre mariage. Tous nos invités en parlent encore. Le latte art sur chaque tasse, le matcha pour ceux qui ne boivent pas de café… parfait."</p>
       <p class="av-who">Marie & Thomas</p>
-      <p class="av-ev">Mariage · Domaine de Bassilour · Juin 2024</p>
+      <p class="av-ev" data-i18n="av.1.ev">Mariage · Domaine de Bassilour · Juin 2024</p>
     </div>
     <div class="av r r1">
       <p class="av-stars">★ ★ ★ ★ ★</p>
-      <p class="av-text">"On a booké Nomi pour notre lancement de produit. L'installation était impeccable, le café franchement le meilleur que j'aie bu à un événement pro. Un vrai plus pour notre image."</p>
-      <p class="av-who">Chloé D. — Responsable marketing</p>
-      <p class="av-ev">Lancement de marque · Biarritz · Septembre 2024</p>
+      <p class="av-text" data-i18n="av.2.text">"On a booké Nomi pour notre lancement de produit. L'installation était impeccable, le café franchement le meilleur que j'aie bu à un événement pro. Un vrai plus pour notre image."</p>
+      <p class="av-who" data-i18n="av.2.who">Chloé D. — Responsable marketing</p>
+      <p class="av-ev" data-i18n="av.2.ev">Lancement de marque · Biarritz · Septembre 2024</p>
     </div>
     <div class="av r r2">
       <p class="av-stars">★ ★ ★ ★ ★</p>
-      <p class="av-text">"Katy est arrivée avec tout son matériel, installée en un rien de temps, et le service était fluide et professionnel du début à la fin. Je recommande les yeux fermés."</p>
+      <p class="av-text" data-i18n="av.3.text">"Katy est arrivée avec tout son matériel, installée en un rien de temps, et le service était fluide et professionnel du début à la fin. Je recommande les yeux fermés."</p>
       <p class="av-who">Lucie R.</p>
-      <p class="av-ev">Anniversaire privé · Bayonne · Mai 2024</p>
+      <p class="av-ev" data-i18n="av.3.ev">Anniversaire privé · Bayonne · Mai 2024</p>
     </div>
   </div>
 </div>
@@ -921,23 +940,23 @@ nav.s .hamb span{background:var(--black)}
 
 <!-- ── FAQ ── -->
 <div id="faq" class="sec">
-  <p class="ey">Questions fréquentes</p>
-  <h2>Tout ce que vous<br>voulez SAVOIR.</h2>
-  <p class="s-sub">Coffee cart · Logistique · Paiement · Menu · Options</p>
+  <p class="ey" data-i18n="faq.eyebrow">Questions fréquentes</p>
+  <h2 data-i18n="faq.title">Tout ce que vous<br>voulez SAVOIR.</h2>
+  <p class="s-sub" data-i18n="faq.subtitle">Coffee cart · Logistique · Paiement · Menu · Options</p>
   <div class="faq-layout">
     <div class="r">
-      <p style="font-size:.88rem;color:rgba(250,250,248,.3);line-height:1.9;margin-top:1rem">Une question qui n'est pas là ? Envoyez-moi un message — je répondrai sous 24h.</p>
-      <div style="margin-top:2rem"><a href="mailto:contact@nomicoffee.fr" style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.4);text-decoration:none;display:flex;align-items:center;gap:.6rem;transition:color .2s" onmouseover="this.style.color='rgba(250,250,248,.8)'" onmouseout="this.style.color='rgba(250,250,248,.4)'">Nous écrire →</a></div>
+      <p style="font-size:.88rem;color:rgba(250,250,248,.3);line-height:1.9;margin-top:1rem" data-i18n="faq.intro">Une question qui n'est pas là ? Envoyez-moi un message — je répondrai sous 24h.</p>
+      <div style="margin-top:2rem"><a href="mailto:contact.nomicoffee@gmail.com" style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.4);text-decoration:none;display:flex;align-items:center;gap:.6rem;transition:color .2s" onmouseover="this.style.color='rgba(250,250,248,.8)'" onmouseout="this.style.color='rgba(250,250,248,.4)'" data-i18n="faq.writeus">Nous écrire →</a></div>
     </div>
     <div class="faqs r r1">
-      <div class="fq"><div class="fqh o" onclick="tFaq(this)"><span>Vous intervenez partout en France ?</span><span class="fqa-arr">+</span></div><div class="fqa o"><div class="fqa-i">Je suis basée dans le Sud-Ouest (Biarritz, Pays Basque), mais j'interviens partout en France. Les frais de déplacement au-delà de 30 km sont intégrés dans le devis — aucune surprise à la facturation.</div></div></div>
-      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Le cart a besoin d'électricité et d'eau sur place ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Non. Setup 100% autonome : réservoir d'eau embarqué (19L), bac déchets (26L), batterie portable. Aucune infrastructure requise de votre côté. Si une prise 220V est disponible — parfait. Sinon, on gère.</div></div></div>
-      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Combien de temps avant faut-il réserver ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Pour les mariages : 6 à 12 mois à l'avance, les dates partent vite entre mai et septembre. Pour les autres événements : 4 à 6 semaines suffisent. Envoyez-moi un message pour vérifier mes disponibilités.</div></div></div>
-      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Comment fonctionne le paiement ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Acompte de 30% à la signature pour bloquer la date. Solde à J-15. Virement ou chèque. Auto-entrepreneur — TVA non applicable (art. 293 B du CGI).</div></div></div>
-      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Combien de boissons par heure ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">En solo, 25 à 35 boissons par heure confortablement. Pour les grands événements (200+ invités), je peux me faire accompagner d'un barista supplémentaire — à préciser dans votre demande.</div></div></div>
-      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Des options sans caféine ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Évidemment — matcha latte, chocolat chaud, décaféiné sur demande. Le matcha est d'ailleurs devenu la star de la plupart de mes événements !</div></div></div>
-      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>On peut personnaliser les gobelets ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">Oui — votre nom, logo ou message imprimé sur les gobelets. Délai de fabrication 2 à 3 semaines. Tarif sur devis selon la quantité.</div></div></div>
-      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span>Une demande spéciale ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i">On adore les défis. Menu signature, boisson exclusive à votre marque, format atypique — envoyez-nous un message et on trouve une solution. Notre seule limite, c'est votre imagination.</div></div></div>
+      <div class="fq"><div class="fqh o" onclick="tFaq(this)"><span data-i18n="faq.q1">Vous intervenez partout en France ?</span><span class="fqa-arr">+</span></div><div class="fqa o"><div class="fqa-i" data-i18n="faq.a1">Je suis basée dans le Sud-Ouest (Biarritz, Pays Basque), mais j'interviens partout en France. Les frais de déplacement au-delà de 30 km sont intégrés dans le devis — aucune surprise à la facturation.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span data-i18n="faq.q2">Le cart a besoin d'électricité et d'eau sur place ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i" data-i18n="faq.a2">Non. Setup 100% autonome : réservoir d'eau embarqué (19L), bac déchets (26L), batterie portable. Aucune infrastructure requise de votre côté. Si une prise 220V est disponible — parfait. Sinon, on gère.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span data-i18n="faq.q3">Combien de temps avant faut-il réserver ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i" data-i18n="faq.a3">Pour les mariages : 6 à 12 mois à l'avance, les dates partent vite entre mai et septembre. Pour les autres événements : 4 à 6 semaines suffisent. Envoyez-moi un message pour vérifier mes disponibilités.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span data-i18n="faq.q4">Comment fonctionne le paiement ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i" data-i18n="faq.a4">Acompte de 30% à la signature pour bloquer la date. Solde à J-15. Virement ou chèque. Auto-entrepreneur — TVA non applicable (art. 293 B du CGI).</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span data-i18n="faq.q5">Combien de boissons par heure ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i" data-i18n="faq.a5">En solo, 25 à 35 boissons par heure confortablement. Pour les grands événements (200+ invités), je peux me faire accompagner d'un barista supplémentaire — à préciser dans votre demande.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span data-i18n="faq.q6">Des options sans caféine ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i" data-i18n="faq.a6">Évidemment — matcha latte, chocolat chaud, décaféiné sur demande. Le matcha est d'ailleurs devenu la star de la plupart de mes événements !</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span data-i18n="faq.q7">On peut personnaliser les gobelets ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i" data-i18n="faq.a7">Oui — votre nom, logo ou message imprimé sur les gobelets. Délai de fabrication 2 à 3 semaines. Tarif sur devis selon la quantité.</div></div></div>
+      <div class="fq"><div class="fqh" onclick="tFaq(this)"><span data-i18n="faq.q8">Une demande spéciale ?</span><span class="fqa-arr">+</span></div><div class="fqa"><div class="fqa-i" data-i18n="faq.a8">On adore les défis. Menu signature, boisson exclusive à votre marque, format atypique — envoyez-nous un message et on trouve une solution. Notre seule limite, c'est votre imagination.</div></div></div>
     </div>
   </div>
 </div>
@@ -945,20 +964,20 @@ nav.s .hamb span{background:var(--black)}
 <!-- ── SEO TEXT ── -->
 <div class="seo-text">
   <div class="seo-inner">
-    <p>Nomi Coffee est un <strong>coffee cart événementiel</strong> basé à Biarritz, dans le Pays Basque. Spécialisé dans le <strong>café de spécialité pour événements</strong>, nous proposons des prestations de <strong>coffee catering</strong> pour tous types d'événements : <strong>mariages au Pays Basque</strong>, événements corporate dans le Sud-Ouest, pop-ups, marchés de créateurs, tournages photo et vidéo, activations de marque et lancements de produits.</p>
-    <p>Notre <strong>coffee cart mobile</strong> intervient partout en France — de Biarritz à Paris, de Bordeaux à Lyon. Équipé d'une machine <strong>La Marzocco Linea Mini</strong> et d'un moulin <strong>Mahlkönig X54</strong>, nous servons espressos, flat whites, cappuccinos, lattes et <strong>matcha lattes</strong> avec du lait d'avoine. Service <strong>barista événementielle</strong> professionnel, setup autonome, installation en 1h30.</p>
-    <p>Pour réserver un <strong>coffee cart pour votre mariage</strong> ou votre événement dans le Sud-Ouest et partout en France, contactez-nous via le formulaire ci-dessus. Réponse sous 24h, devis gratuit et personnalisé.</p>
+    <p data-i18n="seo.p1">Nomi Coffee est un <strong>coffee cart événementiel</strong> basé à Biarritz, dans le Pays Basque. Spécialisé dans le <strong>café de spécialité pour événements</strong>, nous proposons des prestations de <strong>coffee catering</strong> pour tous types d'événements : <strong>mariages au Pays Basque</strong>, événements corporate dans le Sud-Ouest, pop-ups, marchés de créateurs, tournages photo et vidéo, activations de marque et lancements de produits.</p>
+    <p data-i18n="seo.p2">Notre <strong>coffee cart mobile</strong> intervient partout en France — de Biarritz à Paris, de Bordeaux à Lyon. Équipé d'une machine <strong>La Marzocco Linea Mini</strong> et d'un moulin <strong>Mahlkönig X54</strong>, nous servons espressos, flat whites, cappuccinos, lattes et <strong>matcha lattes</strong> avec du lait d'avoine. Service <strong>barista événementielle</strong> professionnel, setup autonome, installation en 1h30.</p>
+    <p data-i18n="seo.p3">Pour réserver un <strong>coffee cart pour votre mariage</strong> ou votre événement dans le Sud-Ouest et partout en France, contactez-nous via le formulaire ci-dessus. Réponse sous 24h, devis gratuit et personnalisé.</p>
   </div>
 </div>
 
 <!-- ── FOOTER ── -->
 <footer>
   <span class="fl">NOMI</span>
-  <span class="fc">© 2024 · Biarritz · contact@nomicoffee.fr</span>
+  <span class="fc" data-i18n="footer.copy">© 2024 · Biarritz · contact.nomicoffee@gmail.com</span>
   <div class="fr2">
-    <a href="#">Instagram</a>
-    <a href="#">TikTok</a>
-    <a href="#devis">Réserver</a>
+    <a href="#" data-i18n="footer.ig">Instagram</a>
+    <a href="#" data-i18n="footer.tiktok">TikTok</a>
+    <a href="#devis" data-i18n="footer.book">Réserver</a>
   </div>
 </footer>
 
@@ -992,10 +1011,10 @@ function pick(el,f,v){
 }
 function tog(el,f){
   el.classList.toggle('on');fd[f]=el.classList.contains('on');
-  el.querySelector('.tg-c').textContent=fd[f]?'✓':'Ajouter';
+  el.querySelector('.tg-c').textContent = fd[f] ? '✓' : (I18N[currentLang]['btn.add']||'Ajouter');
 }
 function go(n){
-  if(n===2&&!fd.type){alert('Choisissez un type d\'événement.');return;}
+  if(n===2&&!fd.type){alert(currentLang==='en'?'Please choose an event type.':'Choisissez un type d\'événement.');return;}
   if(n===4)buildSum();
   document.getElementById('fs'+cur).classList.remove('a');
   cur=n;
@@ -1012,29 +1031,74 @@ function updateDots(){
     if(i<4)document.getElementById('l'+i).classList.toggle('d',i<cur);
   }
 }
-const tl={mariage:'Mariage',corporate:'Corporate',prive:'Événement privé',popup:'Pop-up / marché',tournage:'Tournage',marque:'Activation de marque'};
+const tl={mariage:{fr:'Mariage',en:'Wedding'},corporate:{fr:'Corporate',en:'Corporate'},prive:{fr:'Événement privé',en:'Private event'},popup:{fr:'Pop-up / marché',en:'Pop-up / market'},tournage:{fr:'Tournage',en:'Photo/video shoot'},marque:{fr:'Activation de marque',en:'Brand activation'}};
 function buildSum(){
   fd.date=document.getElementById('f-date').value;
   fd.guests=document.getElementById('f-guests').value;
   fd.start=document.getElementById('f-start').value;
   fd.dur=document.getElementById('f-dur').value;
   fd.lieu=document.getElementById('f-lieu').value;
-  const opts=[fd.matcha&&'Matcha',fd.avoine&&'Lait d\'avoine',fd.cold&&'Cold brew',fd.brand&&'Gobelets perso'].filter(Boolean);
+  const dict=I18N[currentLang];
+  const optLabels={matcha:dict['tog.matcha'],avoine:dict['tog.oat'],cold:dict['tog.cold'],brand:dict['tog.brand']};
+  const opts=[fd.matcha&&optLabels.matcha,fd.avoine&&optLabels.avoine,fd.cold&&optLabels.cold,fd.brand&&optLabels.brand].filter(Boolean);
   const rows=[
-    ['Événement',tl[fd.type]||'—'],['Date',fd.date||'—'],
-    ['Invités',fd.guests?fd.guests+' pers.':'—'],
-    ['Horaire',fd.start?fd.start+(fd.dur?' · '+fd.dur:''):fd.dur||'—'],
-    ['Lieu',fd.lieu||'—'],['Options',opts.join(' · ')||'Aucune'],
+    [dict['sum.event'],(tl[fd.type]&&tl[fd.type][currentLang])||'—'],[dict['sum.date'],fd.date||'—'],
+    [dict['sum.guests'],fd.guests?fd.guests+' '+dict['sum.people']:'—'],
+    [dict['sum.time'],fd.start?fd.start+(fd.dur?' · '+fd.dur:''):fd.dur||'—'],
+    [dict['sum.place'],fd.lieu||'—'],[dict['sum.options'],opts.join(' · ')||dict['sum.none']],
   ];
   document.getElementById('sum').innerHTML=rows.map(([k,v])=>
     `<div class="srow"><span class="sk">${k}</span><span class="sv">${v}</span></div>`).join('');
 }
+
 function doSub(e){
   e.preventDefault();
-  document.getElementById('qf').style.display='none';
-  document.getElementById('si').style.display='none';
-  document.getElementById('fok').classList.add('a');
+  const name=document.getElementById('f-name').value;
+  const email=document.getElementById('f-email').value;
+  const msg=document.getElementById('f-msg').value;
+  const dict=I18N[currentLang];
+  const opts=[fd.matcha&&dict['tog.matcha'],fd.avoine&&dict['tog.oat'],fd.cold&&dict['tog.cold'],fd.brand&&dict['tog.brand']].filter(Boolean).join(' · ')||dict['sum.none'];
+  const btn=document.getElementById('fsubbtn');
+  const errBox=document.getElementById('ferr');
+  errBox.classList.remove('a');
+  btn.disabled=true;
+  const originalLabel=btn.textContent;
+  btn.textContent=currentLang==='en'?'Sending…':'Envoi…';
+
+  const payload={
+    _subject:`Nouvelle demande de devis – ${(tl[fd.type]&&tl[fd.type].fr)||fd.type||''}`,
+    "Type d'événement":(tl[fd.type]&&tl[fd.type].fr)||fd.type||'—',
+    "Date":fd.date||'—',
+    "Invités":fd.guests||'—',
+    "Heure de début":fd.start||'—',
+    "Durée":fd.dur||'—',
+    "Lieu":fd.lieu||'—',
+    "Options":opts,
+    "Nom":name,
+    "Email":email,
+    "Message":msg,
+    "_template":"table",
+    "_captcha":"false"
+  };
+
+  fetch('https://formsubmit.co/ajax/contact.nomicoffee@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(r=>{ if(!r.ok) throw new Error('bad status'); return r.json(); })
+  .then(()=>{
+    document.getElementById('qf').style.display='none';
+    document.getElementById('si').style.display='none';
+    document.getElementById('fok').classList.add('a');
+  })
+  .catch(()=>{
+    errBox.classList.add('a');
+    btn.disabled=false;
+    btn.textContent=originalLabel;
+  });
 }
+
 function tMenu(h){
   const b=h.nextElementSibling,isO=h.classList.contains('o');
   document.querySelectorAll('.mcat-h.o').forEach(x=>{x.classList.remove('o');x.nextElementSibling.classList.remove('o')});
@@ -1045,6 +1109,275 @@ function tFaq(q){
   document.querySelectorAll('.fqh.o').forEach(x=>{x.classList.remove('o');x.nextElementSibling.classList.remove('o')});
   if(!isO){q.classList.add('o');a.classList.add('o');}
 }
+
+/* ══════════════ I18N ══════════════ */
+const I18N = {
+  fr: {
+    'nav.services':'Services','nav.about':'À propos','nav.menu':'Menu','nav.reviews':'Avis','nav.faq':'FAQ','nav.book':'Réserver',
+    'hero.photo':'📸 Votre photo ici — cart en action · ambiance événement',
+    'hero.eyebrow':'Coffee cart événementiel · Sud-Ouest · France',
+    'hero.title':'SUBLIMEZ<br>VOS<br>ÉVÉNEMENTS',
+    'hero.sub':'PAS JUSTE UN CAFÉ. UNE EXPÉRIENCE.',
+    'hero.cta1':'Obtenir un devis','hero.cta2':'Découvrir','hero.scroll':'Défiler',
+    'ticker.1':'Café de spécialité','ticker.2':'Matcha grade cérémonie','ticker.3':'Latte art','ticker.4':'Coffee cart événementiel',
+    'ticker.5':'La Marzocco Linea Mini','ticker.6':'Sud-Ouest · France entière','ticker.7':'Mariages · Corporate · Pop-ups','ticker.8':'Setup 100% autonome',
+    'intro.text':'COFFEE CART ÉVÉNEMENTIEL<br>BASÉ DANS LE SUD-OUEST.<br><br><em>On ne fait pas juste du café. On crée une expérience.<br>Celle dont vos invités parlent encore le lendemain.<br>Grain tracé, latte art, matcha grade cérémonie —<br>chaque tasse est un moment à part entière.</em>',
+    'devis.eyebrow':'Réserver','devis.title':'Parlons de votre ÉVÉNEMENT.','devis.subtitle':'Devis gratuit · Réponse sous 24h · Sur-mesure',
+    'devis.intro':'Décrivez-moi votre projet en 2 minutes — je vous envoie une proposition sur-mesure sous 24h.',
+    'devis.email':'Email','devis.instagram':'Instagram','devis.zone':'Zone','devis.zoneval':"Sud-Ouest · toute la France",
+    'devis.season':'Saison','devis.seasonval':"Toute l'année · sur demande",'devis.response':'Réponse','devis.responseval':'Sous 24h · devis gratuit',
+    'devis.deposit':'Acompte','devis.depositval':'30% à la signature',
+    'opt.mariage':'💍 Mariage','opt.mariage.s':'Forfait ouvert · invités',
+    'opt.corporate':'🏢 Corporate','opt.corporate.s':'Séminaire · lancement',
+    'opt.prive':'🎉 Événement privé','opt.prive.s':'Anniv. · baby shower · EVJF',
+    'opt.popup':'🎪 Pop-up · marché','opt.popup.s':'Vente directe',
+    'opt.tournage':'📸 Tournage','opt.tournage.s':'Photo · vidéo · set',
+    'opt.marque':'✨ Activation marque','opt.marque.s':'Brand event · store',
+    'btn.continue':'Continuer','btn.back':'Retour','btn.add':'Ajouter','btn.send':'Envoyer ma demande',
+    'form.date':'Date','form.guests':'Invités','form.guests.ph':'ex. 120',
+    'form.start':'Heure de début','form.duration':'Durée','form.choose':'Choisir…',
+    'form.dur.2':'2 heures','form.dur.3':'3 heures','form.dur.4':'4 heures','form.dur.5':'5 heures','form.dur.6':'6 heures','form.dur.day':'Journée','form.dur.tbd':'À définir',
+    'form.location':'Lieu / ville','form.location.ph':'ex. Domaine de Bassilour, Bidart',
+    'tog.matcha':'Matcha latte','tog.matcha.s':'Grade cérémonie · latte art',
+    'tog.oat':"Lait d'avoine",'tog.oat.s':'· sur toutes les boissons',
+    'tog.cold':'Cold brew & cafés glacés','tog.cold.s':"Idéal pour l'été · extérieur",
+    'tog.brand':'Gobelets personnalisés','tog.brand.s':'Votre nom ou logo · sur devis',
+    'form.name':'Prénom & nom','form.email':'Email','form.message':'Message (optionnel)','form.message.ph':'Ambiance, lieu, demandes particulières…',
+    'form.error':'Une erreur est survenue. Réessayez ou écrivez-nous directement à contact.nomicoffee@gmail.com.',
+    'ok.title':'Demande reçue !','ok.text':'Je vous envoie une proposition personnalisée sous 24h. Hâte de créer quelque chose de beau ensemble.',
+    'sum.event':'Événement','sum.date':'Date','sum.guests':'Invités','sum.people':'pers.','sum.time':'Horaire','sum.place':'Lieu','sum.options':'Options','sum.none':'Aucune',
+    'car.1':'Cart complet','car.1.l':'Setup','car.2':'Latte art','car.2.l':'Barista','car.3':'Mariage','car.3.l':'Événement',
+    'car.4':'Matcha latte','car.4.l':'Menu','car.5':'Ambiance','car.5.l':'Atmosphère','car.6':'Corporate','car.6.l':'Entreprise',
+    'car.7':'Cold brew','car.7.l':'Boisson','car.8':'Pop-up','car.8.l':'Marché',
+    'pillars.eyebrow':'Pourquoi Nomi','pillars.title':'Ce que vos invités<br>RETIENNENT.',
+    'pil.1.name':'Une alternative sans alcool <em>haut de gamme</em>',
+    'pil.1.desc':"De plus en plus d'invités réduisent leur consommation d'alcool. Leur proposer un flat white ou un matcha latte de qualité, c'est leur offrir une vraie expérience — pas un jus d'orange en bouteille. Tout le monde trinque. Personne n'est laissé de côté.",
+    'pil.2.name':'Un moment de convivialité <em>naturel</em>',
+    'pil.2.desc':"Autour du cart, les gens s'arrêtent, échangent, sourient. Le café crée du lien — c'est prouvé depuis des siècles. C'est l'animation qui ne ressemble pas à une animation. Un point de rassemblement naturel au cœur de votre événement.",
+    'pil.3.name':'De la vraie qualité <em>barista</em>',
+    'pil.3.desc':"Pas une machine automatique qui sort un café standardisé. Un grain tracé, une extraction chronométrée, du latte art sur chaque commande. La différence se sent dès la première gorgée. Vos invités le remarquent — et ils vous en remercient.",
+    'pil.4.name':'Zéro contrainte <em>pour vous</em>',
+    'pil.4.desc':"Setup 100% autonome en eau et électricité. J'arrive, j'installe, je sers, je pars. Matériel, café, lait, gobelets, installation, service, nettoyage — tout est inclus. Vous profitez de votre événement. Vraiment rien à gérer.",
+    'pil.5.name':'Matcha, avoine <em>& alternatives</em>',
+    'pil.5.desc':"Lait d'avoine disponible sur toutes les boissons. Matcha grade cérémonie. Chocolat chaud. Tout le monde trouve sa boisson — même ceux qui « ne boivent pas de café ». Une carte pensée pour inclure, pas pour exclure.",
+    'pil.6.name':'Une prestation <em>clé en main</em>',
+    'pil.6.desc':"Pas de coordination à gérer de votre côté. Un devis clair, un acompte de 30%, et c'est réglé. J'arrive 1h30 avant le début, je m'installe, je sers jusqu'à la dernière boisson — et je repars sans laisser de trace.",
+    'eq.eyebrow':"L'équipement",'eq.title':'Du bon matos.<br>SANS COMPROMIS.',
+    'eq.subtitle':'La Marzocco · Eureka Mignon Specialita · Grain tracé · Setup autonome',
+    'eq.intro':"Notre setup est pensé pour s'intégrer partout — en intérieur, en extérieur, dans un château comme dans un entrepôt. Compact, autonome en eau et électricité, installé en 1h30 sans contrainte pour vous.",
+    'eq.cta':'Réserver une date',
+    'eq.1.cat':'Machine espresso','eq.1.name':'La Marzocco Linea Mini','eq.1.desc':"Référence pro mondiale. Stabilité thermique parfaite, latte art de précision. On n'a pas fait de compromis sur la machine.",
+    'eq.2.cat':'Moulin','eq.2.name':'Eureka Mignon Specialita4','eq.2.desc':"Le moulin des pros. Mouture stepless, régularité d'extraction parfaite à chaque dose. Parce qu'un bon café commence par un bon moulin.",
+    'eq.3.cat':'Café','eq.3.name':'Grain de spécialité tracé','eq.3.desc':"Single estate, score SCA 85+, torréfaction artisanale. On sait d'où vient chaque grain qu'on met dans votre tasse.",
+    'eq.4.cat':'Matcha','eq.4.name':'Grade cérémonie ','eq.4.desc':"Poudre japonaise premium, fouet bambou, lait d'avoine barista pour la texture parfaite. Pour les amateurs de matcha — et ils sont de plus en plus nombreux.",
+    'eq.5.cat':'Setup autonome','eq.5.name':'100% indépendant','eq.5.desc':'Réservoir eau 19L · Bac déchets 26L · Batterie portable · Aucune infrastructure requise · Installation en 1h30',
+    'pb.photo':'📸 Photo plein écran — ambiance mariage / événement','pb.caption':'Café de spécialité · Latte art · Sud-Ouest',
+    'ev.eyebrow':"Où j'interviens",'ev.title':'Tous vos formats.<br>TOUS VOS LIEUX.','ev.subtitle':'Mariages · Corporate · Privé · Pop-ups · Tournages · Marque',
+    'ev.intro':"Du mariage en domaine basque au lancement de marque parisien — le cart s'adapte à votre univers, pas l'inverse.",
+    'ev.1.name':'Mariage','ev.1.desc':"Le café qui crée le moment. Bar ouvert pour vos invités, latte art en continu, ambiance qui s'intègre parfaitement à votre décor. Vos invités en parlent encore le lendemain.",
+    'ev.2.name':'Corporate events','ev.2.desc':"Séminaire, inauguration, lancement produit, porte ouverte. Un café qui donne de l'énergie, crée le lien, et prouve que vous avez le souci du détail.",
+    'ev.3.name':'Événements privés','ev.3.desc':"Anniversaire, baby shower, EVJF, baptême. Un moment de douceur au cœur de votre célébration — parce que vos proches méritent mieux qu'une Nespresso.",
+    'ev.4.name':'Pop-ups & marchés','ev.4.desc':"Je m'installe, je sers, les visiteurs adorent. Vente directe, visibilité maximale, et un cart qui photographie parfaitement pour vos réseaux.",
+    'ev.5.name':'Tournages photo & vidéo','ev.5.desc':"Entre les prises, l'équipe a besoin de carburant. Du vrai carburant — pas du café filtre tiède. Je m'occupe du plateau, vous vous occupez du reste.",
+    'ev.6.name':'Activation de marque','ev.6.desc':'Le cart devient une extension de votre identité. Gobelets brandés, menu signature, setup sur-mesure. Une expérience que vos clients associent à votre marque.',
+    'pq.eyebrow':"Ce qu'on apporte",'pq.title':'POURQUOI CHOISIR<br>UN COFFEE CART.','pq.subtitle':'Et pas juste un café servi dans un thermos.',
+    'pq.1.title':'Du bon matos','pq.1.desc':"Un équipement 100% La Marzocco, fiable et performant, choisi sans compromis. Parce qu'une grande expérience commence toujours par les bons outils.",
+    'pq.2.title':'Une barista passionnée','pq.2.desc':'Une expertise solide, une technique précise et une vraie passion du café. Chaque service devient une expérience maîtrisée, fluide et marquante.',
+    'pq.3.title':'Des produits de qualité','pq.3.desc':'Cafés de spécialité et ingrédients premium, sélectionnés avec exigence. Pour une expérience comme dans votre coffee shop préféré — mais à votre événement.',
+    'katy.photo':'📸<br>Portrait de Katy<br>barista · en action · au cart',
+    'katy.eyebrow':'The face behind the cart','katy.title':'Katy —<br>PASSIONNÉE<br>de café.','katy.subtitle':'Barista certifiée · Événementiel luxe · Japon · Sud-Ouest',
+    'katy.quote':'"J\'ai mis des années à trouver la combinaison parfaite — l\'événementiel de luxe, le café de spécialité, et l\'art japonais du matcha. Nomi Coffee, c\'est cette combinaison."',
+    'katy.p1':"Après des années dans l'<strong>événementiel de luxe</strong>, j'ai pris un aller simple pour le Japon. C'est là que j'ai découvert les kissaten de Tokyo — ces cafés traditionnels japonais où chaque tasse est un rituel — et l'art du matcha dans ses formes les plus pures.",
+    'katy.p2':'De retour en France, reconversion en <strong>barista professionnelle</strong>. Aujourd\'hui je combine ces deux univers dans Nomi Coffee : la précision du café de spécialité, la douceur du matcha japonais, et l\'exigence d\'un service événementiel haut de gamme.',
+    'katy.p3':'Le Sud-Ouest comme base. La France entière comme terrain de jeu.',
+    'katy.tag1':'Barista certifiée','katy.tag2':'Événementiel luxe','katy.tag3':'Culture japonaise','katy.tag4':'Café de spécialité','katy.tag5':'Matcha cérémonie','katy.tag6':'Sud-Ouest',
+    'menu.eyebrow':'Le menu','menu.title':"Ce qu'on<br>PRÉPARE.",'menu.subtitle':'À la commande · Grain tracé · Latte art · Matcha grade cérémonie',
+    'menu.intro':"Devant vous. À la commande. Grain tracé, extraction chronométrée, latte art sur chaque boisson lactée. Pas de café qui attend depuis 20 minutes dans un thermos.",
+    'menu.noteA.title':'Formule Forfait (Modèle A)','menu.noteA.text':'Toutes les boissons sont servies gratuitement à vos invités. Vous payez uniquement la présence barista.',
+    'menu.noteB.title':'Vente directe (Modèle B)','menu.noteB.text':'Pour les événements publics (marchés, pop-ups, festivals) — tarifs à la carte disponibles sur demande.',
+    'mcat.1':'Cafés chauds','mcat.2':'Matcha','mcat.3':'Boissons froides','mcat.4':'Options végétales',
+    'mi.1.1':'Espresso · Double espresso','mi.1.2':'Flat white','mi.1.2.note':'Double ristretto · lait texturé soyeux',
+    'mi.1.3':'Cappuccino','mi.1.3.note':'Latte art · mousse dense','mi.1.4':'Latte','mi.1.4.note':'200ml · latte art',
+    'mi.1.5':'Café allongé','mi.1.6':'Chocolat chaud','mi.1.6.note':'Cacao premium',
+    'mi.2.1':'Matcha latte chaud','mi.2.1.note':'Grade cérémonie','mi.2.2':'Matcha latte glacé','mi.2.2.note':"Sur glace · lait d'avoine",
+    'mi.2.3':'Matcha pur (bowl)','mi.2.3.note':'Traditionnel · fouet bambou',
+    'mi.3.1':'Cold brew','mi.3.1.note':'Infusion à froid 12h','mi.3.2':'Latte glacé','mi.3.2.note':'Espresso · lait · glace',
+    'mi.3.3':'Café tonic','mi.3.3.note':'Espresso · eau tonique · glace',
+    'mi.4.1':"Lait d'avoine disponible",'mi.4.1.note':'Sur toutes les boissons lactées',
+    'gal.eyebrow':'Galerie','gal.title':'Le cart<br>EN ACTION.','gal.subtitle':'Mariages · Pop-ups · Corporate · Tournages',
+    'gal.intro':'De la mise en place au dernier café — un setup pensé pour être savouré autant que photographié.',
+    'gi.1':'Cart complet','gi.2':'Latte art','gi.3':'Mariage','gi.4':'Détail','gi.5':'Matcha','gi.6':'Ambiance','gi.7':'Cold brew',
+    'avis.eyebrow':'Témoignages','avis.title':'Ce qu\'ils<br>EN DISENT.','avis.subtitle':'Mariages · Lancements · Événements privés',
+    'av.1.text':'"Le coffee cart était LA surprise de notre mariage. Tous nos invités en parlent encore. Le latte art sur chaque tasse, le matcha pour ceux qui ne boivent pas de café… parfait."',
+    'av.1.ev':'Mariage · Domaine de Bassilour · Juin 2024',
+    'av.2.text':'"On a booké Nomi pour notre lancement de produit. L\'installation était impeccable, le café franchement le meilleur que j\'aie bu à un événement pro. Un vrai plus pour notre image."',
+    'av.2.who':'Chloé D. — Responsable marketing','av.2.ev':'Lancement de marque · Biarritz · Septembre 2024',
+    'av.3.text':'"Katy est arrivée avec tout son matériel, installée en un rien de temps, et le service était fluide et professionnel du début à la fin. Je recommande les yeux fermés."',
+    'av.3.ev':'Anniversaire privé · Bayonne · Mai 2024',
+    'faq.eyebrow':'Questions fréquentes','faq.title':'Tout ce que vous<br>voulez SAVOIR.','faq.subtitle':'Coffee cart · Logistique · Paiement · Menu · Options',
+    'faq.intro':'Une question qui n\'est pas là ? Envoyez-moi un message — je répondrai sous 24h.','faq.writeus':'Nous écrire →',
+    'faq.q1':'Vous intervenez partout en France ?','faq.a1':"Je suis basée dans le Sud-Ouest (Biarritz, Pays Basque), mais j'interviens partout en France. Les frais de déplacement au-delà de 30 km sont intégrés dans le devis — aucune surprise à la facturation.",
+    'faq.q2':"Le cart a besoin d'électricité et d'eau sur place ?",'faq.a2':"Non. Setup 100% autonome : réservoir d'eau embarqué (19L), bac déchets (26L), batterie portable. Aucune infrastructure requise de votre côté. Si une prise 220V est disponible — parfait. Sinon, on gère.",
+    'faq.q3':'Combien de temps avant faut-il réserver ?','faq.a3':'Pour les mariages : 6 à 12 mois à l\'avance, les dates partent vite entre mai et septembre. Pour les autres événements : 4 à 6 semaines suffisent. Envoyez-moi un message pour vérifier mes disponibilités.',
+    'faq.q4':'Comment fonctionne le paiement ?','faq.a4':'Acompte de 30% à la signature pour bloquer la date. Solde à J-15. Virement ou chèque. Auto-entrepreneur — TVA non applicable (art. 293 B du CGI).',
+    'faq.q5':'Combien de boissons par heure ?','faq.a5':'En solo, 25 à 35 boissons par heure confortablement. Pour les grands événements (200+ invités), je peux me faire accompagner d\'un barista supplémentaire — à préciser dans votre demande.',
+    'faq.q6':'Des options sans caféine ?','faq.a6':'Évidemment — matcha latte, chocolat chaud, décaféiné sur demande. Le matcha est d\'ailleurs devenu la star de la plupart de mes événements !',
+    'faq.q7':'On peut personnaliser les gobelets ?','faq.a7':'Oui — votre nom, logo ou message imprimé sur les gobelets. Délai de fabrication 2 à 3 semaines. Tarif sur devis selon la quantité.',
+    'faq.q8':'Une demande spéciale ?','faq.a8':'On adore les défis. Menu signature, boisson exclusive à votre marque, format atypique — envoyez-nous un message et on trouve une solution. Notre seule limite, c\'est votre imagination.',
+    'seo.p1':'Nomi Coffee est un <strong>coffee cart événementiel</strong> basé à Biarritz, dans le Pays Basque. Spécialisé dans le <strong>café de spécialité pour événements</strong>, nous proposons des prestations de <strong>coffee catering</strong> pour tous types d\'événements : <strong>mariages au Pays Basque</strong>, événements corporate dans le Sud-Ouest, pop-ups, marchés de créateurs, tournages photo et vidéo, activations de marque et lancements de produits.',
+    'seo.p2':'Notre <strong>coffee cart mobile</strong> intervient partout en France — de Biarritz à Paris, de Bordeaux à Lyon. Équipé d\'une machine <strong>La Marzocco Linea Mini</strong> et d\'un moulin <strong>Mahlkönig X54</strong>, nous servons espressos, flat whites, cappuccinos, lattes et <strong>matcha lattes</strong> avec du lait d\'avoine. Service <strong>barista événementielle</strong> professionnel, setup autonome, installation en 1h30.',
+    'seo.p3':'Pour réserver un <strong>coffee cart pour votre mariage</strong> ou votre événement dans le Sud-Ouest et partout en France, contactez-nous via le formulaire ci-dessus. Réponse sous 24h, devis gratuit et personnalisé.',
+    'footer.copy':'© 2024 · Biarritz · contact.nomicoffee@gmail.com','footer.ig':'Instagram','footer.tiktok':'TikTok','footer.book':'Réserver'
+  },
+  en: {
+    'nav.services':'Services','nav.about':'About','nav.menu':'Menu','nav.reviews':'Reviews','nav.faq':'FAQ','nav.book':'Book now',
+    'hero.photo':'📸 Your photo here — cart in action · event mood',
+    'hero.eyebrow':'Event coffee cart · Southwest France',
+    'hero.title':'ELEVATE<br>YOUR<br>EVENTS',
+    'hero.sub':'NOT JUST COFFEE. AN EXPERIENCE.',
+    'hero.cta1':'Get a quote','hero.cta2':'Discover','hero.scroll':'Scroll',
+    'ticker.1':'Specialty coffee','ticker.2':'Ceremonial grade matcha','ticker.3':'Latte art','ticker.4':'Event coffee cart',
+    'ticker.5':'La Marzocco Linea Mini','ticker.6':'Southwest France · nationwide','ticker.7':'Weddings · Corporate · Pop-ups','ticker.8':'100% self-sufficient setup',
+    'intro.text':'EVENT COFFEE CART<br>BASED IN SOUTHWEST FRANCE.<br><br><em>We don\'t just make coffee. We create an experience.<br>The one your guests are still talking about the next day.<br>Traceable beans, latte art, ceremonial grade matcha —<br>every cup is a moment in its own right.</em>',
+    'devis.eyebrow':'Book now','devis.title':"Let's talk about your EVENT.",'devis.subtitle':'Free quote · Reply within 24h · Tailor-made',
+    'devis.intro':"Tell me about your project in 2 minutes — I'll send you a tailor-made proposal within 24h.",
+    'devis.email':'Email','devis.instagram':'Instagram','devis.zone':'Area','devis.zoneval':'Southwest France · nationwide',
+    'devis.season':'Season','devis.seasonval':'Year-round · on request','devis.response':'Reply time','devis.responseval':'Within 24h · free quote',
+    'devis.deposit':'Deposit','devis.depositval':'30% at signing',
+    'opt.mariage':'💍 Wedding','opt.mariage.s':'Open bar · guests',
+    'opt.corporate':'🏢 Corporate','opt.corporate.s':'Seminar · launch',
+    'opt.prive':'🎉 Private event','opt.prive.s':'Birthday · baby shower · bachelorette',
+    'opt.popup':'🎪 Pop-up · market','opt.popup.s':'Direct sales',
+    'opt.tournage':'📸 Photo/video shoot','opt.tournage.s':'Photo · video · set',
+    'opt.marque':'✨ Brand activation','opt.marque.s':'Brand event · store',
+    'btn.continue':'Continue','btn.back':'Back','btn.add':'Add','btn.send':'Send my request',
+    'form.date':'Date','form.guests':'Guests','form.guests.ph':'e.g. 120',
+    'form.start':'Start time','form.duration':'Duration','form.choose':'Choose…',
+    'form.dur.2':'2 hours','form.dur.3':'3 hours','form.dur.4':'4 hours','form.dur.5':'5 hours','form.dur.6':'6 hours','form.dur.day':'Full day','form.dur.tbd':'To be defined',
+    'form.location':'Venue / city','form.location.ph':'e.g. Domaine de Bassilour, Bidart',
+    'tog.matcha':'Matcha latte','tog.matcha.s':'Ceremonial grade · latte art',
+    'tog.oat':'Oat milk','tog.oat.s':'· on all drinks',
+    'tog.cold':'Cold brew & iced coffees','tog.cold.s':'Perfect for summer · outdoors',
+    'tog.brand':'Branded cups','tog.brand.s':'Your name or logo · on request',
+    'form.name':'Full name','form.email':'Email','form.message':'Message (optional)','form.message.ph':'Vibe, venue, special requests…',
+    'form.error':'Something went wrong. Please try again or email us directly at contact.nomicoffee@gmail.com.',
+    'ok.title':'Request received!','ok.text':"I'll send you a personalized proposal within 24h. Looking forward to creating something beautiful together.",
+    'sum.event':'Event','sum.date':'Date','sum.guests':'Guests','sum.people':'people','sum.time':'Time','sum.place':'Venue','sum.options':'Options','sum.none':'None',
+    'car.1':'Full cart','car.1.l':'Setup','car.2':'Latte art','car.2.l':'Barista','car.3':'Wedding','car.3.l':'Event',
+    'car.4':'Matcha latte','car.4.l':'Menu','car.5':'Ambiance','car.5.l':'Atmosphere','car.6':'Corporate','car.6.l':'Corporate',
+    'car.7':'Cold brew','car.7.l':'Drink','car.8':'Pop-up','car.8.l':'Market',
+    'pillars.eyebrow':'Why Nomi','pillars.title':'What your guests<br>WILL REMEMBER.',
+    'pil.1.name':'A premium <em>alcohol-free</em> alternative',
+    'pil.1.desc':"More and more guests are cutting back on alcohol. Offering them a quality flat white or matcha latte gives them a real experience — not bottled orange juice. Everyone gets to raise a glass. No one is left out.",
+    'pil.2.name':'A <em>natural</em> moment of connection',
+    'pil.2.desc':"Around the cart, people stop, chat, and smile. Coffee creates connection — it's been proven for centuries. It's entertainment that doesn't feel like entertainment. A natural gathering point at the heart of your event.",
+    'pil.3.name':'Real <em>barista</em>-level quality',
+    'pil.3.desc':"Not an automatic machine churning out standardized coffee. Traceable beans, timed extraction, latte art on every order. The difference is felt from the first sip. Your guests notice — and they thank you for it.",
+    'pil.4.name':'Zero hassle <em>for you</em>',
+    'pil.4.desc':"100% self-sufficient for water and power. I arrive, set up, serve, and leave. Equipment, coffee, milk, cups, setup, service, cleanup — all included. You enjoy your event. Truly nothing to manage.",
+    'pil.5.name':'Matcha, oat milk <em>& alternatives</em>',
+    'pil.5.desc':'Oat milk available on all drinks. Ceremonial grade matcha. Hot chocolate. Everyone finds their drink — even those who "don\'t drink coffee." A menu designed to include, not exclude.',
+    'pil.6.name':'A <em>turnkey</em> service',
+    'pil.6.desc':"No coordination for you to manage. A clear quote, a 30% deposit, and it's settled. I arrive 1h30 before start, set up, serve until the last drink — and leave without a trace.",
+    'eq.eyebrow':'The equipment','eq.title':'Great gear.<br>NO COMPROMISE.',
+    'eq.subtitle':'La Marzocco · Eureka Mignon Specialita · Traceable beans · Self-sufficient setup',
+    'eq.intro':'Our setup is designed to fit anywhere — indoors, outdoors, in a château as much as in a warehouse. Compact, self-sufficient for water and power, set up in 1h30 with zero hassle for you.',
+    'eq.cta':'Book a date',
+    'eq.1.cat':'Espresso machine','eq.1.name':'La Marzocco Linea Mini','eq.1.desc':"The world's pro reference. Perfect thermal stability, precision latte art. We didn't compromise on the machine.",
+    'eq.2.cat':'Grinder','eq.2.name':'Eureka Mignon Specialita4','eq.2.desc':"The pros' grinder. Stepless grind adjustment, perfectly consistent extraction every time. Because great coffee starts with a great grinder.",
+    'eq.3.cat':'Coffee','eq.3.name':'Traceable specialty beans','eq.3.desc':'Single estate, SCA score 85+, artisanal roasting. We know exactly where every bean in your cup comes from.',
+    'eq.4.cat':'Matcha','eq.4.name':'Ceremonial grade','eq.4.desc':'Premium Japanese powder, bamboo whisk, barista oat milk for the perfect texture. For matcha lovers — and there are more and more of them.',
+    'eq.5.cat':'Self-sufficient setup','eq.5.name':'100% independent','eq.5.desc':'19L water tank · 26L waste tank · Portable battery · No infrastructure required · Setup in 1h30',
+    'pb.photo':'📸 Full-screen photo — wedding / event mood','pb.caption':'Specialty coffee · Latte art · Southwest France',
+    'ev.eyebrow':'Where I work','ev.title':'Every format.<br>EVERY VENUE.','ev.subtitle':'Weddings · Corporate · Private · Pop-ups · Shoots · Brand',
+    'ev.intro':"From a Basque country estate wedding to a Parisian brand launch — the cart adapts to your world, not the other way around.",
+    'ev.1.name':'Weddings','ev.1.desc':'The coffee that makes the moment. Open bar for your guests, continuous latte art, an ambiance that blends perfectly with your decor. Your guests will still be talking about it the next day.',
+    'ev.2.name':'Corporate events','ev.2.desc':'Seminars, inaugurations, product launches, open houses. A coffee that brings energy, creates connection, and shows your attention to detail.',
+    'ev.3.name':'Private events','ev.3.desc':"Birthdays, baby showers, bachelorette parties, christenings. A moment of sweetness at the heart of your celebration — because your loved ones deserve better than a Nespresso.",
+    'ev.4.name':'Pop-ups & markets','ev.4.desc':'I set up, I serve, visitors love it. Direct sales, maximum visibility, and a cart that photographs beautifully for your socials.',
+    'ev.5.name':'Photo & video shoots','ev.5.desc':"Between takes, the crew needs fuel. Real fuel — not lukewarm filter coffee. I handle the set, you handle the rest.",
+    'ev.6.name':'Brand activation','ev.6.desc':'The cart becomes an extension of your identity. Branded cups, signature menu, bespoke setup. An experience your customers associate with your brand.',
+    'pq.eyebrow':'What we bring','pq.title':'WHY CHOOSE<br>A COFFEE CART.','pq.subtitle':"And not just coffee poured from a thermos.",
+    'pq.1.title':'Great gear','pq.1.desc':'100% La Marzocco equipment, reliable and high-performing, chosen without compromise. Because a great experience always starts with the right tools.',
+    'pq.2.title':'A passionate barista','pq.2.desc':'Solid expertise, precise technique, and a genuine passion for coffee. Every service becomes a polished, smooth, and memorable experience.',
+    'pq.3.title':'Quality products','pq.3.desc':'Specialty coffees and premium ingredients, selected with rigor. An experience like your favorite coffee shop — but at your event.',
+    'katy.photo':'📸<br>Portrait of Katy<br>barista · in action · at the cart',
+    'katy.eyebrow':'The face behind the cart','katy.title':'Katy —<br>PASSIONATE<br>about coffee.','katy.subtitle':'Certified barista · Luxury events · Japan · Southwest France',
+    'katy.quote':'"It took me years to find the perfect combination — luxury events, specialty coffee, and the Japanese art of matcha. Nomi Coffee is that combination."',
+    'katy.p1':'After years in <strong>luxury events</strong>, I took a one-way ticket to Japan. That\'s where I discovered Tokyo\'s kissaten — traditional Japanese cafés where every cup is a ritual — and the art of matcha in its purest forms.',
+    'katy.p2':'Back in France, I retrained as a <strong>professional barista</strong>. Today I combine these two worlds in Nomi Coffee: the precision of specialty coffee, the gentleness of Japanese matcha, and the standards of high-end event service.',
+    'katy.p3':'Southwest France as home base. All of France as my playground.',
+    'katy.tag1':'Certified barista','katy.tag2':'Luxury events','katy.tag3':'Japanese culture','katy.tag4':'Specialty coffee','katy.tag5':'Ceremonial matcha','katy.tag6':'Southwest France',
+    'menu.eyebrow':'The menu','menu.title':"What we<br>MAKE.",'menu.subtitle':'Made to order · Traceable beans · Latte art · Ceremonial grade matcha',
+    'menu.intro':'Right in front of you. Made to order. Traceable beans, timed extraction, latte art on every milk-based drink. No coffee sitting in a thermos for 20 minutes.',
+    'menu.noteA.title':'Package rate (Model A)','menu.noteA.text':'All drinks are served free to your guests. You only pay for the barista service.',
+    'menu.noteB.title':'Direct sales (Model B)','menu.noteB.text':'For public events (markets, pop-ups, festivals) — à la carte pricing available on request.',
+    'mcat.1':'Hot coffees','mcat.2':'Matcha','mcat.3':'Cold drinks','mcat.4':'Plant-based options',
+    'mi.1.1':'Espresso · Double espresso','mi.1.2':'Flat white','mi.1.2.note':'Double ristretto · silky textured milk',
+    'mi.1.3':'Cappuccino','mi.1.3.note':'Latte art · dense foam','mi.1.4':'Latte','mi.1.4.note':'200ml · latte art',
+    'mi.1.5':'Long black','mi.1.6':'Hot chocolate','mi.1.6.note':'Premium cocoa',
+    'mi.2.1':'Hot matcha latte','mi.2.1.note':'Ceremonial grade','mi.2.2':'Iced matcha latte','mi.2.2.note':'On ice · oat milk',
+    'mi.2.3':'Pure matcha (bowl)','mi.2.3.note':'Traditional · bamboo whisk',
+    'mi.3.1':'Cold brew','mi.3.1.note':'12h cold infusion','mi.3.2':'Iced latte','mi.3.2.note':'Espresso · milk · ice',
+    'mi.3.3':'Coffee tonic','mi.3.3.note':'Espresso · tonic water · ice',
+    'mi.4.1':'Oat milk available','mi.4.1.note':'On all milk-based drinks',
+    'gal.eyebrow':'Gallery','gal.title':'The cart<br>IN ACTION.','gal.subtitle':'Weddings · Pop-ups · Corporate · Shoots',
+    'gal.intro':'From setup to the very last coffee — designed to be savored as much as photographed.',
+    'gi.1':'Full cart','gi.2':'Latte art','gi.3':'Wedding','gi.4':'Detail','gi.5':'Matcha','gi.6':'Ambiance','gi.7':'Cold brew',
+    'avis.eyebrow':'Testimonials','avis.title':'What they\'re<br>SAYING.','avis.subtitle':'Weddings · Launches · Private events',
+    'av.1.text':'"The coffee cart was THE surprise of our wedding. All our guests are still talking about it. Latte art on every cup, matcha for those who don\'t drink coffee… perfect."',
+    'av.1.ev':'Wedding · Domaine de Bassilour · June 2024',
+    'av.2.text':'"We booked Nomi for our product launch. The setup was flawless, honestly the best coffee I\'ve had at a business event. A real plus for our image."',
+    'av.2.who':'Chloé D. — Marketing Manager','av.2.ev':'Brand launch · Biarritz · September 2024',
+    'av.3.text':'"Katy arrived with all her equipment, set up in no time, and the service was smooth and professional from start to finish. I recommend her with full confidence."',
+    'av.3.ev':'Private birthday · Bayonne · May 2024',
+    'faq.eyebrow':'Frequently asked questions','faq.title':'Everything you<br>want to KNOW.','faq.subtitle':'Coffee cart · Logistics · Payment · Menu · Options',
+    'faq.intro':"Question not answered here? Send me a message — I'll reply within 24h.",'faq.writeus':'Write to us →',
+    'faq.q1':'Do you travel anywhere in France?','faq.a1':"I'm based in Southwest France (Biarritz, Basque Country), but I travel anywhere in France. Travel costs beyond 30 km are included in the quote — no surprises on the invoice.",
+    'faq.q2':'Does the cart need power and water on site?','faq.a2':'No. 100% self-sufficient setup: onboard water tank (19L), waste tank (26L), portable battery. No infrastructure required on your end. If a 220V outlet is available — great. If not, we manage.',
+    'faq.q3':'How far in advance should I book?','faq.a3':"For weddings: 6 to 12 months ahead, dates fill up fast between May and September. For other events: 4 to 6 weeks is enough. Send me a message to check my availability.",
+    'faq.q4':'How does payment work?','faq.a4':'A 30% deposit at signing secures the date. Balance due 15 days before. Bank transfer or check. Registered sole trader — VAT not applicable (art. 293 B of the French Tax Code).',
+    'faq.q5':'How many drinks per hour?','faq.a5':'Solo, 25 to 35 drinks per hour comfortably. For large events (200+ guests), I can bring an additional barista — just mention it in your request.',
+    'faq.q6':'Any caffeine-free options?','faq.a6':'Of course — matcha latte, hot chocolate, decaf on request. Matcha has actually become the star of most of my events!',
+    'faq.q7':'Can we customize the cups?','faq.a7':'Yes — your name, logo, or message printed on the cups. Production time 2 to 3 weeks. Pricing on request depending on quantity.',
+    'faq.q8':'Have a special request?','faq.a8':"We love a challenge. Signature menu, an exclusive drink for your brand, an unusual format — send us a message and we'll find a solution. Our only limit is your imagination.",
+    'seo.p1':'Nomi Coffee is an <strong>event coffee cart</strong> based in Biarritz, in the Basque Country. Specializing in <strong>specialty coffee for events</strong>, we offer <strong>coffee catering</strong> for all types of events: <strong>weddings in the Basque Country</strong>, corporate events in Southwest France, pop-ups, maker markets, photo and video shoots, brand activations, and product launches.',
+    'seo.p2':'Our <strong>mobile coffee cart</strong> travels anywhere in France — from Biarritz to Paris, from Bordeaux to Lyon. Equipped with a <strong>La Marzocco Linea Mini</strong> machine and a <strong>Mahlkönig X54</strong> grinder, we serve espressos, flat whites, cappuccinos, lattes, and <strong>matcha lattes</strong> with oat milk. Professional <strong>event barista</strong> service, self-sufficient setup, installed in 1h30.',
+    'seo.p3':'To book a <strong>coffee cart for your wedding</strong> or event in Southwest France and beyond, contact us via the form above. Reply within 24h, free and personalized quote.',
+    'footer.copy':'© 2024 · Biarritz · contact.nomicoffee@gmail.com','footer.ig':'Instagram','footer.tiktok':'TikTok','footer.book':'Book now'
+  }
+};
+
+let currentLang = localStorage.getItem('nomi_lang') || 'fr';
+
+function applyLang(lang){
+  currentLang = lang;
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key]!==undefined) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-ph');
+    if(dict[key]!==undefined) el.setAttribute('placeholder', dict[key]);
+  });
+  document.querySelectorAll('[data-lang-btn]').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang);
+  });
+  // refresh dynamic bits that depend on language
+  document.querySelectorAll('.tg').forEach(tg=>{
+    const c=tg.querySelector('.tg-c');
+    if(c) c.textContent = tg.classList.contains('on') ? '✓' : dict['btn.add'];
+  });
+  try{ localStorage.setItem('nomi_lang', lang); }catch(err){}
+}
+
+document.querySelectorAll('[data-lang-btn]').forEach(btn=>{
+  btn.addEventListener('click', ()=>applyLang(btn.getAttribute('data-lang-btn')));
+});
+
+applyLang(currentLang);
 </script>
 </body>
 </html>
