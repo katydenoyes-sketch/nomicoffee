@@ -556,10 +556,11 @@ nav.s .hamb span{background:var(--black)}
         <div class="fst" id="fs4">
           <div class="sum" id="sum"></div>
           <div class="fr">
-            <div class="fg"><label data-i18n="form.name">Prénom & nom</label><input type="text" id="f-name" name="nom" placeholder="Marie Martin" required></div>
-            <div class="fg"><label data-i18n="form.email">Email</label><input type="email" id="f-email" name="email" placeholder="marie@mail.fr" required></div>
+            <div class="fg"><label data-i18n="form.name">Prénom & nom</label><input type="text" id="f-name" name="nom" placeholder="Marie Martin"></div>
+            <div class="fg"><label data-i18n="form.email">Email</label><input type="email" id="f-email" name="email" placeholder="marie@mail.fr"></div>
           </div>
           <div class="fg"><label data-i18n="form.message">Message (optionnel)</label><textarea id="f-msg" name="message" rows="2" style="resize:none" placeholder="Ambiance, lieu, demandes particulières…" data-i18n-ph="form.message.ph"></textarea></div>
+          <div class="ferr" id="fvalid" data-i18n="form.validation">Merci de renseigner votre nom et une adresse email valide.</div>
           <div class="ferr" id="ferr" data-i18n="form.error">Une erreur est survenue. Réessayez ou écrivez-nous directement à contact.nomicoffee@gmail.com.</div>
           <div class="fnv"><button type="button" class="fbk" onclick="go(3)" data-i18n="btn.back">Retour</button><button type="submit" class="fsu" id="fsubbtn" data-i18n="btn.send">Envoyer ma demande</button></div>
         </div>
@@ -1053,14 +1054,24 @@ function buildSum(){
 
 function doSub(e){
   e.preventDefault();
-  const name=document.getElementById('f-name').value;
-  const email=document.getElementById('f-email').value;
-  const msg=document.getElementById('f-msg').value;
+  const validBox=document.getElementById('fvalid');
+  const errBox=document.getElementById('ferr');
+  validBox.classList.remove('a');
+  errBox.classList.remove('a');
+
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const msg=document.getElementById('f-msg').value.trim();
+  const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if(!name || !emailOk){
+    validBox.classList.add('a');
+    return;
+  }
+
   const dict=I18N[currentLang];
   const opts=[fd.matcha&&dict['tog.matcha'],fd.avoine&&dict['tog.oat'],fd.cold&&dict['tog.cold'],fd.brand&&dict['tog.brand']].filter(Boolean).join(' · ')||dict['sum.none'];
   const btn=document.getElementById('fsubbtn');
-  const errBox=document.getElementById('ferr');
-  errBox.classList.remove('a');
   btn.disabled=true;
   const originalLabel=btn.textContent;
   btn.textContent=currentLang==='en'?'Sending…':'Envoi…';
@@ -1081,22 +1092,32 @@ function doSub(e){
     "_captcha":"false"
   };
 
-  fetch('https://formsubmit.co/ajax/contact.nomicoffee@gmail.com',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify(payload)
-  })
-  .then(r=>{ if(!r.ok) throw new Error('bad status'); return r.json(); })
-  .then(()=>{
-    document.getElementById('qf').style.display='none';
-    document.getElementById('si').style.display='none';
-    document.getElementById('fok').classList.add('a');
-  })
-  .catch(()=>{
+  function fail(reason){
+    console.error('Nomi form submit failed:', reason);
     errBox.classList.add('a');
     btn.disabled=false;
     btn.textContent=originalLabel;
-  });
+  }
+
+  let didFetch=false;
+  try{
+    fetch('https://formsubmit.co/ajax/contact.nomicoffee@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    })
+    .then(r=>{ if(!r.ok) throw new Error('bad status '+r.status); return r.json(); })
+    .then(()=>{
+      document.getElementById('qf').style.display='none';
+      document.getElementById('si').style.display='none';
+      document.getElementById('fok').classList.add('a');
+    })
+    .catch(err=>fail(err));
+    didFetch=true;
+  }catch(err){
+    fail(err);
+  }
+  if(!didFetch) fail('fetch not called');
 }
 
 function tMenu(h){
@@ -1144,6 +1165,7 @@ const I18N = {
     'tog.brand':'Gobelets personnalisés','tog.brand.s':'Votre nom ou logo · sur devis',
     'form.name':'Prénom & nom','form.email':'Email','form.message':'Message (optionnel)','form.message.ph':'Ambiance, lieu, demandes particulières…',
     'form.error':'Une erreur est survenue. Réessayez ou écrivez-nous directement à contact.nomicoffee@gmail.com.',
+    'form.validation':'Merci de renseigner votre nom et une adresse email valide.',
     'ok.title':'Demande reçue !','ok.text':'Je vous envoie une proposition personnalisée sous 24h. Hâte de créer quelque chose de beau ensemble.',
     'sum.event':'Événement','sum.date':'Date','sum.guests':'Invités','sum.people':'pers.','sum.time':'Horaire','sum.place':'Lieu','sum.options':'Options','sum.none':'Aucune',
     'car.1':'Cart complet','car.1.l':'Setup','car.2':'Latte art','car.2.l':'Barista','car.3':'Mariage','car.3.l':'Événement',
@@ -1261,6 +1283,7 @@ const I18N = {
     'tog.brand':'Branded cups','tog.brand.s':'Your name or logo · on request',
     'form.name':'Full name','form.email':'Email','form.message':'Message (optional)','form.message.ph':'Vibe, venue, special requests…',
     'form.error':'Something went wrong. Please try again or email us directly at contact.nomicoffee@gmail.com.',
+    'form.validation':'Please enter your name and a valid email address.',
     'ok.title':'Request received!','ok.text':"I'll send you a personalized proposal within 24h. Looking forward to creating something beautiful together.",
     'sum.event':'Event','sum.date':'Date','sum.guests':'Guests','sum.people':'people','sum.time':'Time','sum.place':'Venue','sum.options':'Options','sum.none':'None',
     'car.1':'Full cart','car.1.l':'Setup','car.2':'Latte art','car.2.l':'Barista','car.3':'Wedding','car.3.l':'Event',
