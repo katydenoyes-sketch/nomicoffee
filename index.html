@@ -433,6 +433,11 @@ nav.s .hamb span{background:var(--black)}
 .ill-cart{width:100%;max-width:440px;margin-top:3.5rem}
 @media(max-width:900px){.ill-cup{position:static;width:130px;margin:-2rem 0 3rem auto}.ill-cart{max-width:320px;margin:2.5rem auto 0}}
 
+
+  .hbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%}
+.car-item img,.gi img{width:100%;height:100%;object-fit:cover;display:block}
+.katy-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+@media(max-width:900px){.hbg img{object-position:60% 50%}}
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:1.1rem 1.5rem}
@@ -516,7 +521,9 @@ nav.s .hamb span{background:var(--black)}
 
 <!-- ── HERO ── -->
 <div id="hero">
-  <div class="hbg"><div class="hph" role="img" aria-label="Coffee cart Nomi Coffee avec machine La Marzocco, en action lors d'un mariage dans le Sud-Ouest"></div></div>
+ <div class="hbg">
+  <img src="images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Katy devant le coffee cart Nomi Coffee face à l'océan à Biarritz">
+</div>
   <div class="hc">
     <p class="hey" data-i18n="hero.eyebrow">Coffee cart événementiel · Sud-Ouest · France</p>
     <h1 data-i18n="hero.title">SUBLIMEZ<br>VOS<br>ÉVÉNEMENTS</h1>
@@ -656,22 +663,22 @@ nav.s .hamb span{background:var(--black)}
 <!-- ── CAROUSEL ── -->
 <div id="carousel">
 <div class="car-track" id="carTrack">
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
+<div class="car-item"><img src="images/barista-latte-art-evenement-corporate.jpg" alt="Coffee cart Nomi Coffee installé lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-mariage-evenement.jpg" alt="Coffee cart Nomi Coffee et sa machine La Marzocco lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Coffee cart Nomi Coffee face à l'océan à Biarritz" loading="lazy"></div>
+<div class="car-item"><img src="images/katy-barista-nomi-coffee-biarritz.jpg" alt="Katy, barista, au coffee cart Nomi Coffee" loading="lazy"></div>
+<div class="car-item"><img src="images/latte-art-coffee-cart-mariage-pays-basque.jpg" alt="Matcha lattes avec latte art servis dans des gobelets Nomi Coffee" loading="lazy"></div>
+<div class="car-item"><img src="images/barista-latte-art-evenement-corporate.jpg" alt="Coffee cart Nomi Coffee installé lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-mariage-evenement.jpg" alt="Coffee cart Nomi Coffee et sa machine La Marzocco lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Coffee cart Nomi Coffee face à l'océan à Biarritz" loading="lazy"></div>
+<div class="car-item"><img src="images/barista-latte-art-evenement-corporate.jpg" alt="Coffee cart Nomi Coffee installé lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-mariage-evenement.jpg" alt="Coffee cart Nomi Coffee et sa machine La Marzocco lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Coffee cart Nomi Coffee face à l'océan à Biarritz" loading="lazy"></div>
+<div class="car-item"><img src="images/katy-barista-nomi-coffee-biarritz.jpg" alt="Katy, barista, au coffee cart Nomi Coffee" loading="lazy"></div>
+<div class="car-item"><img src="images/latte-art-coffee-cart-mariage-pays-basque.jpg" alt="Matcha lattes avec latte art servis dans des gobelets Nomi Coffee" loading="lazy"></div>
+<div class="car-item"><img src="images/barista-latte-art-evenement-corporate.jpg" alt="Coffee cart Nomi Coffee installé lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-mariage-evenement.jpg" alt="Coffee cart Nomi Coffee et sa machine La Marzocco lors d'un événement" loading="lazy"></div>
+<div class="car-item"><img src="images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Coffee cart Nomi Coffee face à l'océan à Biarritz" loading="lazy"></div>
 </div>
 </div>
 <div class="div"></div>
@@ -865,7 +872,7 @@ nav.s .hamb span{background:var(--black)}
 <section id="katy">
   <div class="katy-layout">
     <div class="katy-img r">
-   <div class="katy-ph" role="img" aria-label="Portrait de Katy, barista certifiée et fondatrice de Nomi Coffee"></div>
+   <img src="images/katy-barista-nomi-coffee-biarritz.jpg" alt="Katy, barista certifiée, prépare un café au coffee cart Nomi Coffee" loading="lazy">
     </div>
     <div class="r r1">
       <p class="ey" data-i18n="katy.eyebrow">The face behind the cart</p>
