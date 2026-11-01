@@ -148,7 +148,7 @@ h1 em{font-style:italic;color:rgba(250,250,248,.6)}
 /* ── CAROUSEL ── */
 #carousel{overflow:hidden;background:var(--black);padding:3rem 0}
 .car-track{display:flex;gap:1rem;animation:carouselAnim 60s linear infinite;width:max-content}
-.car-track:hover{animation-play-state:paused}
+.car-track:hover{animation-play-state:running}
 .car-item{width:340px;height:440px;background:var(--mid);flex-shrink:0;overflow:hidden;position:relative}
 .car-item .cph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.62rem;letter-spacing:.12em;color:rgba(250,250,248,.15);text-transform:uppercase;background:linear-gradient(135deg,#1a1714,#252220)}
 .car-label{position:absolute;bottom:1rem;left:1rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.25)}
@@ -434,10 +434,10 @@ nav.s .hamb span{background:var(--black)}
 @media(max-width:900px){.ill-cup{position:static;width:130px;margin:-2rem 0 3rem auto}.ill-cart{max-width:320px;margin:2.5rem auto 0}}
 
 
-  .hbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%}
+  .hbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;}
 .car-item img,.gi img{width:100%;height:100%;object-fit:cover;display:block}
 .katy-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
-@media(max-width:900px){.hbg img{object-position:60% 50%}}
+@media(max-width:900px){.hbg img{object-position:60% 60%}}
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:1.1rem 1.5rem}
@@ -980,14 +980,43 @@ nav.s .hamb span{background:var(--black)}
     <p data-i18n="gal.intro">De la mise en place au dernier café — un setup pensé pour être savouré autant que photographié.</p>
   </div>
   <div class="gal-grid">
- <div class="gi r"><div class="giph"></div></div>
-<div class="gi r r1"><div class="giph"></div></div>
-<div class="gi r r2"><div class="giph"></div></div>
-<div class="gi r r3"><div class="giph"></div></div>
-<div class="gi r"><div class="giph"></div></div>
-<div class="gi r r1"><div class="giph"></div></div>
-<div class="gi r r2"><div class="giph"></div></div>
+
+  <div class="gi r">
+    <img src="images/barista-latte-art-evenement-corporate.jpg"
+         alt="Coffee cart Nomi Coffee en événement" loading="lazy">
   </div>
+
+  <div class="gi r r1">
+    <img src="images/coffee-cart-mariage-evenement.jpg"
+         alt="Coffee cart et machine La Marzocco" loading="lazy">
+  </div>
+
+  <div class="gi r r2">
+    <img src="images/coffee-cart-nomi-biarritz-ocean.jpg"
+         alt="Coffee cart Nomi Coffee à Biarritz" loading="lazy">
+  </div>
+
+  <div class="gi r r3">
+    <img src="images/katy-barista-nomi-coffee-biarritz.jpg"
+         alt="Katy barista Nomi Coffee" loading="lazy">
+  </div>
+
+  <div class="gi r">
+    <img src="images/latte-art-coffee-cart-mariage-pays-basque.jpg"
+         alt="Latte art Nomi Coffee" loading="lazy">
+  </div>
+
+  <div class="gi r r1">
+    <img src="images/coffee-cart-mariage-evenement.jpg"
+         alt="Installation coffee cart Nomi Coffee" loading="lazy">
+  </div>
+
+  <div class="gi r r2">
+    <img src="images/barista-latte-art-evenement-corporate.jpg"
+         alt="Barista Nomi Coffee en action" loading="lazy">
+  </div>
+
+</div>
 </div>
 
 <div class="div"></div>
