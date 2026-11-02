@@ -116,7 +116,7 @@ nav.s .nb:hover{background:var(--black);color:var(--white)}
 
 /* ── HERO ── */
 #hero{min-height:100vh;min-height:100dvh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 4rem}
-.hbg{position:absolute;inset:0;background:#1a1714}
+.hbg{position:absolute;inset:0;background:#1a1714}.hbg>img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;display:block}
 .hbg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,8,.1) 0%,rgba(10,10,8,.4) 50%,rgba(10,10,8,.82) 100%)}
 .hph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.16em;color:rgba(250,250,248,.12);text-transform:uppercase}
 .hc{position:relative;z-index:2;max-width:900px}
@@ -151,9 +151,9 @@ h1 em{font-style:italic;color:rgba(250,250,248,.6)}
 /* ── CAROUSEL ── */
 #carousel{overflow:hidden;background:var(--black);padding:3rem 0}
 .car-track{display:flex;gap:1rem;animation:carouselAnim 60s linear infinite;width:max-content}
-.car-track:hover{animation-play-state:paused}
+.car-track:hover{animation-play-state:running}
 .car-item{width:340px;height:440px;background:var(--mid);flex-shrink:0;overflow:hidden;position:relative}
-.car-item .cph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.62rem;letter-spacing:.12em;color:rgba(250,250,248,.15);text-transform:uppercase;background:linear-gradient(135deg,#1a1714,#252220)}
+.car-item img{width:100%;height:100%;object-fit:cover;display:block}
 .car-label{position:absolute;bottom:1rem;left:1rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.25)}
 @keyframes carouselAnim{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
@@ -198,7 +198,7 @@ h2 em{font-style:italic}
 
 /* ── PHOTO BREAK ── */
 .photo-break{height:70vh;background:var(--mid);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:3rem}
-.photo-break .pbph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;letter-spacing:.16em;color:rgba(10,10,8,.15);text-transform:uppercase;background:linear-gradient(135deg,#e8e4de,#d8d4ce)}
+.photo-break .pb-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .photo-break .pb-caption{position:relative;z-index:2;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(10,10,8,.35)}
 
 /* ── ÉVÉNEMENTS ── */
@@ -232,7 +232,7 @@ h2 em{font-style:italic}
 #katy{background:var(--white)}
 .katy-layout{display:grid;grid-template-columns:5fr 7fr;gap:6rem;align-items:center}
 .katy-img{aspect-ratio:3/4;background:var(--light);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.katy-ph{font-size:.68rem;letter-spacing:.12em;color:rgba(10,10,8,.18);text-transform:uppercase;text-align:center;line-height:2.2}
+.katy-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 .katy-body{}
 .katy-quote{font-family:var(--serif);font-size:1.15rem;font-style:italic;font-weight:300;color:var(--gray);line-height:1.7;margin:1.8rem 0;padding-left:1.5rem;border-left:.5px solid var(--mid)}
 .katy-body p{font-size:.88rem;color:var(--gray);line-height:1.95;margin-bottom:1.1rem}
@@ -282,7 +282,7 @@ h2 em{font-style:italic}
 .gi:nth-child(5){grid-column:1/5;grid-row:3/4}
 .gi:nth-child(6){grid-column:5/9;grid-row:3/4}
 .gi:nth-child(7){grid-column:9/13;grid-row:3/4}
-.giph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}.gi:hover img{transform:scale(1.035)}
 .giph-r{width:28px;height:28px;border-radius:50%;border:.5px solid rgba(250,250,248,.08);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(250,250,248,.12)}
 .giph-l{font-size:.58rem;letter-spacing:.1em;color:rgba(250,250,248,.15);text-transform:uppercase}
 
@@ -513,7 +513,7 @@ nav.s .hamb span{background:var(--black)}
 </div>
 <!-- ── HERO ── -->
 <div id="hero">
-<div class="hbg"><div aria-label="Nomi Coffee cart with a La Marzocco machine, serving at a wedding in southwest France" class="hph" role="img"></div></div>
+<div class="hbg"><img src="/images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Katy and the Nomi Coffee cart by the ocean in Biarritz" fetchpriority="high"></div></div>
 <div class="hc">
 <p class="hey" data-i18n="hero.eyebrow">Event coffee cart · Southwest France</p>
 <h1 data-i18n="hero.title">ELEVATE<br/>YOUR<br/>EVENTS</h1>
@@ -640,23 +640,17 @@ nav.s .hamb span{background:var(--black)}
 <!-- ── CAROUSEL ── -->
 <div id="carousel">
 <div class="car-track" id="carTrack">
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<!-- Duplicate for infinite loop -->
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
-<div class="car-item"><div class="cph"></div></div>
+<div class="car-item"><img src="/images/barista-latte-art-evenement-corporate.jpg" alt="Nomi Coffee cart serving specialty coffee at an event" loading="lazy"></div>
+<div class="car-item"><img src="/images/coffee-cart-mariage-evenement.jpg" alt="Nomi Coffee cart and La Marzocco machine at an event" loading="lazy"></div>
+<div class="car-item"><img src="/images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Nomi Coffee cart by the ocean in Biarritz" loading="lazy"></div>
+<div class="car-item"><img src="/images/katy-barista-nomi-coffee-biarritz.jpg" alt="Katy, barista, at the Nomi Coffee cart" loading="lazy"></div>
+<div class="car-item"><img src="/images/latte-art-coffee-cart-mariage-pays-basque.jpg" alt="Latte art and matcha drinks served by Nomi Coffee" loading="lazy"></div>
+<!-- Duplicate set for a seamless infinite loop -->
+<div class="car-item"><img src="/images/barista-latte-art-evenement-corporate.jpg" alt="Nomi Coffee cart serving specialty coffee at an event" loading="lazy"></div>
+<div class="car-item"><img src="/images/coffee-cart-mariage-evenement.jpg" alt="Nomi Coffee cart and La Marzocco machine at an event" loading="lazy"></div>
+<div class="car-item"><img src="/images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Nomi Coffee cart by the ocean in Biarritz" loading="lazy"></div>
+<div class="car-item"><img src="/images/katy-barista-nomi-coffee-biarritz.jpg" alt="Katy, barista, at the Nomi Coffee cart" loading="lazy"></div>
+<div class="car-item"><img src="/images/latte-art-coffee-cart-mariage-pays-basque.jpg" alt="Latte art and matcha drinks served by Nomi Coffee" loading="lazy"></div>
 </div>
 </div>
 <div class="div"></div>
@@ -762,7 +756,7 @@ nav.s .hamb span{background:var(--black)}
 </section>
 <!-- ── PHOTO BREAK ── -->
 <div class="photo-break">
-<div aria-label="Latte art and specialty coffee served by Nomi Coffee at a wedding in the Basque Country" class="pbph" role="img"></div>
+<img class="pb-image" src="/images/latte-art-coffee-cart-mariage-pays-basque.jpg" alt="Latte art and specialty coffee served by Nomi Coffee at a wedding in the Basque Country" loading="lazy">
 </div>
 <!-- ── ÉVÉNEMENTS ── -->
 <section id="evenements">
@@ -840,7 +834,7 @@ nav.s .hamb span{background:var(--black)}
 <section id="katy">
 <div class="katy-layout">
 <div class="katy-img r">
-<div aria-label="Portrait of Katy, certified barista and founder of Nomi Coffee" class="katy-ph" role="img"></div>
+<img src="/images/katy-barista-nomi-coffee-biarritz.jpg" alt="Katy, certified barista and founder of Nomi Coffee" loading="lazy">
 </div>
 <div class="r r1">
 <p class="ey" data-i18n="katy.eyebrow">The face behind the cart</p>
@@ -945,13 +939,13 @@ nav.s .hamb span{background:var(--black)}
 <p data-i18n="gal.intro">From setup to the very last coffee — designed to be savored as much as photographed.</p>
 </div>
 <div class="gal-grid">
-<div class="gi r"><div class="giph"></div></div>
-<div class="gi r r1"><div class="giph"></div></div>
-<div class="gi r r2"><div class="giph"></div></div>
-<div class="gi r r3"><div class="giph"></div></div>
-<div class="gi r"><div class="giph"></div></div>
-<div class="gi r r1"><div class="giph"></div></div>
-<div class="gi r r2"><div class="giph"></div></div>
+<div class="gi r"><img src="/images/coffee-cart-mariage-evenement.jpg" alt="Nomi Coffee cart and La Marzocco machine at an event" loading="lazy"></div>
+<div class="gi r"><img src="/images/barista-latte-art-evenement-corporate.jpg" alt="Specialty coffee served at a corporate event" loading="lazy"></div>
+<div class="gi r"><img src="/images/coffee-cart-nomi-biarritz-ocean.jpg" alt="Nomi Coffee cart by the ocean in Biarritz" loading="lazy"></div>
+<div class="gi r"><img src="/images/katy-barista-nomi-coffee-biarritz.jpg" alt="Katy preparing coffee at the Nomi Coffee cart" loading="lazy"></div>
+<div class="gi r"><img src="/images/latte-art-coffee-cart-mariage-pays-basque.jpg" alt="Latte art and matcha drinks at a Basque Country wedding" loading="lazy"></div>
+<div class="gi r"><img src="/images/coffee-cart-mariage-evenement.jpg" alt="Nomi Coffee cart set up for a wedding" loading="lazy"></div>
+<div class="gi r"><img src="/images/barista-latte-art-evenement-corporate.jpg" alt="Barista serving coffee at an event" loading="lazy"></div>
 </div>
 </div>
 <div class="div"></div>
@@ -1437,6 +1431,21 @@ function applyLang(lang){
 }
 
 applyLang(currentLang);
+</script>
+
+<!-- Gallery lightbox -->
+<div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Gallery photo viewer">
+<button class="gallery-lightbox-close" type="button" aria-label="Close photo">×</button>
+<img src="" alt="" id="galleryLightboxImg">
+</div>
+<style>
+.gallery-lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:4rem 2rem 2rem;cursor:zoom-out}
+.gallery-lightbox.is-open{display:flex}.gallery-lightbox img{max-width:94vw;max-height:88vh;object-fit:contain;box-shadow:0 12px 60px rgba(0,0,0,.4)}
+.gallery-lightbox-close{position:absolute;top:1rem;right:1.5rem;border:0;background:none;color:white;font-size:2.5rem;cursor:pointer;line-height:1}
+.gi{cursor:zoom-in}
+</style>
+<script>
+(()=>{const box=document.getElementById('galleryLightbox');const img=document.getElementById('galleryLightboxImg');if(!box||!img)return;document.querySelectorAll('.gal-grid .gi img').forEach(photo=>photo.addEventListener('click',()=>{img.src=photo.src;img.alt=photo.alt;box.classList.add('is-open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));const close=()=>{box.classList.remove('is-open');box.setAttribute('aria-hidden','true');img.src='';document.body.style.overflow=''};box.addEventListener('click',close);box.querySelector('img').addEventListener('click',e=>e.stopPropagation());box.querySelector('button').addEventListener('click',close);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('is-open'))close()})})();
 </script>
 </body>
 </html>
